@@ -1,7 +1,16 @@
 {
   "bio" : {
-    "education" : [ ["Washtenaw Community College", "Pre-engineering/Math and Science", "GPA:3.5"], "University of Colorado Boulder - Computer Science and Applied Math - GPA:3.0", "ARKIS - International Baccalaureate - GPA:3.9"],
-    "work" : ["The Cotery", "Stock Daytrader", "Distance Learning @ WCC"],
+    "education" : { 
+    	"college" : ["Washtenaw Community College", "University of Colorado Boulder"],
+    	"GPA" : ["3.5", "4.0"],
+    	"degree" : ["Pre-Engineering/Maths and Science", "Computer Science w/ minor in APPM"]
+     },
+    "work" : {
+    	"company" : ["The Cotery, Inc.", "DL @ Washtenaw Community College"],
+    	"location" : ["Boulder, CO", "Ann Arbor, MI"],
+    	"title" : ["Engineering Intern / Full-stack Web Development", "Student Web Developer"],
+    	"description" : ["Worked in Fashion, e-commerce and Tech. ", "Online College Education"]
+    	},
     "skills": ["Python","C/C++","Java","PHP/Laravel"]
     },
    "todos" : {
