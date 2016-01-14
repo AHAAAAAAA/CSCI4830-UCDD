@@ -1,9 +1,14 @@
 {
-  "todos" : {
-    "tasks" : "priority", "taskdeadline" : { "name" : 
-    	[ "Ahmed", "Connor", "Alex", "Zapatos", "chfa" ]
-
-    }
-    }
-  }
+  "bio" : {
+    "education" : [ ["Washtenaw Community College", "Pre-engineering/Math and Science", "GPA:3.5"], "University of Colorado Boulder - Computer Science and Applied Math - GPA:3.0", "ARKIS - International Baccalaureate - GPA:3.9"],
+    "work" : ["The Cotery", "Stock Daytrader", "Distance Learning @ WCC"],
+    "skills": ["Python","C/C++","Java","PHP/Laravel"]
+    },
+   "todos" : {
+   	"tasks" : {
+   		"task" : ["Run", "Eat", "Sleep"],
+   		"priority": ["1", "2", "3"],
+   		"deadline": ["Yesterday", "Today", "Tomorrow"]
+   	}
+   }
 }
