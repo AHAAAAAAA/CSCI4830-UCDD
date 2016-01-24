@@ -48,6 +48,10 @@
         <h4>Skills</h4>
         <div id="skills" style="margin-left:20px">
         </div>
+
+        <h4>Tasks</h4>
+        <div id="tasks" style="margin-left:20px">
+        </div>
       </div>
 
       
@@ -56,6 +60,7 @@
 
         // create a firebase reference to the root
         var ref = new Firebase('https://ucdd-aa.firebaseio.com/')
+        var refteam = new Firebase('https://trumplove.firebaseio.com/')
 
         // read data from the location bio/favorite_foods, only once
         ref.child('bio/education').once('value', function(snapshot){
@@ -75,17 +80,24 @@
           }
         })
 
-        // ref.child('bio/work').once('value', function(snapshot){
-        //   var works = snapshot.val()
-        //   works.forEach(function(werk){
-        //     $('#work').append('<li class="collection-item">' + werk + '</li>')
-        //   })
-        // })
-
         ref.child('bio/skills').once('value', function(snapshot){
           var skills = snapshot.val()
           skills.forEach(function(skill){
             $('#skills').append('<li class="collection-item">' + skill + '</li>')
+          })
+        })
+
+         // read data from the location todos/tasks, only once
+        refteam.child('todos/tasks').once('value', function(snapshot){
+          var tasks = snapshot.val()
+          console.log(tasks)
+          snapshot.forEach(function(task){
+            var assigned = task.child("assigned").val()
+            var title = task.child("title").val()
+            console.log(assigned)
+            if (assigned == "AHAAAAAAA"){
+              $('#tasks').append('<li class="collection-item">' + title + '</li>') 
+            }
           })
         })
 
