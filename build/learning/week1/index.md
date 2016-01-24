@@ -40,22 +40,31 @@
   </nav>
 
   <div class="container flow-text">
-  <h1 id="book">Book</h1>
-<p>Everything I’ve learned from UCDD 2 - Spring 2016.</p>
-<h2 id="apps">Apps</h2>
+  <h1 id="week-1">Week 1</h1>
+<h2 id="team-learning">Team Learning</h2>
+<h3 id="objective">Objective</h3>
+<p>Enhance your team’s TODO list app.</p>
+<h3 id="requirements">Requirements</h3>
 <ul>
-<li><a href="apps/todos/">ToDos</a></li>
-<li><a href="apps/resume/">Resume</a></li>
+<li>[ ] Three additional fields need to be added to each task object: priority, type, and deadline.</li>
+<li>[ ] Use the CSS, Components, and JavaScript provided by <a href="http://materializecss.com/">materializecss</a> to make the app pretty.</li>
+<li>[ ] The Firebase database must be populated with at least 10 tasks for a reasonable demo.</li>
 </ul>
-<h2 id="learning">Learning</h2>
+<h2 id="individual-learning">Individual Learning</h2>
 <ul>
-<li><a href="learning/intro">Intro</a></li>
-<li><a href="learning/week1">Week 1</a></li>
-<li><a href="learning/week2">Week 2</a></li>
+<li>[ ] Add more data to enrich your personal resume app. Data must include typical items that go on your resume.</li>
+<li>[ ] The data must be pulled from Firebase in realtime, rather than hardcoded.</li>
 </ul>
-<h2 id="hackathons">Hackathons</h2>
+<h3 id="submission">Submission</h3>
 <ul>
-<li><a href="hackathons/01-18">ToDos v.2</a></li>
+<li><strong>Commit/Push</strong> your source code to Github.</li>
+<li><strong>Deploy</strong> your resume app to Firebase</li>
+</ul>
+<h2 id="hackathon">Hackathon</h2>
+<p>Details will be announced on Monday 4pm.</p>
+<ul>
+<li>Start: Monday, 1/18 @ 4pm</li>
+<li>Due: Tuesday, 1/19 @ 11:59pm</li>
 </ul>
 
   </div>
