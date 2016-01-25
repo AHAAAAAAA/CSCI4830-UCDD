@@ -43,14 +43,34 @@
 
         $('#submit').click(function(){
           console.log('the submit button is clicked')
+          var ref = new Firebase('https://ucdd-aa.firebaseio.com/')
+          var emailListRef = ref.child('subscribers/emails')
+          var email     = $('#email').val()
+          // TODO: add more fields to taskObject
+          var emailObject = {
+            email: email
+          }
 
-          // TODO: add code to submit an email address to your own Firebase
+          var newEmailRef = emailListRef.push()
+            newEmailRef.set(emailObject)
+            location.href = "subscribe.html" 
 
         })
 
 
         // TODO: add code to pull emaill addresses from your own Firebase,
         // and populate "#emails" with these email addresses
+
+        var ref = new Firebase('https://ucdd-aa.firebaseio.com/')
+
+        ref.child('subscribers/emails').once('value', function(snapshot){
+          snapshot.forEach(function(emails){
+            var email = emails.child("email").val()
+              $('#emails').append('<li class="collection-item">' + email + '</li>') 
+            
+          })
+      
+        })
 
 
       </script>
