@@ -4,7 +4,8 @@
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
 
       <!--Import stylesheet for Leaflet to work-->
       <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
@@ -21,17 +22,29 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
       <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
       <script src="/js/leaflet.label.js"></script>
+		<nav>
+	        <div class="nav-wrapper red">
+	          <a href="#" class="brand-logo turqouise center" style="margin-left:15px;">Garages Map</a>
+	          <ul id="nav-mobile" class="right hide-on-med-and-down">
+	            <li><a href="/"><i class="large material-icons">thumb_up</i></a></li>
 
-        <h1>Garages Map</h1>
-        <div id="map" style="height:500px"></div>
-
-	<div class="row">
-      <div id="listView" class= "container">
-        <img src="List.jpg"> <!-- random image -->
-      </div>
-      <div id="mapView" class= "container">
-      </div>
-    </div>
+	          </ul>
+	        </div>
+	      </nav>
+	    <div class="container">
+		<div class="row">
+            <div class="col-md-6">
+                <a href="garages.html">
+                    <img class="rounded responsive-img" src="List.jpg" alt="">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="garages_map.html">
+                    <img class="rounded responsive-img" src="Map.jpg" alt="">
+                </a>
+            </div>
+        </div>
+        </div>
 
 
     </body>
