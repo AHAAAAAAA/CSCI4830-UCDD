@@ -6,7 +6,7 @@
       <!--Import materialize.css-->
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-
+	  <link rel="stylesheet" href"https://raw.githubusercontent.com/codrops/HoverEffectIdeas/master/css/set1.css">
       <!--Import stylesheet for Leaflet to work-->
       <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
       <link rel="stylesheet" href="/css/leaflet.label.css" />
@@ -15,6 +15,42 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
+    <style>
+
+
+figure.effect-sadie h2 {
+	position: absolute;
+	top: 20%;
+	left: 12.5%;
+	width: 100%;
+	color: #484c61;
+	transition: transform 0.35s, color 0.35s;
+	transform: translate3d(0,-50%,0);
+}
+
+figure.effect-sadie:hover h2 {
+	color: #fff;
+	transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+}
+figure.effect-sadie2 h2 {
+	position: absolute;
+	top: 20%;
+	left: 0;
+	width: 100%;
+	color: #fff;
+	transition: transform 0.35s, color 0.35s;
+	transform: translate3d(0,-50%,0);
+}
+
+figure.effect-sadie2:hover h2 {
+	color: #484c61;
+	transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+}
+figure.effect-sadie2 p{
+	top:-20%;
+}
+    </style>
+	
     <body>
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
@@ -23,28 +59,37 @@
       <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
       <script src="/js/leaflet.label.js"></script>
 		<nav>
-	        <div class="nav-wrapper red">
-	          <a href="#" class="brand-logo turqouise center" style="margin-left:15px;">Garages Map</a>
+	        <div class="nav-wrapper grey darken-3">
+	          <a href="#" class="brand-logo left" style="margin-left:15px;">Garages Map</a>
 	          <ul id="nav-mobile" class="right hide-on-med-and-down">
 	            <li><a href="/"><i class="large material-icons">thumb_up</i></a></li>
 
 	          </ul>
 	        </div>
 	      </nav>
-	    <div class="container">
-		<div class="row">
-            <div class="col-md-6">
-                <a href="garages.html">
-                    <img class="rounded responsive-img" src="List.jpg" alt="">
-                </a>
-            </div>
-            <div class="col-md-6">
-                <a href="garages_map.html">
-                    <img class="rounded responsive-img" src="Map.jpg" alt="">
-                </a>
-            </div>
-        </div>
-        </div>
+	    <div class="container center" style="margin-top:25px;">
+			<div class="row">
+					<a href="garages.html">
+					<figure class="effect-sadie col-lg-6">
+						<img class= "circle responsive-img" width="500" src="List.jpg" alt="img02"/>
+						<figcaption>
+							<h2>Garage <span>List</span></h2>
+							<p>A list of empty Garages</p>
+						</figcaption>			
+					</figure>
+					</a>
+					<a href="garages_map.html">
+					<figure class="effect-sadie2 col-lg-6">
+						<img class= "circle responsive-img" width="500" src="Map.jpg" alt="img14"/>
+						<figcaption>
+							<h2>Garage <span>Map</span></h2>
+							<p>A map of empty Garages</p>
+						</figcaption>			
+					</figure>
+					</a>
+				</div>
+				</div>
+
 
 
     </body>
