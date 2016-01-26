@@ -61,7 +61,7 @@
               var checkbox = '<input style ="visibility: visible; left:0px; position: relative;" type="checkbox" onClick="completed(\'' + key + '\')" id=' + key + '>'
             }
             else {
-              var checkbox = '<input style ="visibility: visible; left:0px; position: relative;" "checked type="checkbox" onClick="completed(\'' + key + '\')" id=' + key + '>'
+              var checkbox = '<input style ="visibility: visible; left:0px; position: relative;" checked type="checkbox" onClick="completed(\'' + key + '\')" id=' + key + '>'
             }
 
             $('#tasks').append('<div class="col s12 m6">' + '<div class="card red lighten-1">' + '<div class="card-content white-text">' + title + '<p> Assigned to: ' + assigned + '<br> Priority: ' + priority + '<br> Deadline: ' + deadline + '<br> Completed: ' + checkbox + '</p>' +'</div>' + '</div>')
