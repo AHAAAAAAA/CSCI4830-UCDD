@@ -36,8 +36,8 @@ var ref = new Firebase('https://publicdata-parking.firebaseio.com');
 
 var data
 
-// read data from the location san_francisco/garages, only once
-ref.child('san_francisco/garages').once('value', function(snapshot){
+// read data from the location san_francisco/garages, realtime
+ref.child('san_francisco/garages').on('value', function(snapshot){
   data = snapshot.val()
 
   var garages = _.filter(data, function(d){
@@ -73,16 +73,55 @@ function drawGarages(garages){
     var points = garage.points
     var latlng = [points[0], points[1]]
     var open_space = garage.open_spaces
-    console.log(open_space)
+    var name = garage.friendlyName
+    var popup = L.popup()
+    .setLatLng(latlng)
+    .setContent('babnasdpij')
+    .openOn(map);
+    popup.addTo(map);
 
     // create a circle layer
+   if ( open_space < 30 ){
     var circle = L.circle(latlng, 10, {
+        color: 'yellow',
+        fillColor: 'yellow',
+        fillOpacity: 0.5
+    }).bindLabel(open_space)
+    .bindPopup(name + '<br>'+ " Open Spaces: "+ open_space)
+  }
+   if (31 < open_space < 99){
+    var circle = L.circle(latlng, 20, {
         color: 'green',
         fillColor: 'green',
         fillOpacity: 0.5
     }).bindLabel(open_space)
-
-    // add the circle layer to the makers layer group
+    .bindPopup(name + '<br>'+ " Open Spaces: " + open_space)
+  }
+  if(100 < open_space < 300 ){
+    var circle = L.circle(latlng, 50, {
+        color: 'green',
+        fillColor: 'green',
+        fillOpacity: 0.5
+    }).bindLabel(open_space)
+    .bindPopup(name + '<br>' + " Open Spaces: "+ open_space)
+  }
+  if( 300 < open_space < 500){
+    var circle = L.circle(latlng, 100, {
+        color: 'green',
+        fillColor: 'green',
+        fillOpacity: 0.5
+    }).bindLabel(open_space)
+    .bindPopup(name + '<br>'+ " Open Spaces: "+ open_space)
+  }
+  else{
+    var circle = L.circle(latlng, 200, {
+        color: 'green',
+        fillColor: 'green',
+        fillOpacity: 0.5
+    }).bindlabel.open_space
+     .bindPopup(name + '<br>'+ " Open Spaces: "+ open_space)
+  }
+    // add the circle layer to the markers layer group
     markersLayerGroup.addLayer(circle)
 
   })
