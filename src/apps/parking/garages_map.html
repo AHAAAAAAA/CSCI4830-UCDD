@@ -7,7 +7,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
       <!--Import stylesheet for Leaflet to work-->
-      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" /> 
       <link rel="stylesheet" href="/css/leaflet.label.css" />
 
       <!--Let browser know website is optimized for mobile-->
@@ -39,7 +39,6 @@ var data
 // read data from the location san_francisco/garages, only once
 ref.child('san_francisco/garages').once('value', function(snapshot){
   data = snapshot.val()
-  console.log('data is loaded', data)
 
   var garages = _.filter(data, function(d){
       return _.has(d, 'open_spaces')
@@ -73,13 +72,15 @@ function drawGarages(garages){
   _.forEach(garages, function(garage){
     var points = garage.points
     var latlng = [points[0], points[1]]
+    var open_space = garage.open_spaces
+    console.log(open_space)
 
     // create a circle layer
     var circle = L.circle(latlng, 10, {
-        color: 'red',
-        fillColor: '#f03',
+        color: 'green',
+        fillColor: 'green',
         fillOpacity: 0.5
-    }).bindLabel('Label (Change Me)')
+    }).bindLabel(open_space)
 
     // add the circle layer to the makers layer group
     markersLayerGroup.addLayer(circle)
