@@ -17,16 +17,19 @@
 
     <style>
 		html { 
-			background: url(background.jpeg) no-repeat center center fixed; 
-			-webkit-background-size: cover;
-			-moz-background-size: cover;
-			-o-background-size: cover;
-			background-size: cover;
-		}
+	      background: url(background.jpg) no-repeat center center fixed; 
+	      -webkit-background-size: cover;
+	      -moz-background-size: cover;
+	      -o-background-size: cover;
+	      background-size: cover;
+	    }
+	    body{
+	      background: transparent;
+	    }
 		figure.effect-sadie h3 {
 			position: absolute;
 			top: 25%;
-			left: 14.5%;
+			left: 11.5%;
 			width: 100%;
 			color: #484c61;
 			transition: transform 0.35s, color 0.35s;
@@ -55,19 +58,23 @@
 			top:-20%;
 		}    </style>
 	
-    <body class="blue-grey lighten-5">
+    <body>
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
       <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
       <script src="/js/leaflet.label.js"></script>
-	    <div class="container transparent center" style="margin-top:25px;">
-	    	<div class="row">
-	    	<a href="/">
-	    		<img class= "circle responsive-img" width="350" src="Header.png" alt="img02"/>
-	    		</a>
-	    	</div>
+      <nav class="nav-wrapper grey darken-3">
+        <div class="nav-wrapper grey darken-3 navbar right navbar-inverse navbar-fixed-top">
+            <ul id="nav-mobile navbar-inner">
+            <li class="active" ><a href="index.html" style="text-decoration:none;"><i class="large material-icons">home</i></a></li>
+            <li><a href="garages_map.html" style="text-decoration:none;"><i class="large material-icons">location_on</i></a></li>
+            <li><a href="garages.html" style="text-decoration:none;"><i class="large material-icons">reorder</i></a></li>
+          </ul>
+        </div>
+      </nav>
+	    <div class="container transparent center" style="margin-top:5%;">
 			<div class="row">
 					<a href="garages.html">
 					<figure class="effect-sadie col-lg-6">
