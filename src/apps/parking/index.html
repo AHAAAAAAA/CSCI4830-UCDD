@@ -16,74 +16,72 @@
     </head>
 
     <style>
+		html { 
+			background: url(background.jpeg) no-repeat center center fixed; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+		figure.effect-sadie h3 {
+			position: absolute;
+			top: 25%;
+			left: 14.5%;
+			width: 100%;
+			color: #484c61;
+			transition: transform 0.35s, color 0.35s;
+			transform: translate3d(0,-50%,0);
+		}
 
+		figure.effect-sadie:hover h3 {
+			color: #fff;
+			transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+		}
+		figure.effect-sadie2 h3 {
+			position: absolute;
+			top: 25%;
+			left: 1.5%;
+			width: 100%;
+			color: #fff;
+			transition: transform 0.35s, color 0.35s;
+			transform: translate3d(0,-50%,0);
+		}
 
-figure.effect-sadie h2 {
-	position: absolute;
-	top: 25%;
-	left: 14.5%;
-	width: 100%;
-	color: #484c61;
-	transition: transform 0.35s, color 0.35s;
-	transform: translate3d(0,-50%,0);
-}
-
-figure.effect-sadie:hover h2 {
-	color: #fff;
-	transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
-}
-figure.effect-sadie2 h2 {
-	position: absolute;
-	top: 25%;
-	left: 0;
-	width: 100%;
-	color: #fff;
-	transition: transform 0.35s, color 0.35s;
-	transform: translate3d(0,-50%,0);
-}
-
-figure.effect-sadie2:hover h2 {
-	color: #484c61;
-	transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
-}
-figure.effect-sadie2 p{
-	top:-20%;
-}
-    </style>
+		figure.effect-sadie2:hover h3 {
+			color: #484c61;
+			transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+		}
+		figure.effect-sadie2 p{
+			top:-20%;
+		}    </style>
 	
-    <body>
+    <body class="blue-grey lighten-5">
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
       <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
       <script src="/js/leaflet.label.js"></script>
-		<nav>
-	        <div class="nav-wrapper grey darken-3">
-	          <a href="#" class="brand-logo center	" style="margin-left:15px;">Garages</a>
-	          <ul id="nav-mobile" class="right hide-on-med-and-down">
-	            <li><a href="/"><i class="large material-icons">home</i></a></li>
-
-	          </ul>
-	        </div>
-	      </nav>
-	    <div class="container center" style="margin-top:25px;">
+	    <div class="container transparent center" style="margin-top:25px;">
+	    	<div class="row">
+	    	<a href="/">
+	    		<img class= "circle responsive-img" width="350" src="Header.png" alt="img02"/>
+	    		</a>
+	    	</div>
 			<div class="row">
 					<a href="garages.html">
 					<figure class="effect-sadie col-lg-6">
-						<img class= "circle responsive-img" width="500" src="List.jpg" alt="img02"/>
+						<img class= "circle responsive-img" width="400" src="List.jpg" alt="img02"/>
 						<figcaption>
-							<h2>Garage <span>List</span></h2>
-							<p>A list of empty Garages</p>
+							<h3>Garage <span>List</span></h3>
 						</figcaption>			
 					</figure>
 					</a>
 					<a href="garages_map.html">
 					<figure class="effect-sadie2 col-lg-6">
-						<img class= "circle responsive-img" width="500" src="Map.jpg" alt="img14"/>
+						<img class= "circle responsive-img" width="400" src="Map.jpg" alt="img14"/>
 						<figcaption>
-							<h2>Garage <span>Map</span></h2>
-							<p>A map of empty Garages</p>
+							<h3>Garage <span>Map</span></h3>
 						</figcaption>			
 					</figure>
 					</a>
