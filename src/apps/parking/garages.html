@@ -86,10 +86,10 @@ function displayGarages(garages){
       var amount = rate.RATE
       var requirement = rate.RQ
       if(beginning != ""){
-        data += ('<li> ' + beginning + ' - ' + end + ': $' + amount + ' ' + requirement + '</li>') 
+        data += ('<li style="margin-left:1%"> ' + beginning + ' - ' + end + ': $' + amount + ' ' + requirement + '</li>') 
       }
       else{
-        data += ('<li> ' + desc + ': $' + amount + ' ' + requirement + '</li>') 
+        data += ('<li style="margin-left:1%"> ' + desc + ': $' + amount + ' ' + requirement + '</li>') 
       }
     })
     $('#garages').append('</li></ul></div></div></div></div>')
