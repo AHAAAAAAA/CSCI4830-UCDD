@@ -77,8 +77,7 @@ function displayGarages(garages){
       circle_fill = '#D32F2F'
     }
     var data = '<div class="row"><div class="col s12 m12"><div class="card grey darken-3"><div class="card-content white-text"><span class="card-title" style="color:#FFC107">' + friendlyName + 
-    '</span><div class="secondary-content"><svg height="100" width="100"><circle cx="25" cy="25" r="20" fill="' + circle_fill + '"/></svg></div>' + '<ul>' + '<li>Open Spaces: ' + open_spaces + '</li>' + '<li>Total Spaces: ' + total_spaces + '</li>' +
-    '<li> ' + open_spaces + '</li>' + '<li>Total Spaces: ' + total_spaces +  '</li><li>Rates:</li>'
+    '</span><div class="secondary-content"><svg height="100" width="100"><circle cx="25" cy="25" r="20" fill="' + circle_fill + '"/></svg></div>' + '<ul>' + '<li>Open Spaces: ' + open_spaces + '</li>' + '<li>Total Spaces: ' + total_spaces + '</li>' + '</li><li>Rates:</li>'
     _.forEach(rates, function(rate){
       var desc = rate.DESC
       var beginning = rate.BEG ? rate.BEG : "" 
