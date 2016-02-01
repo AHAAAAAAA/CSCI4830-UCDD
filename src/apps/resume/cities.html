@@ -7,7 +7,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
       <!--Import stylesheet for Leaflet to work-->
-      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
       <link rel="stylesheet" href="/css/leaflet.label.css" />
 
       <!--Let browser know website is optimized for mobile-->
@@ -35,7 +35,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
-      <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script> 
       <script src="/js/leaflet.label.js"></script>
       <nav class="nav-wrapper grey darken-3">
         <div class="nav-wrapper grey darken-3 navbar navbar-inverse navbar-fixed-top">
@@ -69,7 +69,6 @@ weatherRef.once('value', function(snapshot){
   var detroit = city['detroit']
   var seattle = city['seattle']
   var washington = city['sanfrancisco']
-
   markersLayerGroup.clearLayers()
   $('#cities').empty()
 
