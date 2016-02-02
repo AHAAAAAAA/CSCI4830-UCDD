@@ -32,7 +32,7 @@ function simulate(){
   // simulate this person leaving after 'duration' seconds
   setTimeout(function(){
     leave(person)
-  }, duration * 25000)
+  }, duration * 10000)
 
 }
 
