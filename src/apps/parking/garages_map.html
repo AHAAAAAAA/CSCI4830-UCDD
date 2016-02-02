@@ -121,10 +121,23 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 // create a layer group to hold all the markers
 var markersLayerGroup = L.layerGroup()
+var markersLayerGroup2 = L.layerGroup()
 // add the makers layer group to the map
 markersLayerGroup.addTo(map)
+markersLayerGroup2.addTo(map)
+
 
 function drawBus(vehicles){
+    var NewIcon = L.Icon.Default.extend({
+        options: {
+              iconUrl:  "busmarker.png",
+              iconSize: [15, 15],
+              shadowSize: [10, 10]
+        }
+     })
+  var weather = new NewIcon();
+
+    markersLayerGroup2.clearLayers()
   _.forEach(vehicles, function(buses){
     var name = buses.id
     var lat = buses.lat
@@ -136,8 +149,8 @@ function drawBus(vehicles){
       fillOpacity: 1
     }).bindLabel('Bus number: ' + name)
     // add the circle layer to the markers layer group
-    markersLayerGroup.addLayer(circle)
-    
+    var mark = L.marker(latlong, {icon: weather}).bindLabel("Bus number: " + name).addTo(map);
+    markersLayerGroup2.addLayer(mark)
   })
 }
 
