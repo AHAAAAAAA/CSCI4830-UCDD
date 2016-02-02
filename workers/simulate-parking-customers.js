@@ -32,7 +32,7 @@ function simulate(){
   // simulate this person leaving after 'duration' seconds
   setTimeout(function(){
     leave(person)
-  }, duration * 1000)
+  }, duration * 10000)
 
 }
 
@@ -41,13 +41,32 @@ function enter(person){
   // TODO: put this person in the Firebase
   // var ref = new Firebase('your-firebase-url')
   // ...
+  var ref = new Firebase('https://trumplove.firebaseio.com/')
+  var customerListRef = ref.child('customers/')
+  // TODO: add more fields to taskObject
+  var custObject = {
+    customer: person
+  }
+
+  var newCustomer = customerListRef.push()
+  newCustomer.set(custObject)
 }
 
 function leave(person){
   console.log('leave', person)
   // TODO: remove this person from the Firebase
   // var ref = new Firebase('your-firebase-url')
-  // ...
+  var ref = new Firebase('https://trumplove.firebaseio.com/')
+  var customerListRef = ref.child('customers/')
+  customerListRef.orderByValue().on('value', function(customers) {
+    customers.forEach(function(customers) {
+      var customer = customers.val()
+      if(customer == person){
+        var customerKey = customer.key()
+      }
+      customerListRef.remove(customerKey)
+    })
+  })
 }
 
 
@@ -55,6 +74,11 @@ function clear(){
   // TODO: remove all people from the Firebase
   // var ref = new Firebase('your-firebase-url')
   // ...
+  // TODO: remove this person from the Firebase
+  // var ref = new Firebase('your-firebase-url')
+  var ref = new Firebase('https://trumplove.firebaseio.com/')
+  var customerListRef = ref.child('customers/')
+  customerListRef.remove()
 }
 
 
