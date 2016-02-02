@@ -55,6 +55,7 @@
       <script>
 
 // create a firebase reference to the root
+<<<<<<< HEAD
 var ref2 = new Firebase('https://publicdata-transit.firebaseio.com/sf-muni');
 
 var busdata;
@@ -87,10 +88,22 @@ function busUpdated(snapshot) {
     // Retrieve latitude/longitude with info.lat/info.lon.
 }
 
+=======
+var ref = new Firebase('https://publicdata-transit.firebaseio.com/sf-muni');
+
+var busdata;
+// read data from the location san_francisco buses, realtime
+ref.child('vehicles').on('value', function(snapshot){
+  vehicles = snapshot.val()
+  drawBus(vehicles)
+})
+
+>>>>>>> origin/master
 
 
 
 var ref = new Firebase('https://publicdata-parking.firebaseio.com');
+var Cref = new Firebase('https://trumplove.firebaseio.com/')
 
 
 var data1
@@ -100,15 +113,20 @@ ref.child('san_francisco').on('value', function(snapshot){
 })
 
 var data
+var customers
 // read data from the location san_francisco/garages, realtime
 ref.child('san_francisco/garages').on('value', function(snapshot){
   data = snapshot.val()
-  
   var garages = _.filter(data, function(d){
       return _.has(d, 'open_spaces')
   })
 
   drawGarages(garages)
+})
+
+Cref.child('customers/').on('value', function(snapshot){
+  customers = snapshot.val()
+  drawCustomers(customers)
 })
 
 var attributionText = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a       href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
@@ -147,6 +165,23 @@ function drawBus(vehicles){
     
     })
 
+  }
+
+function drawBus(vehicles){
+  _.forEach(vehicles, function(buses){
+    markersLayerGroup.clearLayers()
+    var lat = buses.lat
+    var lon = buses.lon
+    var latlong = [lat, lon]
+    var circle = L.circle(latlong, 100, {
+        color: 'red',
+        fillColor: 'red',
+        fillOpacity: 1
+    }).bindLabel('bus')
+    // add the circle layer to the markers layer group
+    markersLayerGroup.addLayer(circle)
+    
+    })
   }
 
 // visualize garages on a map
@@ -203,6 +238,27 @@ function drawGarages(garages){
     }).bindLabel(name)
     .bindPopup(popupdata)
     //console.log(rate)
+<<<<<<< HEAD
+=======
+    // add the circle layer to the markers layer group
+    markersLayerGroup.addLayer(circle)
+
+  })
+
+}
+
+function drawCustomers(customers){
+  // clear all existing markers (if any)
+  markersLayerGroup.clearLayers()
+  
+  _.forEach(customers, function(customert){
+    var latlng = [customert.customer.lat, customert.customer.lon]
+    var circle = L.circle(latlng, 100, {
+        color: 'red',
+        fillColor: 'yellow',
+        fillOpacity: 0.5
+    }).bindLabel(customert.customer.name)
+>>>>>>> origin/master
     // add the circle layer to the markers layer group
     markersLayerGroup.addLayer(circle)
 
