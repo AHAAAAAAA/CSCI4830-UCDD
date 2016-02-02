@@ -134,6 +134,9 @@ function drawBus(vehicles){
   markersLayerGroup2.clearLayers()
   _.forEach(vehicles, function(buses){
 
+    var name = buses.id
+
+  
     var lat = buses.lat
     var lon = buses.lon
     var latlong = [lat, lon]
@@ -141,7 +144,7 @@ function drawBus(vehicles){
         color: 'red',
         fillColor: 'red',
         fillOpacity: 1
-    }).bindLabel('bus')
+    }).bindLabel("Bus number: " + name)
     // add the circle layer to the markers layer group
     markersLayerGroup2.addLayer(circle)
     
