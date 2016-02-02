@@ -77,6 +77,7 @@ ref.child('san_francisco').on('value', function(snapshot){
 })
 
 var data
+var customers
 // read data from the location san_francisco/garages, realtime
 ref.child('san_francisco/garages').on('value', function(snapshot){
   data = snapshot.val()
@@ -88,7 +89,8 @@ ref.child('san_francisco/garages').on('value', function(snapshot){
 })
 
 Cref.child('customers/').on('value', function(snapshot){
-  drawCustomers()
+  customers = snapshot.val()
+  drawCustomers(customers)
 })
 
 var attributionText = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a       href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
@@ -109,7 +111,7 @@ markersLayerGroup.addTo(map)
 
 function drawBus(vehicles){
   _.forEach(vehicles, function(buses){
-    //markersLayerGroup.clearLayers()
+    markersLayerGroup.clearLayers()
     var lat = buses.lat
     var lon = buses.lon
     var latlong = [lat, lon]
@@ -185,19 +187,17 @@ function drawGarages(garages){
 
 }
 
-function drawCustomers(){
-
-  var ref = new Firebase('https://trumplove.firebaseio.com/')
+function drawCustomers(customers){
   // clear all existing markers (if any)
   markersLayerGroup.clearLayers()
   
-  _.forEach(ref.customers, function(customer){
-    var latlng = [customer.lat, customer.lon]
-    var circle = L.circle(latlng, 200, {
-        color: 'yellow',
+  _.forEach(customers, function(customert){
+    var latlng = [customert.customer.lat, customert.customer.lon]
+    var circle = L.circle(latlng, 100, {
+        color: 'red',
         fillColor: 'yellow',
         fillOpacity: 0.5
-    }).bindLabel(customer.name)
+    }).bindLabel(customert.customer.name)
     // add the circle layer to the markers layer group
     markersLayerGroup.addLayer(circle)
 
