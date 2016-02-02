@@ -101,6 +101,7 @@ ref.child('san_francisco/garages').on('value', function(snapshot){
 
 Cref.child('customers/').on('value', function(snapshot){
   customers = snapshot.val()
+  console.log(customers)
   markersLayerGroup.clearLayers()
   drawCustomers(customers)
   drawBus(vehicles)
@@ -128,16 +129,16 @@ markersLayerGroup2.addTo(map)
 
 
 function drawBus(vehicles){
-    var NewIcon = L.Icon.Default.extend({
-        options: {
-              iconUrl:  "busmarker.png",
-              iconSize: [15, 15],
-              shadowSize: [10, 10]
-        }
-     })
+  var NewIcon = L.Icon.Default.extend({
+    options: {
+      iconUrl:  "busmarker.png",
+      iconSize: [15, 15],
+      shadowSize: [10, 10]
+    }
+  })
   var weather = new NewIcon();
 
-    markersLayerGroup2.clearLayers()
+  markersLayerGroup2.clearLayers()
   _.forEach(vehicles, function(buses){
     var name = buses.id
     var lat = buses.lat
@@ -212,13 +213,14 @@ function drawGarages(garages){
 }
 
 function drawCustomers(customers){
-  _.forEach(customers, function(customert){
-    var latlng = [customert.customer.lat, customert.customer.lon]
+  _.forEach(customers, function(customer){
+    console.log(customer)
+    var latlng = [customer.lat, customer.lon]
     var circle = L.circle(latlng, 100, {
       color: 'red',
       fillColor: 'yellow',
       fillOpacity: 0.5
-    }).bindLabel(customert.customer.name)
+    }).bindLabel(customer.name)
     // add the circle layer to the markers layer group
     markersLayerGroup.addLayer(circle)
 
