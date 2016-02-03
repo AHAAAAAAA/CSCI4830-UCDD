@@ -14,9 +14,59 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   </head>
+  <style>
+    html { 
+        background: url(background.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+      body{
+        background: transparent;
+      }
+    figure.effect-sadie h3 {
+      position: absolute;
+      top: 25%;
+      left: 11.5%;
+      width: 100%;
+      color: #484c61;
+      transition: transform 0.35s, color 0.35s;
+      transform: translate3d(0,-50%,0);
+    }
+
+    figure.effect-sadie:hover h3 {
+      color: #fff;
+      transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+    }
+    figure.effect-sadie2 h3 {
+      position: absolute;
+      top: 25%;
+      left: 1.5%;
+      width: 100%;
+      color: #fff;
+      transition: transform 0.35s, color 0.35s;
+      transform: translate3d(0,-50%,0);
+    }
+
+    figure.effect-sadie2:hover h3 {
+      color: #484c61;
+      transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+    }
+    figure.effect-sadie2 p{
+      top:-20%;
+    }
+    #navtitle{
+      margin-left:20px; font-size:20px;
+    }
+    #home #loc #list{
+      text-decoration: none;
+    }    
+    </style>
   <body>
+
+    <div id="navbar"></div>
     <div class="container">
-      <div id="navbar"></div>
       <div id="team"></div>
       <div id="garage"></div>
     </div>
