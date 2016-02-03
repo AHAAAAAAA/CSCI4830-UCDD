@@ -9,7 +9,7 @@ MyComponents.Team = React.createClass({
 
     var members = this.props.members.map(function(member, i){
       return <li key={i} className="collection-item row">
-              <span className="chip light-blue col-lg-4 left">{member.firstname} {member.lastname}</span>
+              <span className="chip light-blue center col-lg-2 left">{member.firstname} {member.lastname}</span>
               <a className="white col-lg-4 right" href={member.github}>Github</a>
             </li>
     })
@@ -18,10 +18,10 @@ MyComponents.Team = React.createClass({
       <div className="card">
 
         <div className="card-content">
-          <span className="card-title">Team Members</span>
-          <div className="collection">
+          <ul className="collection with-header">
+          <li class="collection-header"><h4 class="team-title">  Team Members</h4></li>
             {members}
-          </div>
+          </ul>
         </div>
       </div>
     );
