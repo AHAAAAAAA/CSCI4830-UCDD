@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-preset-react": "^6.3.13",
     "consolidate": "^0.13.1",
     "debug": "^2.2.0",
     "firebase": "^2.4.0",
@@ -25,6 +26,8 @@
     "metalsmith-serve": "0.0.4",
     "metalsmith-watch": "^1.0.1",
     "node-random-name": "^1.0.1",
-    "nunjucks": "^2.3.0"
+    "nunjucks": "^2.3.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
   }
 }
