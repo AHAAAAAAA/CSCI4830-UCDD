@@ -1,17 +1,21 @@
 MyComponents.Hour = React.createClass({
   render: function() {
+    console.log(this.props.hour.BEG)
     return (
       <div className="card">
         <div className="card-content">
-          TODO: This is a component to display an item in the hours array
-          Raw props data is {JSON.stringify(this.props)}
+          <b> From {this.props.hour.FROM} to {this.props.hour.TO} </b>
+          Beggining: {this.props.hour.BEG}
+          End: {this.props.hour.END}
+          From {this.props.hour.FROM} to {this.props.hour.TO}
         </div>
       </div>
     );
   }
 });
 
-
+//TODO: This is a component to display an item in the hours array
+   //       Raw props data is {JSON.stringify(this.props)}
 MyComponents.GarageHours = React.createClass({
   render: function() {
 
