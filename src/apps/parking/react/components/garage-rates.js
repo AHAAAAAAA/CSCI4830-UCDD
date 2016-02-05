@@ -13,7 +13,7 @@ MyComponents.Rate = React.createClass({
       data += (desc + ': $' + amount + ' ' + requirement) 
     }
     return (
-      <div className="card grey darken-3">
+      <div className="card grey darken-2">
       <div className="card-content white-text">
       <ul>
       <li>{data}</li>

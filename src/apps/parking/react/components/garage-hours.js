@@ -1,7 +1,7 @@
 MyComponents.Hour = React.createClass({
   render: function() {
     return(
-      <div className="card grey darken-3">
+      <div className="card grey darken-2">
         <div className="card-content white-text">
           <b> {this.props.hour.FROM}- {this.props.hour.TO} </b> <br/>
            Beggining: {this.props.hour.BEG} <br/>

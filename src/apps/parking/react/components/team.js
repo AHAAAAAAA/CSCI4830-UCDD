@@ -10,7 +10,7 @@ MyComponents.Team = React.createClass({
     var members = this.props.members.map(function(member, i){
       return <li key={i} className="row grey darken-3">
       <span className="col-lg-2 left white-text">{member.firstname} {member.lastname}</span>
-      <a className="col-lg-4 right grey-text" href={member.github}>Github</a>
+      <a className="col-lg-1 right grey-text" href={member.github}>Github</a>
       </li>
     })
 
