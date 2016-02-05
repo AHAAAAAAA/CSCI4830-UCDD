@@ -25,7 +25,7 @@ MyComponents.GarageHours = React.createClass({
     return (
       <div className="card grey darken-3">
         <div className="card-content yellow-custom-text">
-        <h3> Hours </h3> 
+        <span className="card-title yellow-custom-text">Hours</span>
           {hours}
         </div>
       </div>

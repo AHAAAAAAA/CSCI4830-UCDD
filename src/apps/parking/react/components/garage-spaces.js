@@ -7,6 +7,7 @@ MyComponents.GarageSpaces = React.createClass({
     return (
       <div className="card grey darken-3">
       <ul className="card-content white-text">
+      <span className="card-title yellow-custom-text">Spaces</span>
       <div className="secondary-content">
       <svg height="100" width="100"><circle cx="20" cy="20" r="20" fill={circle_fill}/></svg>
       </div>
