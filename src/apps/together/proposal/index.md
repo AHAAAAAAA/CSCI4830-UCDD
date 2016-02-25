@@ -5,8 +5,11 @@ layout: layout.hbs
 # Proposal
 
 ## Team Members
-
-(TODO: Names)
+  * Russell Mehring
+  * Sigruun Sky
+  * Ahmed Almutawa
+  * Juan Herrera
+  * Fredrick Lohner
 
 ## Ideation
 
@@ -52,16 +55,16 @@ It's okay to credit multiple people for the same idea. The rationale of this
 section of the proposal is to demonstrate that everyone on the team contributes
 useful ideas.
 
-* Person 1
+* Russ Mehring
   * idea
   * idea
-* Person 2
+* Sigruun Sky
   * idea
   * idea
-* Person 3
+* Ahmed Almutawa
   * idea
   * idea
-* Person 4
+* Juan Herrera
   * idea
   * idea
 
