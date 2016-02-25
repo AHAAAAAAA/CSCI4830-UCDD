@@ -28,17 +28,17 @@
 	}
 	figure.effect-sadie h3 {
 		position: absolute;
-		top: 25%;
-		left: 11.5%;
+		top: 15%;
+		left: 16.5%;
 		width: 100%;
-		color: #484c61;
+		color: purple;
 		transition: transform 0.35s, color 0.35s;
 		transform: translate3d(0,-50%,0);
 	}
 
 	figure.effect-sadie:hover h3 {
-		color: #fff;
-		transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+		color: #484c61;
+		transform: translate3d(0,-50%,0) translate3d(-40px,0px,0);
 	}
 	figure.effect-sadie2 h3 {
 		position: absolute;
@@ -51,7 +51,7 @@
 	}
 
 	figure.effect-sadie2:hover h3 {
-		color: #484c61;
+		color: #fffwa;
 		transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
 	}
 	figure.effect-sadie2 p{
@@ -65,19 +65,35 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
 		<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
 		<script src="/js/leaflet.label.js"></script>
-		<h1 class="center white-text">fooBER</h1>
+		<nav class="nav-wrapper">
+			<div class="nav-wrapper grey darken-3 navbar navbar-inverse navbar-fixed-top">
+				<ul id="nav-mobile navbar-inner">
+					<li class="left" style="margin-left:20px; font-size:20px;"> FooBer</li>
+					<li class="active right" ><a href="index.html" style="text-decoration:none;"><i class="large material-icons">home</i></a></li>
+				</ul>
+			</div>
+		</nav>
+		<h1 class="center white-text">FooBER</h1>
 		<div class="container transparent center" style="margin-top:5%;">
 			<div class="row">
 				<a href="client/index.html">
-					<figure class="effect-sadie col-lg-6">
+					<figure class="effect-sadie2 col-lg-4">
 						<img class= "circle responsive-img" width="400" src="http://woman.thenest.com/DM-Resize/photos.demandstudios.com/getty/article/171/248/77005917.jpg?w=600&h=600&keep_ratio=1"/>
 						<figcaption>
-							<h3>Client <span></span></h3>
+							<h3>Driver <span></span></h3>
+						</figcaption>			
+					</figure>
+				</a>
+				<a href="restaurant/index.html">
+					<figure class="effect-sadie2 col-lg-4">
+						<img class= "circle responsive-img" width="400" src="http://1.design-milk.com/images/2015/02/brandon-agency-simple-restaurant-7-600x600.jpg"/>
+						<figcaption>
+							<h3>Restaurant <span></span></h3>
 						</figcaption>			
 					</figure>
 				</a>
 				<a href="admin/index.html">
-					<figure class="effect-sadie2 col-lg-6">
+					<figure class="effect-sadie col-lg-4">
 						<img class= "circle responsive-img" width="400" src="http://www.valuewalk.com/wp-content/uploads/2013/09/CEOs.jpg"/>
 						<figcaption>
 							<h3>Admin <span></span></h3>
@@ -86,8 +102,6 @@
 				</a>
 			</div>
 		</div>
-
-
 
 	</body>
 	</html>
