@@ -8,7 +8,7 @@ layout: layout.hbs
   * Russell Mehring
   * Sigrunn Sky
   * Ahmed Almutawa
-  * Juan Herrera
+  * Juan Carlos Herrera
 
 ## Ideation
 
@@ -79,9 +79,10 @@ useful ideas.
   * Combining all 4 ideas into one polling app
   * Instead of users creating new pages/debates just have 5 built in debates
   * Using timestamps to be able to generate a chronological chart of feelings
-* ** Juan Herrera **
-  * idea
-  * idea
+* ** Juan Carlos Herrera **
+  * Integrating essential feautures from all four ideas  
+  * Using Google's realtime engine to manage syncronization 
+  * Having a chat system so users can discuss before polling 
 
 ## Plan
 
