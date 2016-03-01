@@ -8,86 +8,180 @@ layout: layout.hbs
 
 Our app uses the following structure for the database backend:
 
-* foo
-  * bar
-    * ss
-    * xx
-  * messages
+* User Key
+  * Active (T/F)
+  * VoteID (Sports)
+    * Voted (T/F)
+      * Timestamp 
+  * VoteID (Politics)
+    * Voted (T/F)
+      * Timestamp 
+  * VoteID (Other)
+    * Voted (T/F)
+      * Timestamp 
+
 
 # Actions
 
 The major actions of our app are:
-* (TODO: action name)
-* (TODO: action name)
-* (TODO: action name)
-* (TODO: action name)
-* (TODO: action name)
+* Login
+* Categories
+* Viewing Video 
+* Voting
 
-## Action: (TODO: name)
+## Action: Login
 
-(TODO: cases)
+* Case 1: A user of Polive can login using their GitHub account.
 
-## Action: (TODO: name)
+* Case 2:  A user of Polive, once logged in, can logout.
 
-(TODO: cases)
+## Action: Categories
 
-## Action: (TODO: name)
+* Case 1: A user of Polive can select a category from a few given options. 
 
-(TODO: cases)
+* Case 2: A user can change their selected category any time they want.
 
-## Action: (TODO: name)
+## Action: View Video
 
-(TODO: cases)
+* Case 1: A user of Polive can view given video clips/debates dependant on which category they chose 
+
+* Case 2: User can submit votes on Polive as they are watching a live debate. 
+
+## Action: Voting
+
+* Case 1: A user who has not voted and is logged into Polive can vote anytime and see what others are voting.
+
+* Case 2: A user who has already voted and is logged into Polive can change his vote and see what others are voting.
+
+* Case 3: A user who has not voted and is not signed can see what is being voted for but cannot vote until he signs in.
 
 
 
 
-(remove the example below before submission)
+## Pseudo Code
 
-## Action: Post A Message (Example)
+### Login
 
-### case: post a message 'd'
-
-``` javascript
-// given
-foo.bar.messages is
-{
-  '-cadsace': 'a',
-  '-cadsacf': 'b',
-  '-cadsacg': 'c'
-}
-
-// when
-post_a_message(text = 'd')
-
-// then
-foo.bar.messages should be
-{
-  '-cadsace': 'a',
-  '-cadsacf': 'b',
-  '-cadsacg': 'c',
-  '-cadsach': 'd',
-}
-```
-
-### case: delete a message
+* Case: First time user logging in
 
 ``` javascript
 // given
-foo.bar.messages is
+userkey is
 {
-  '-cadsace': 'a',
-  '-cadsacf': 'b',
-  '-cadsacg': 'c'
+   null
 }
 
 // when
-delete_a_message(id = '-cadsacg')
+login(userkey.UserID = ‘GitHubID’)
 
 // then
-foo.bar.messages should be
+userkey.UserID should be
 {
-  '-cadsace': 'a',
-  '-cadsacf': 'b'
+  'userID’: 'GitHubID'
+  ‘active’: true
+}
+
+```
+
+* Case: Login of User (Not first time voting)
+
+``` javascript
+// given
+userkey is
+{
+  'userID': 'GitHubID'
+  ‘active’: false
+}
+
+// when
+logout(userkey.UserID = ‘GitHubID’)
+
+// then
+UserKey should be
+{
+  ‘userID’: 'GitHubID'
+  ‘active’: true
+}
+
+```
+
+* Case: Logout
+
+``` javascript
+// given
+userkey is
+{
+  'userID': 'GitHubID'
+  ‘active’: true
+}
+
+// when
+logout(userkey.UserID = ‘GitHubID’)
+
+// then
+UserKey should be
+{
+  'userID': 'GitHubID'
+  ‘active’: false
+}
+
+```
+
+### Vote
+
+* Case: Initial vote (logged in)
+
+``` javascript
+// given
+UserKey is
+{
+  '-cadsace': 'a'
+}
+
+// when
+vote_on(text = '1')
+
+// then
+UserKey.VoteID.Vote should be
+{
+  '-cadsace': '1'
 }
 ```
+
+* Case: Already Voted
+
+``` javascript
+// given
+UserKey is
+{
+  '-cadsace': 'a'
+}
+
+// when
+vote_on(text = '1')
+
+// then
+UserKey.VoteID.Vote should be
+{
+  '-cadsace': '1'
+}
+```
+
+* Case: Not logged in
+
+``` javascript
+UserKey is
+{
+  '-cadsace': null
+}
+
+// when
+vote_on(text = '1')
+
+// then
+continue;
+```
+
+## Other actions:
+  * We only added cases for the actions that required one.
+
