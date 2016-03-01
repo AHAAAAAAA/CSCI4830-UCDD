@@ -129,6 +129,25 @@ UserKey should be
 
 ### Vote
 
+* Case: Initial vote (logged in)
+
+``` javascript
+// given
+UserKey is
+{
+  '-cadsace': 'a'
+}
+
+// when
+vote_on(text = '1')
+
+// then
+UserKey.VoteID.Vote should be
+{
+  '-cadsace': '1'
+}
+```
+
 * Case: Already Voted
 
 ``` javascript
@@ -147,10 +166,10 @@ UserKey.VoteID.Vote should be
   '-cadsace': '1'
 }
 ```
+
 * Case: Not logged in
 
 ``` javascript
-// given
 UserKey is
 {
   '-cadsace': null
