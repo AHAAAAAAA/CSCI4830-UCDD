@@ -1,31 +1,17 @@
 var _ = require('lodash')
-var random_name = require('node-random-name');
 var Firebase = require('firebase');
-
-// San Francisco
-var city_location = {
-  lat: 37.78,
-  lon: -122.41
-}
-
-var radius = 0.03
+var names = ['Ahmed', 'Russell', 'Sigrunn', 'Juan', 'Tom', 'Jack', 'Somebody']
 
 // simualate a random person entering, staying for a duration, and leaving
 function simulate(){
-
   // generate a random person with a random name,
   // random location, and random duration
-  var name = random_name()
-  var duration = 1 + 5 * Math.random()
-  var lat = city_location.lat + radius * (Math.random() - 0.5) * 2
-  var lon = city_location.lon + radius * (Math.random() - 0.5) * 2
+  var name = names[Math.random()%names.length]
+  var vote = Math.random()%2
   var person = {
     name: name,
-    duration: duration,
-    lat: lat,
-    lon: lon
+    vote: vote
   }
-
   // simulate this person entering
   enter(person)
 
@@ -44,20 +30,11 @@ function enter(person){
   var ref = new Firebase('https://team-polive.firebaseio.com/')
   ref.child(person.name).set({
     name: person.name,
-    lat: person.lat,
-    lon: person.lon
+  });
+  ref.child(person.name.politics.vote).set({
+    vote: person.vote,
   });
   var newTaskRef = ref.push()
-}
-
-
-function leave(person) {
-  console.log('leave', person)
-  // TODO: remove this person from the Firebase
-  // var ref = new Firebase('your-firebase-url')
-  // ...
-  var ref = new Firebase('https://team-polive.firebaseio.com/')
-  ref.child(person.name).remove();
 }
 
 
