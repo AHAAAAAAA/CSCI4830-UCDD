@@ -2,6 +2,37 @@
 layout: layout.hbs
 ---
 
+<<<<<<< HEAD
+# Features
+
+## Feature: My App's Feature 1
+
+``` gherkin
+TODO:
+
+```
+
+## Feature: My App's Feature 2
+
+``` gherkin
+TODO:
+
+```
+
+## Feature: My App's Feature 3
+
+``` gherkin
+TODO:
+
+```
+
+## Feature: My App's Feature 4
+
+``` gherkin
+TODO:
+
+```
+=======
 BDD - Together
 
 
@@ -45,6 +76,7 @@ Feature: My App’s Feature 4 - Videos
 Scenario 1: Users should be able to see an embedded video
 Scenario 2: Video content should contain a debate on some topic for users to vote on
 Scenario 3:  Users should be able to select from built in video debates to start a new vote
+>>>>>>> ab9291ae8a7c2d9d2a2bbee7996eff021c6364d0
 
 
 # Examples
