@@ -1,0 +1,32 @@
+{
+  "bio" : {
+    "education" : { 
+    	"college" : ["Washtenaw Community College", "University of Colorado Boulder"],
+    	"GPA" : ["3.5", "4.0"],
+    	"degree" : ["Pre-Engineering/Maths and Science", "Computer Science w/ minor in APPM"]
+     },
+    "work" : {
+    	"company" : ["The Cotery, Inc.", "DL @ Washtenaw Community College"],
+    	"location" : ["Boulder, CO", "Ann Arbor, MI"],
+    	"title" : ["Engineering Intern / Full-stack Web Development", "Student Web Developer"],
+    	"description" : ["Worked in Fashion, e-commerce and Tech. ", "Online College Education"]
+    	},
+    "skills": ["Python","C/C++","Java","PHP/Laravel"]
+    },
+   "todos" : {
+   	"tasks" : {
+   		"1" : {
+	   		"task" : ["Run", "Eat", "Sleep"],
+	   		"deadline" : ["01/10/2016", "Today", "02/01/2016"]
+	   		}, 
+   		"2" : {
+   			"task" : ["Run", "Eat", "Sleep"],
+	   		"deadline" : ["01/10/2016", "Today", "02/01/2016"]
+   			}, 
+   		"3" : {
+   			"task" : ["Run", "Eat", "Sleep"],
+	   		"deadline" : ["01/10/2016", "Today", "02/01/2016"]
+   			}
+   	}
+   }
+}

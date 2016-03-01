@@ -22,6 +22,7 @@ Everything I've learned from UCDD 2 - Spring 2016.
   * [Mockup](apps/together/mockup)
     * [Data Models](apps/together/mockup/data.html) <span class="chip red">NEW</span>
   * [ReactJS](apps/together)
+  * [Group Proposal](/apps/together/proposal/index.html)
 
 ## Learning
 * [Week 7](learning/week7) <span class="chip red">NEW</span>

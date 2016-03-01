@@ -15,26 +15,56 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
-      <div class="container">
+        <nav>
+          <div class="nav-wrapper red">
+            <a href="#" class="brand-logo left" style="margin-left:30px">Trumplove's ToDo Lists</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="inbox.html"><i class="large material-icons">input</i></a></li>
 
-        <h1>My Team's ToDos App</h1>
+      </ul>
+    </div>
+  </nav>      
+  <div class="container">
 
         <h2>Tasks</h2>
-        <ul class="collection" id="tasks">
-        </ul>
+        <div id="tasks">
+        </div>
 
       </div>
 
       <script>
 
         // create a firebase reference to the root
-        var ref = new Firebase('https://hello-ucdd2.firebaseio.com/')
-
+        var ref = new Firebase('https://trumplove.firebaseio.com/')
+        
+        function completed(key) {
+          var callback = '#' + key
+          var completedVal = $(callback).prop('checked')  
+          ref.child('todos/tasks').child(key).update({
+           completed: completedVal
+          });
+          Materialize.toast('Updated task information', 1000);
+        }
         // read data from the location todos/tasks, only once
-        ref.child('todos/tasks').once('value', function(snapshot){
+        ref.child('todos/tasks').on('value', function(snapshot){
           var tasks = snapshot.val()
-          tasks.forEach(function(task){
-            $('#tasks').append('<li class="collection-item">' + task + '</li>')
+          $('#tasks').empty()
+          snapshot.forEach(function(task) {
+            var key = task.key()
+            var title = task.child("title").val()
+            var deadline = task.child("due").val()
+            var priority = task.child("priority").val()
+            var assigned = task.child("assigned").val()
+            var completed = task.child("completed").val()
+
+            if (completed == "false") {
+              var checkbox = '<input style ="visibility: visible; left:0px; position: relative;" type="checkbox" onClick="completed(\'' + key + '\')" id=' + key + '>'
+            }
+            else {
+              var checkbox = '<input style ="visibility: visible; left:0px; position: relative;" checked type="checkbox" onClick="completed(\'' + key + '\')" id=' + key + '>'
+            }
+
+            $('#tasks').append('<div class="col s12 m6">' + '<div class="card red lighten-1">' + '<div class="card-content white-text">' + title + '<p> Assigned to: ' + assigned + '<br> Priority: ' + priority + '<br> Deadline: ' + deadline + '<br> Completed: ' + checkbox + '</p>' +'</div>' + '</div>')
           })
         })
       </script>

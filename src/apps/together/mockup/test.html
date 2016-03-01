@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Polive</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<style type="text/css">
+  .btn{
+    padding:3px 3px 3px 3px;
+  }
+
+
+</style>
+<body>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo"><b style="color:#558b2f;">Polive</b></a>
+      <ul class="right hide-on-med-and-down">
+        <li><img src="olive.png" height="20px" style="margin-top:15px;"></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><img src="olive.png" height="20px" style="margin-top:15px;"></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <div class="row">
+      <div class="video col l7 m7 s7 left"><iframe style="width:100%; height:400px; margin-top:20%;" src="https://www.youtube.com/embed/6bqvoUMVmCs" frameborder="0" allowfullscreen></iframe></div>
+      <div class="right col l5 m5 s5" style="margin-top:14%;">
+        <h4 class="center">Live Poll</h4>
+        <canvas id="myChart" class="center"></canvas>
+        <div class="row center">
+          <a class="center waves-effect waves-light red btn">Red</a>
+          <a class="center waves-effect waves-light orange btn">Orange</a>
+          <a class="center waves-effect waves-light teal btn">Teal</a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+  <script src="js/Chart.js"></script>
+  <script src="js/init.js"></script>
+
+  <script>
+    var data = [
+      {
+          value: 300,
+          color:"#F7464A",
+          highlight: "#FF5A5E",
+          label: "Red"
+      },
+      {
+          value: 50,
+          color: "#46BFBD",
+          highlight: "#5AD3D1",
+          label: "Green"
+      },
+      {
+          value: 100,
+          color: "#FDB45C",
+          highlight: "#FFC870",
+          label: "Yellow"
+      }
+    ]
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myDoughnutChart = new Chart(ctx).Doughnut(data);
+  </script>
+
+  </body>
+</html>

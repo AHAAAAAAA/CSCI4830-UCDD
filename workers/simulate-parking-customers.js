@@ -41,13 +41,23 @@ function enter(person){
   // TODO: put this person in the Firebase
   // var ref = new Firebase('your-firebase-url')
   // ...
+  var ref = new Firebase('https://trumplove.firebaseio.com/customers/')
+  ref.child(person.name).set({
+    name: person.name,
+    lat: person.lat,
+    lon: person.lon
+  });
+  var newTaskRef = ref.push()
 }
 
-function leave(person){
+
+function leave(person) {
   console.log('leave', person)
   // TODO: remove this person from the Firebase
   // var ref = new Firebase('your-firebase-url')
   // ...
+  var ref = new Firebase('https://trumplove.firebaseio.com/customers/')
+  ref.child(person.name).remove();
 }
 
 
@@ -55,6 +65,10 @@ function clear(){
   // TODO: remove all people from the Firebase
   // var ref = new Firebase('your-firebase-url')
   // ...
+  // TODO: remove this person from the Firebase
+  // var ref = new Firebase('your-firebase-url')
+  var ref = new Firebase('https://trumplove.firebaseio.com/customers/')
+  ref.remove()
 }
 
 

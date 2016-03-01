@@ -2,12 +2,9 @@ MyComponents.Task = React.createClass({
 
   render: function() {
     return (
-      <div className="card">
-        <div className="card-content">
-        TODO: This is a component to display a task.
-        Raw props data is {JSON.stringify(this.props.task)}
-        </div>
-      </div>
+        <li className="row">
+        <b className="">{this.props.task.title}</b>
+        </li>
     );
   }
 
@@ -16,20 +13,14 @@ MyComponents.Task = React.createClass({
 MyComponents.TaskList = React.createClass({
   render: function() {
 
-    var taskElements = this.props.tasks.map(function(t,i){
-      return <MyComponents.Task task={t} key={i}/>
+    var taskElements = this.props.tasks.map(function(s,i){
+      return <MyComponents.Task task={s} key={i}/>
     })
 
     return (
-      <div className="card">
-        <div className="card-content">
-        TODO: This is a component to display a list of tasks
-        assigned to me. Raw props data is {JSON.stringify(this.props.tasks)}
-
+        <ul className="tasks">
         {taskElements}
-
-        </div>
-      </div>
+        </ul>
     );
   }
 });
