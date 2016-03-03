@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
     <head>
-    <title>Polive - Other</title>
+    <title>Polive - Sports</title>
     <link rel="icon" type="x-icon" href="images/ficon.ico">
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,67 +12,75 @@
     </head>
 
     <body>
-	      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
 
-		<ul id="categories_dropdown" class="dropdown-content">
-		  <li><a href="/apps/together/mockup-team/categories/sports.html">Sports</a></li>
-		  <li class="divider"></li>
-		  <li><a href="/apps/together/mockup-team/categories/politics.html">Politics</a></li>
-		  <li class="divider"></li>
-		  <li><a href="/apps/together/mockup-team/categories/other.html">Other</a></li>
-		</ul>
-		<div class="navbar-fixed">
-		<nav>
-		<nav class = "light-green darken-3"
-		  <div class="nav-wrapper">
-		    <a href="#!" class="brand-logo center"> Other <img src="olive.png" height="20px" style="margin-top:15px;"></a>
-		    <ul class="right hide-on-med-and-down">
-		      <li><a href="/apps/together/mockup-team/index.html">Home</a></li>
-		      <li><a href="#">Login</a></li>
-		      <!-- Dropdown -->
-		      <li><a class="dropdown-button" href="#!" data-activates="categories_dropdown">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
-		    </ul>
-		  </div>
-		</nav>
-		</nav>
-		</div>    
+    <ul id="categories_dropdown" class="dropdown-content">
+      <li><a href="/apps/together/mockup-team/categories/sports.html">Sports</a></li>
+      <li class="divider"></li>
+      <li><a href="/apps/together/mockup-team/categories/politics.html">Politics</a></li>
+      <li class="divider"></li>
+      <li><a href="/apps/together/mockup-team/categories/other.html">Other</a></li>
+    </ul>
+    <div class="navbar-fixed">
+    <nav>
+    <nav class = "light-green darken-3"
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo center"> Sports <img src="olive.png" height="20px" style="margin-top:15px;"></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/apps/together/mockup-team/index.html">Home</a></li>
+          <li><a href="#">Login</a></li>
+          <!-- Dropdown -->
+          <li><a class="dropdown-button" href="#!" data-activates="categories_dropdown">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </nav>
+  </div>    
 
-<div class="container">
+  <div class="container">
+    <div class="section">
+      <div class="row">
+      <div class="video col l7 m7 s6 left"><iframe style="width:100%; height:400px; margin-top:20%;" src="https://www.youtube.com/v/7j3o-C7T-rM" frameborder="0" allowfullscreen></iframe></div>
 
-
-
+      <div class="right col l5 m5 s5" style="margin-top:14%;">
+        <div class="card-panel light-green darken-1">
+          <h4 class="card-title" class = "center"><b>Live Poll</b></h4>
+        <canvas id="myChart" class="center"></canvas>
+        <div class="row center">
+          <a class="center waves-effect waves-light red btn">Red</a>
+          <a class="center waves-effect waves-light blue btn">Blue</a>
+       </div>
+      </div>
+     </div>
+    </div> 
+  </div>
 </div>
-
-
-        <footer class="page-footer light-green darken-3">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">More about us</h5>
-                <p class="grey-text text-lighten-4">Polive is a realtime voting platform. We offer embedded video, live video, and/or images in order to provide users with as much information as possible.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="/apps/together/mockup-team/index.html">Home</a></li>
-                  <li><a class="grey-text text-lighten-3" href="/apps/together/mockup-team/categories/sports.html">Sports</a></li>
-                  <li><a class="grey-text text-lighten-3" href="/apps/together/mockup-team/categories/politics.html">Politics</a></li>
-                  <li><a class="grey-text text-lighten-3" href="/apps/together/mockup-team/categories/other.html">Other</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2016 
-            </div>
-        </footer>
-
 
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+      <script src="js/Chart.js"></script>
+      <script src="js/init.js"></script>
+      <script>
+    var data = [
+      {
+          value: 30,
+          color:"#F7464A",
+          highlight: "#FF5A5E",
+          label: "Red"
+      },
+      {
+          value: 50,
+          color: "#46BFBD",
+          highlight: "#5AD3D1",
+          label: "Green"
+      }
+    ]
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myDoughnutChart = new Chart(ctx).Doughnut(data);
+  </script>
     </body>
   </html>
