@@ -4,21 +4,16 @@ var names = ['Ahmed', 'Russell', 'Sigrunn', 'Juan', 'Tom', 'Jack', 'Somebody']
 
 // simualate a random person entering, staying for a duration, and leaving
 function simulate(){
-  // generate a random person with a random name,
-  // random location, and random duration
-  var name = names[Math.random()%names.length]
-  var vote = Math.random()%2
+  var name = names[Math.floor(Math.random()*names.length)]
+  var duration = 1 + 5 * Math.random()
+  console.log(name)
+  var vote = Math.floor(Math.random()*2)
   var person = {
     name: name,
     vote: vote
   }
   // simulate this person entering
   enter(person)
-
-  // simulate this person leaving after 'duration' seconds
-  setTimeout(function(){
-    leave(person)
-  }, duration * 1000)
 
 }
 
@@ -31,7 +26,7 @@ function enter(person){
   ref.child(person.name).set({
     name: person.name,
   });
-  ref.child(person.name.politics.vote).set({
+  ref.child(person.name).set({
     vote: person.vote,
   });
   var newTaskRef = ref.push()
