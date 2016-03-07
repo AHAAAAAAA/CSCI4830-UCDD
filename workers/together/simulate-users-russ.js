@@ -9,17 +9,28 @@ function simulate(){
   var room = rooms[Math.floor(Math.random()*rooms.length)];
   var duration = 1 + 5 * Math.random();
   var vote = Math.floor(Math.random()*2);
+  //Timestamps
+  var now = new Date();
+  var time = now.getHours() + " hours " + now.getMinutes() + " minutes " + now.getSeconds() + " seconds";
+  
   console.log(name);
   console.log(room);
   console.log(vote);
+  console.log(time);
+  
   var person = {
     name: name,
 	room: room,
-    vote: vote	
+    vote: vote,	
+	time: time
   }
   // simulate this person entering
   enter(person);
   
+  //Vote a bunch before leaving
+  setTimeout(function(){
+    updateVote(person)
+  }, 1000)
   // simulate this person leaving after 'duration' seconds
   setTimeout(function(){
     leave(person)
@@ -33,10 +44,12 @@ function enter(person){
   // ...
   var ref = new Firebase('https://team-polive.firebaseio.com/')
   var usersRef = ref.child("users");
+  
   usersRef.child(person.name).set({
     name: person.name,
 	room: person.room,
-	vote: person.vote
+	vote: person.vote,
+	lastVoted: person.time
   });
 
   var newTaskRef = ref.push();
@@ -49,8 +62,11 @@ function enter(person){
 function updateVote(person){
   console.log('Whoah this person has an opinion!');
   var ref = new Firebase('https://team-polive.firebaseio.com/');
+  var usersRef = ref.child("users");
   var voteRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
-
+  //Timestamps
+  var now = new Date();
+  var time = now.getHours() + " hours " + now.getMinutes() + " minutes " + now.getSeconds() + " seconds";
   // read data from the location Contact once
   voteRef.child(person.room).once('value', function(snapshot){
 	snapshot.forEach(function(childSnapshot) {
@@ -77,6 +93,11 @@ function updateVote(person){
 	})
   });
 
+  //Update vote time
+  usersRef.child(person.name).update({
+	lastVoted: time
+  });
+  
   var newTaskRef = ref.push();
   console.log('Opinion added!');
 }
