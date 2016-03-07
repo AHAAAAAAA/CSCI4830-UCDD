@@ -43,7 +43,7 @@ previous Uber app can be a good skeleton code to build upon.
 * __Milestone (3)__  
   * [X] Complete the user simulator
     * [X] Simulate all the major actions specific to your application
-  * [ ] Develop a high-fidelity prototype mockup of the main screen using mock data (this mockup
+  * [X] Develop a high-fidelity prototype mockup of the main screen using mock data (this mockup
     is not connected with the database).
 
 ## Submission
