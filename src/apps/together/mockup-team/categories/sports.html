@@ -13,6 +13,7 @@
 
     <body>
 	      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
 
 		<ul id="categories_dropdown" class="dropdown-content">
@@ -55,8 +56,30 @@
      </div>
     </div> 
   </div>
+    <div class="row">
+      <div class="col s12 m5">
+        <div class="card-panel light-green darken-1">
+          <span class="white-text"><h5> Current Users: </h5>
+            <ul  id="name">
+            </ul>
+          </span>
+        </div>
+      </div>
+    </div>
 </div>
-
+      
+      <script>
+        var ref = new Firebase('https://team-polive.firebaseio.com/')
+        
+        ref.child('users').on('value', function(snapshot){
+          var user = snapshot.val()
+          snapshot.forEach(function(users) {
+            var name = users.child("name").val()
+            $('#name').append('<li class="collection-item">' + name + '</li>') 
+            })
+        })
+      </script>
+ 
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
