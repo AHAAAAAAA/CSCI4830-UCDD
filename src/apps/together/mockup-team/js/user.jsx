@@ -5,7 +5,7 @@ class User extends React.Component {
     if (this.props.user){
       // user is authenticated
       return <div>
-    <h5 className="left-align">Hello {this.props.user.name} welcome to UberCart!</h5>
+    <h5 className="left-align">Hello {this.props.user.name} welcome to Polive!</h5>
     <a href="#" onClick={this.props.logoutAction}>Logout</a></div>
 } else {
 // user is not set
