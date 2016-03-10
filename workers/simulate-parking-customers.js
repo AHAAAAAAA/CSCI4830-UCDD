@@ -17,6 +17,7 @@ function simulate(){
   // random location, and random duration
   var name = random_name()
   var duration = 1 + 5 * Math.random()
+  (Math.random()) % (names.length)
   var lat = city_location.lat + radius * (Math.random() - 0.5) * 2
   var lon = city_location.lon + radius * (Math.random() - 0.5) * 2
   var person = {
