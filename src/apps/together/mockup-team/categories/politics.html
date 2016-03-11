@@ -73,6 +73,8 @@
         
         ref.child('users').on('value', function(snapshot){
           var user = snapshot.val()
+		  //Clear card content before loading in users
+		  document.getElementById("name").innerHTML = "";
           snapshot.forEach(function(users) {
             var name = users.child("name").val()
             $('#name').append('<li class="collection-item">' + name + '</li>') 
