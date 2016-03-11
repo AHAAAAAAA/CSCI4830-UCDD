@@ -149,6 +149,7 @@
 	  hide();
 	  //Display available rooms
 	  var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
+	  var openRoom = "";
 	  
 	  //Only add rooms that are active i.e. NOT available, if available then no debate currently active
 	  roomsRef.orderByChild("available").equalTo(0).on("value", function(snapshot) {
@@ -193,6 +194,8 @@
 		      console.log("reserved " + roomNumber);
 			  //Call form to populate data for this room -- if user 'cancels' make room avail again
 			  document.getElementById("create_debate").style.display="block";
+			  //Set the available room in the class
+			  setRoom(roomNumber);
 			}
 			else{
 			    alert("No rooms available at this time, please check back later!")
@@ -204,6 +207,14 @@
 	     document.getElementById("create_debate").style.display="none";
 	  }
 	  
+	  function setRoom(room){
+	     openRoom = room;
+	  }
+	  
+	  function getRoom(){
+	     return openRoom;
+	  }
+	  
 	  function checkEmpty(){
 	     //TODO: Check that all fields have text
 	     alert("checking for empty fields")
@@ -212,7 +223,7 @@
 	  
 	  function submitDebate(){
 	     //TODO: Submit form data to firebase to complete the debate creation
-	     alert("debate created")
+	     alert("debate created" + getRoom())
 	  }
     </script>
   <!--  Scripts-->
