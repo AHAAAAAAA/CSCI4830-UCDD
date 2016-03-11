@@ -38,7 +38,8 @@
   <div class="container">
     <div class="section">
       <div class="row">
-      <div class="video col l7 m7 s6 left"><iframe style="width:100%; height:400px; margin-top:20%;" src="https://www.youtube.com/v/QXEoffF-Yks" frameborder="0" allowfullscreen></iframe></div>
+      <ul id="video_link">
+	  </ul>
 
       <div class="right col l5 m5 s5" style="margin-top:14%;">
         <div class="card-panel light-green darken-1">
@@ -70,6 +71,8 @@
 		
 		//Set title once
 		setTitle();
+		//Set video once
+		setVideo();
 		
         ref.orderByChild("room").equalTo("Room4").on('value', function(snapshot){
           var user = snapshot.val()
@@ -107,6 +110,17 @@
 			    //console.log(title.name)
 				$('#category_title').append('<a href="#!" class="brand-logo center">' +title.name+ ' <img src="olive.png" height="20px" style="margin-top:15px;"></a>');
 				$('#tab_title').append('<title>Polive - '+ title.name+'</title>');
+			});
+
+			return;
+		}
+		function setVideo(){
+		    var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room4');
+			var video = "";
+			ref.once("value", function(data) {
+			    video = data.val();
+
+				$('#video_link').append('<div class="video col l7 m7 s6 left"><iframe style="width:100%; height:400px; margin-top:20%;" src='+video.video+' frameborder="0" allowfullscreen></iframe></div>');
 			});
 
 			return;

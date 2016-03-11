@@ -102,7 +102,24 @@
   </div>
   <div id="app-container" class="container"></div>
 
-
+  <!-- Create Debate Form -->
+  <div data-role="main" class="ui-content">
+		<div data-role="popup" id="create_debate" class="ui-content" style="min-width:250px;">
+		  <form>
+		    <fieldset style="text-align: center; margin: 50px auto 50px auto; width: 400px;" class="z-depth-4">
+			<div>
+			  <h3>Create Debate</h3>
+			  <label for="debateName" class="ui-hidden-accessible">Debate Name:</label>
+			  <input type="text" name="debate" id="debateName" placeholder="Debate Name">
+			  <label for="link" class="ui-hidden-accessible">Video Link:</label>
+			  <input type="text" name="link" id="link" placeholder="html video link">
+			  <button class="btn waves-effect waves-light" onclick="submitDebate()">Create! <i class="material-icons right">send</i></button>
+			</div>
+			</fieldset>
+		  </form>
+		</div>
+  </div>
+  <!-- End Create Debate Form -->
 
 <!---*** FOOTER *** -->
   <footer class="page-footer light-green darken-3">
@@ -128,7 +145,8 @@
     <script>
       // MyComponents is a global object where each property is a reference to a component class
       MyComponents = {}
-	  
+	  //Hide debate create form
+	  hide();
 	  //Display available rooms
 	  var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
 	  
@@ -152,8 +170,50 @@
 			})
 		  });
 	    });
+		//Add create room option
+	    $('#categories_dropdown').append('<li><a href="#" onclick="create()">Create a Debate</a></li><li class="divider"></li>');
 	  });
 	  
+	  function create(){
+	      //First check for available room -- if exists go ahead and change to unavail. to prevent race cond.
+	      var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
+		  var roomNumber = "";
+		  //Grab first available room
+		  roomsRef.orderByChild("available").equalTo(1).once("value", function(snapshot) {
+			snapshot.forEach(function(childSnapshot) {
+		     roomNumber = childSnapshot.key();
+			 //Cancel further enumeration by returning true i.e. just grab first available room
+			 return true;
+		    });
+			if(roomNumber != ""){
+			  //Reserve first available room
+		      roomsRef.child(roomNumber).update({
+			     available: 0
+		      });
+		      console.log("reserved " + roomNumber);
+			  //Call form to populate data for this room -- if user 'cancels' make room avail again
+			  document.getElementById("create_debate").style.display="block";
+			}
+			else{
+			    alert("No rooms available at this time, please check back later!")
+			}
+		  });
+	  }
+	  
+	  function hide(){
+	     document.getElementById("create_debate").style.display="none";
+	  }
+	  
+	  function checkEmpty(){
+	     //TODO: Check that all fields have text
+	     alert("checking for empty fields")
+		 //If all texts fields ok then create page with submit debate()?
+	  }
+	  
+	  function submitDebate(){
+	     //TODO: Submit form data to firebase to complete the debate creation
+	     alert("debate created")
+	  }
     </script>
   <!--  Scripts-->
   <script type="text/babel" src="js/data.jsx"></script>
