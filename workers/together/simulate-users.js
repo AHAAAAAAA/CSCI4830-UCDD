@@ -113,6 +113,7 @@ function createRooms(){
 	no: 0,
 	available: 0,
 	name: 'Sports',
+	video: 'https://www.youtube.com/v/QXEoffF-Yks',
 	owner: 'None'
   });
   roomRef.child("Room2").set({
@@ -120,6 +121,7 @@ function createRooms(){
 	no: 0,
 	available: 0,
 	name: 'Political',
+	video: 'https://www.youtube.com/embed/6bqvoUMVmCs',
 	owner: 'None'
   });
   roomRef.child("Room3").set({
@@ -127,6 +129,7 @@ function createRooms(){
 	no: 0,
 	available: 0,
 	name: 'Other',
+	video: 'https://www.youtube.com/v/7j3o-C7T-rM',
 	owner: 'None'
   });
   //Add some blank rooms
@@ -135,6 +138,7 @@ function createRooms(){
 	no: 0,
 	available: 1,
 	name: 'None',
+	video: 'None',
 	owner: 'None'
   });
   roomRef.child("Room5").set({
@@ -142,6 +146,7 @@ function createRooms(){
 	no: 0,
 	available: 1,
 	name: 'None',
+	video: 'None',
 	owner: 'None'
   });
   roomRef.child("Room6").set({
@@ -149,6 +154,7 @@ function createRooms(){
 	no: 0,
 	available: 1,
 	name: 'None',
+	video: 'None',
 	owner: 'None'
   });
   
