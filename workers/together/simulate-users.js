@@ -108,23 +108,48 @@ function createRooms(){
   var ref = new Firebase('https://team-polive.firebaseio.com/');
   
   var roomRef = ref.child("rooms");
-  roomRef.child("Room 1").set({
+  roomRef.child("Room1").set({
     yes: 0,
 	no: 0,
 	available: 0,
-	name: 'Sports'
+	name: 'Sports',
+	owner: 'None'
   });
-  roomRef.child("Room 2").set({
+  roomRef.child("Room2").set({
     yes: 0,
 	no: 0,
 	available: 0,
-	name: 'Political'
+	name: 'Political',
+	owner: 'None'
   });
-  roomRef.child("Room 3").set({
+  roomRef.child("Room3").set({
     yes: 0,
 	no: 0,
 	available: 0,
-	name: 'Other'
+	name: 'Other',
+	owner: 'None'
+  });
+  //Add some blank rooms
+  roomRef.child("Room4").set({
+    yes: 0,
+	no: 0,
+	available: 1,
+	name: 'None',
+	owner: 'None'
+  });
+  roomRef.child("Room5").set({
+    yes: 0,
+	no: 0,
+	available: 1,
+	name: 'None',
+	owner: 'None'
+  });
+  roomRef.child("Room6").set({
+    yes: 0,
+	no: 0,
+	available: 1,
+	name: 'None',
+	owner: 'None'
   });
   
   var newTaskRef = ref.push();
@@ -134,18 +159,10 @@ function createRooms(){
   //pick random room from firebase instead of hard coding an array
   var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
   //Only add rooms that are active i.e. NOT available, if available then no debate currently active
-  roomsRef.orderByValue().once("value", function(snapshot) {
+  roomsRef.orderByChild("available").equalTo(0).once("value", function(snapshot) {
 	  snapshot.forEach(function(data) {
 	  var room = data.key();
-	  roomsRef.child(room).once('value', function(snapshot){//!!!THIS MIGHT HAVE TO BE on TO WORK
-	    snapshot.forEach(function(childSnapshot) {
-			if(childSnapshot.key() == 'available'){
-				if(childSnapshot.val() == 0){
-			        rooms.push(data.key());
-				}
-			}
-		})
-	  });
+	  rooms.push(data.key());
 	});
   });
 }

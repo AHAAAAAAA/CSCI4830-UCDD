@@ -23,11 +23,6 @@
 <body>
  
     <ul id="categories_dropdown" class="dropdown-content">
-      <li><a href="/apps/together/mockup-team/categories/sports.html">Sports</a></li>
-      <li class="divider"></li>
-      <li><a href="/apps/together/mockup-team/categories/politics.html">Politics</a></li>
-      <li class="divider"></li>
-      <li><a href="/apps/together/mockup-team/categories/other.html">Other</a></li>
     </ul>
     <div class="navbar-fixed">
     <nav>
@@ -119,11 +114,7 @@
             </div>
             <div class="col l4 offset-l2 s12">
               <h5 class="white-text">Links</h5>
-              <ul>
-                <li><a class="grey-text text-lighten-3" href="/apps/together/mockup-team/index.html">Home</a></li>
-                <li><a class="grey-text text-lighten-3" href="/apps/together/mockup-team/categories/sports.html">Sports</a></li>
-                <li><a class="grey-text text-lighten-3" href="/apps/together/mockup-team/categories/politics.html">Politics</a></li>
-                <li><a class="grey-text text-lighten-3" href="/apps/together/mockup-team/categories/other.html">Other</a></li>
+              <ul id="category_links"> 
               </ul>
             </div>
           </div>
@@ -134,11 +125,35 @@
           </div>
     </footer>
 
-  
-
     <script>
       // MyComponents is a global object where each property is a reference to a component class
       MyComponents = {}
+	  
+	  //Display available rooms
+	  var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
+	  
+	  //Only add rooms that are active i.e. NOT available, if available then no debate currently active
+	  roomsRef.orderByChild("available").equalTo(0).on("value", function(snapshot) {
+	  //clear old rooms
+	  document.getElementById('categories_dropdown').innerHTML = "";
+	  //clear old links
+	  document.getElementById('category_links').innerHTML = "";
+	  $('#category_links').append('<li><a class="grey-text text-lighten-3" href="/apps/together/mockup-team/index.html">Home</a></li>');
+	    //Add available rooms
+		snapshot.forEach(function(data) {
+		  var room = data.key();
+		  roomsRef.child(room).once("value", function(snapshot){
+			snapshot.forEach(function(childSnapshot) {
+				if(childSnapshot.key() == 'name'){
+					//console.log("room: " + childSnapshot.val());
+					$('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
+					$('#category_links').append('<li><a class="grey-text text-lighten-3" href="/apps/together/mockup-team/categories/'+room+'.html">'+childSnapshot.val()+'</a></li>');
+				}
+			})
+		  });
+	    });
+	  });
+	  
     </script>
   <!--  Scripts-->
   <script type="text/babel" src="js/data.jsx"></script>
