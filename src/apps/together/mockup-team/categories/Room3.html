@@ -56,7 +56,7 @@
      <div class="row">
       <div class="col s12 m5">
         <div class="card-panel light-green darken-1">
-          <span class="white-text"><h5> Current Users: </h5>
+          <span class="white-text"><h5> Current Users in Room: </h5>
             <ul  id="name">
             </ul>
           </span>
@@ -66,14 +66,14 @@
 </div>
 
       <script>
-        var ref = new Firebase('https://team-polive.firebaseio.com/')
+        var ref = new Firebase('https://team-polive.firebaseio.com/users')
         var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
 		
 		//Set title once
 		setTitle();
 		//document.getElementById("category_title").innerHTML = setTitle();
 
-        ref.child('users').on('value', function(snapshot){
+        ref.orderByChild("room").equalTo("Room3").on('value', function(snapshot){
           var user = snapshot.val()
 		  //Clear card content before loading in users
 		  document.getElementById("name").innerHTML = "";
