@@ -1,11 +1,11 @@
 var _ = require('lodash');
 var Firebase = require('firebase');
 var names = ['Ahmed', 'Russell', 'Sigrunn', 'Juan', 'Tom', 'Jack', 'Somebody'];
-var rooms = ['Sports', 'Political', 'Other'];
+var rooms = [];
 
 // simualate a random person entering, staying for a duration, and leaving
 function simulate(){
-  var name = names[Math.floor(Math.random()*names.length)];
+  var name = names[Math.floor(Math.random()*names.length)]; 
   var room = rooms[Math.floor(Math.random()*rooms.length)];
   var duration = 1 + 5 * Math.random();
   var vote = Math.floor(Math.random()*2);
@@ -67,7 +67,7 @@ function updateVote(person){
   //Timestamps
   var now = new Date();
   var time = now.getHours() + " hours " + now.getMinutes() + " minutes " + now.getSeconds() + " seconds";
-  // read data from the location Contact once
+  // read data from the location once
   voteRef.child(person.room).once('value', function(snapshot){
 	snapshot.forEach(function(childSnapshot) {
 	 var key = childSnapshot.key();
@@ -108,22 +108,46 @@ function createRooms(){
   var ref = new Firebase('https://team-polive.firebaseio.com/');
   
   var roomRef = ref.child("rooms");
-  roomRef.child("Sports").set({
+  roomRef.child("Room 1").set({
     yes: 0,
-	no: 0
+	no: 0,
+	available: 0,
+	name: 'Sports'
   });
-  roomRef.child("Political").set({
+  roomRef.child("Room 2").set({
     yes: 0,
-	no: 0
+	no: 0,
+	available: 0,
+	name: 'Political'
   });
-  roomRef.child("Other").set({
+  roomRef.child("Room 3").set({
     yes: 0,
-	no: 0
+	no: 0,
+	available: 0,
+	name: 'Other'
   });
   
   var newTaskRef = ref.push();
   
   console.log('Rooms created captain!');
+  console.log('Putting rooms into array');
+  //pick random room from firebase instead of hard coding an array
+  var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
+  //Only add rooms that are active i.e. NOT available, if available then no debate currently active
+  roomsRef.orderByValue().once("value", function(snapshot) {
+	  snapshot.forEach(function(data) {
+	  var room = data.key();
+	  roomsRef.child(room).once('value', function(snapshot){//!!!THIS MIGHT HAVE TO BE on TO WORK
+	    snapshot.forEach(function(childSnapshot) {
+			if(childSnapshot.key() == 'available'){
+				if(childSnapshot.val() == 0){
+			        rooms.push(data.key());
+				}
+			}
+		})
+	  });
+	});
+  });
 }
 
 function leave(person){
