@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Polive - Real-time polling data</title>
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -58,7 +59,6 @@
     <div class="parallax"><img src="images/bg1.jpg" alt=""></div>
   </div>
 
-
   <div class="container">
     <div class="section">
 
@@ -105,7 +105,7 @@
   <!-- Create Debate Form -->
   <div data-role="main" class="ui-content">
 		<div data-role="popup" id="create_debate" class="ui-content" style="min-width:250px;">
-		  <form>
+		  <form name="debateForm" onsubmit="return checkEmpty()" method="post">
 		    <fieldset style="text-align: center; margin: 50px auto 50px auto; width: 400px;" class="z-depth-4">
 			<div>
 			  <h3>Create Debate</h3>
@@ -113,7 +113,7 @@
 			  <input type="text" name="debate" id="debateName" placeholder="Debate Name">
 			  <label for="link" class="ui-hidden-accessible">Video Link:</label>
 			  <input type="text" name="link" id="link" placeholder="html video link">
-			  <button class="btn waves-effect waves-light" onclick="submitDebate()">Create! <i class="material-icons right">send</i></button>
+			  <button class="btn waves-effect waves-light">Create! <i class="material-icons right">send</i></button>
 			</div>
 			</fieldset>
 		  </form>
@@ -173,6 +173,7 @@
 	    });
 		//Add create room option
 	    $('#categories_dropdown').append('<li><a href="#" onclick="create()">Create a Debate</a></li><li class="divider"></li>');
+	    $('#category_links').append('<li><a class="grey-text text-lighten-3" href="#" onclick="create()">Create a Debate</a></li>');
 	  });
 	  
 	  function create(){
@@ -192,10 +193,10 @@
 			     available: 0
 		      });
 		      console.log("reserved " + roomNumber);
-			  //Call form to populate data for this room -- if user 'cancels' make room avail again
-			  document.getElementById("create_debate").style.display="block";
 			  //Set the available room in the class
 			  setRoom(roomNumber);
+			  //Call form to populate data for this room -- if user 'cancels' make room avail again
+			  document.getElementById("create_debate").style.display="block"; 
 			}
 			else{
 			    alert("No rooms available at this time, please check back later!")
@@ -217,13 +218,28 @@
 	  
 	  function checkEmpty(){
 	     //TODO: Check that all fields have text
-	     alert("checking for empty fields")
+	     var debateName = document.forms["debateForm"]["debate"].value;
+		 var videoLink = document.forms["debateForm"]["link"].value;
+		 if (debateName == null || debateName == "") {
+			alert("Debate Name must be filled out");
+			return false;
+		 }
+		 else if (videoLink == null || videoLink == "") {
+			alert("Debate link must be filled out");
+			return false;
+		 }
 		 //If all texts fields ok then create page with submit debate()?
+		 else{
+		    submitDebate(debateName,videoLink);
+			return true;
+		 }
 	  }
 	  
-	  function submitDebate(){
+	  function submitDebate(debateName,videoLink){
 	     //TODO: Submit form data to firebase to complete the debate creation
-	     alert("debate created" + getRoom())
+		 roomsRef.child(getRoom()).update({ name: debateName, video: videoLink});
+
+	     alert("debate created " + getRoom())
 	  }
     </script>
   <!--  Scripts-->
