@@ -2,10 +2,12 @@ class User extends React.Component {
 
   render(){
 
+    console.log(this.props)
+
     if (this.props.user){
       // user is authenticated
       return <div>
-    <h5 className="left-align">Hello {this.props.user.name} welcome to Polive!</h5>
+    <h5 className="left-align">Hello {this.props.user.name} Welcome to Polive!</h5>
     <a href="#" onClick={this.props.logoutAction}>Logout</a></div>
 } else {
 // user is not set
