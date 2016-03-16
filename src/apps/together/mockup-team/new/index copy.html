@@ -9,7 +9,7 @@
     
       <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  <link rel="stylesheet" href"./css/style.css">
+
 
 
     
@@ -100,35 +100,19 @@
     </div>
     <div class="parallax"><img src="images/bg2.jpg" alt=""></div>
   </div>
-  <div id="app-container" class="container"></div>
-
+  
 
       </fieldset>
       </form>
     </div>
   </div>
   <!-- End Create Debate Form -->
-    
+  
+  <div id="app-container"></div>
+
+
 <!---*** FOOTER *** -->
-  <footer class="page-footer light-green darken-3">
-        <div class="container">
-          <div class="row">
-            <div class="col l6 s12">
-              <h5 class="white-text">More about us</h5>
-              <p class="grey-text text-lighten-4">Polive is a realtime voting platform. We offer embedded video, live video, and/or images in order to provide users with as much information as possible.</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Links</h5>
-              <ul id="category_links"> 
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
-          © 2016 
-          </div>
-    </footer>
+
     <script>
       // MyComponents is a global object where each property is a reference to a component class
       MyComponents = {}
@@ -136,7 +120,6 @@
       $(document).ready(function(){
         $('.parallax').parallax();
       });
-       
     </script>
     <!-- import each component class in components/ -->
     <!-- The order is important. Dependencies must be loaded first -->
@@ -144,7 +127,7 @@
     <script type="text/babel" src="components/user.jsx"></script>
     <script type="text/babel" src="components/people.jsx"></script>   
     <script type="text/babel" src="components/provider-list.jsx"></script>    
-       
+	     
     
      <!-- Main app container -->
     <script type="text/babel" src="components/app.jsx"></script>
@@ -153,5 +136,17 @@
     <!-- Connect the app and data -->
     <script type="text/babel" src="data.jsx"></script>
     
+    <script>
+    $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+      }
+      );
+      </script>
   </body>
 </html>
