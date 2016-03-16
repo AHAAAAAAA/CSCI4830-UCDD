@@ -12,17 +12,18 @@ var actions = {}
 // needs to to re-rendered
 // 'data' and 'actions' are injected into the app
 function render(){
-  ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
-    $('#nav-bar-container').get(0))
+  
+  // ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
+  //   $('#nav-bar-container').get(0))
   
   ReactDOM.render(
     <MyComponents.App
         data={data}
-        members={members}
+        members={[]}
         actions={actions}/>,
     $('#app-container').get(0)
-
   )
+
 }
 
 //
@@ -46,6 +47,15 @@ firebaseRef.child('providers')
 //
 
 // Actions
+
+actions.selectCategoryOne = function(){
+
+  console.log('I am called', data)
+  data.category = 'one'
+
+  render()
+}
+
 actions.setUserLocation = function(latlng){
 
   if (data.user){
