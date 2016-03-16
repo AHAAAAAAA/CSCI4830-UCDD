@@ -34,7 +34,7 @@ function render(){
 // DATA
 //
 
-var firebaseRef = new Firebase('https://team-revolver.firebaseio.com')
+var firebaseRef = new Firebase('https://team-polive.firebaseio.com')
 
 // Real-time Data (load constantly on changes)
 firebaseRef.child('providers')
