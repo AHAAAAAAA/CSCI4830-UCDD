@@ -18,7 +18,6 @@ function render(){
   ReactDOM.render(
     <MyComponents.App
         data={data}
-        members={members}
         actions={actions}/>,
     $('#app-container').get(0)
 

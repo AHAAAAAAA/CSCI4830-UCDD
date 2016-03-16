@@ -12,7 +12,6 @@ class People extends React.Component {
         
               <div className="col s6">
                 <MyComponents.Team
-                  members={this.props.members}
                   loginAction={this.props.actions.login}
                   logoutAction={this.props.actions.logout}/>
               </div>
