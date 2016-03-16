@@ -10,7 +10,12 @@ class NavBar extends React.Component {
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li><a href="/apps/together/mockup-team/new/index.html">Home</a></li>
               <li><a className="white-text" href="#"><i className="material-icons left">perm_identity</i> {this.props.data.user.username}</a></li>
-              <li><a className="dropdown-button white-text" href="#!" data-activates="categories_dropdown">Categories<i className="material-icons right">arrow_drop_down</i></a></li>
+              <li><a className="dropdown-button white-text" href="#!" data-activates="categories_dropdown">Categories<i className="material-icons right">arrow_drop_down</i></a>
+              <li><a href="#!">one</a></li>
+              <li><a href="#!">two</a></li>
+              <li class="divider"></li>
+              <li><a href="#!">three</a></li>
+              </li>
               <li><a href="#" onClick={this.props.actions.logout}> Logout</a></li>
             </ul>
           </div>

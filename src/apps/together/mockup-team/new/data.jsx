@@ -5,11 +5,6 @@ var data = {
   user: null
 }
 
-var members = [{name: 'Nicolas Broeking', github: 'https://github.com/nbroeking', image: 'https://avatars.githubusercontent.com/u/3384954?v=3'},
-        {name: 'BenedictRM', github: 'https://github.com/BenedictRM', image: 'https://avatars.githubusercontent.com/u/6699366?v=3'},
-        {name: 'Kierancz', github: 'https://github.com/search?utf8=✓&q=user%3AKierancz', image: 'https://avatars.githubusercontent.com/u/6394642?v=3'},
-        {name: 'yava9221', github: 'https://github.com/yava9221', image: 'https://avatars.githubusercontent.com/u/14116764?v=3'}];
-
 // a single 'handlers' object that holds all the actions of your entire app
 var actions = {}
 
@@ -34,7 +29,7 @@ function render(){
 // DATA
 //
 
-var firebaseRef = new Firebase('https://team-polive.firebaseio.com')
+var firebaseRef = new Firebase('https://team-revolver.firebaseio.com')
 
 // Real-time Data (load constantly on changes)
 firebaseRef.child('providers')
