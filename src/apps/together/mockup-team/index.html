@@ -7,7 +7,7 @@
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>Parallax Template - Materialize</title>
+  
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -22,7 +22,7 @@
 
 </head>
 <body>
- 
+
     <ul id="categories_dropdown" class="dropdown-content">
     </ul>
     <div class="navbar-fixed">
@@ -143,8 +143,8 @@
     </footer>
 
     <script>
-      // MyComponents is a global object where each property is a reference to a component class
-      MyComponents = {}
+    // MyComponents is a global object where each property is a reference to a component class
+    MyComponents = {}
 	  //Hide debate create form
 	  hide();
 	  //Display available rooms
@@ -242,9 +242,11 @@
 	     alert("debate created " + getRoom())
 	  }
     </script>
-  <!--  Scripts-->
-  <script type="text/babel" src="js/data.jsx"></script>
-  <!-- <script type="text/babel" src="js/user.jsx"></script> -->
+    <script type="text/babel" src="js/navbar.jsx"></script>
+    <script type="text/babel" src="js/user.jsx"></script>  
+    <script type="text/babel" src="js/app.jsx"></script>       
+    
+     <!-- Main app container -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
