@@ -19,10 +19,7 @@ function render(){
   ReactDOM.render(
     <MyComponents.App
         data={data}
-<<<<<<< HEAD
         members={[]}
-=======
->>>>>>> origin/master
         actions={actions}/>,
     $('#app-container').get(0)
   )

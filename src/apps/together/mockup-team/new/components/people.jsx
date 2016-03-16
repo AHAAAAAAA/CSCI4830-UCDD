@@ -12,10 +12,7 @@ class People extends React.Component {
         
               <div className="col s6">
                 <MyComponents.Team
-<<<<<<< HEAD
                   members={[]}
-=======
->>>>>>> origin/master
                   loginAction={this.props.actions.login}
                   logoutAction={this.props.actions.logout}/>
               </div>
