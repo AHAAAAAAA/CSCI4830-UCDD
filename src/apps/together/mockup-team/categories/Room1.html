@@ -84,7 +84,7 @@
             })
         })
 		
-		//Load active rooms
+		//Load active rooms // roomsRef.child("Room1").child("available").on("value", function(snapshot)
 		//Only add rooms that are active i.e. NOT available, if available then no debate currently active
 	    roomsRef.orderByChild("available").equalTo(0).on("value", function(snapshot) {
 	    //clear old rooms

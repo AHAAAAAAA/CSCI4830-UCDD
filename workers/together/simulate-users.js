@@ -161,6 +161,9 @@ function createRooms(){
   var newTaskRef = ref.push();
   
   console.log('Rooms created captain!');
+}
+
+function makeRoomsAvailable(){
   console.log('Putting rooms into array');
   //pick random room from firebase instead of hard coding an array
   var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
@@ -195,5 +198,7 @@ clear();
 
 //Create rooms
 createRooms();
+//store rooms in array
+makeRoomsAvailable();
 // run each second
 setInterval(simulate, 2000);
