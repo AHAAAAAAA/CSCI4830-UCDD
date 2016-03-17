@@ -10,7 +10,7 @@ componentDidMount() {
   }.bind(this));
 }
 
-  render: function() {
+  render() {
     return (
       <ul className="collection">
        <b>{this.props.no}:</b> {this.props.yes} Years
