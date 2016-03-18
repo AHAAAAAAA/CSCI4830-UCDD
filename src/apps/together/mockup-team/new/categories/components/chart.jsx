@@ -3,25 +3,30 @@ MyComponents.Chart = React.createClass({
   render: function() {
     return (
       <ul className="collection">
-      <li className="collection-item"> <b>{this.props.name}:</b> {this.props.skill.years} Years</li>
+      <li className="collection-item"> <b>{this.props.no}: NO</b> {this.props.yes}: Yes</li>
       </ul>
     );
   }
 });
 
-MyComponents.SkillList = React.createClass({
+MyComponents.votes = React.createClass({
   render: function() {
 
-    var skillElements = this.props.skills.map(function(s,i){
-      return <MyComponents.Skill skill={s} key={i}/>
+    var skillElements = this.props.Room1.map(function(s,i){
+      return <MyComponents.votes skill={s} key={i}/>
     })
 
     return (
-      <div className="card teal">
-        <div className="card-content">
-        {skillElements}
-        </div>
+      <div className="right col l5 m5 s5" style="margin-top:14%;">
+        <div className="card-panel light-green darken-1">
+          <h4 className="card-title" className="center"><b>Live Poll</b></h4>
+        <canvas id="myChart" className="center"></canvas>
+        <div className="row center">
+          <a className="center waves-effect waves-light red btn">Red</a>
+          <a className="center waves-effect waves-light blue btn">Blue</a>
+       </div>
       </div>
+     </div>
     );
   }
 });

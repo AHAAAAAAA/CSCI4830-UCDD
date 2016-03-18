@@ -137,16 +137,16 @@
 		}
 
     var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
-    chart =[]
+    votes =[]
     votecount.on('value', function(roomies){
           var no = roomies.no.val()
           var yes =roomies.yes.val()
           console.log("hi")
-          chart.push({yes: yes, no: no})
+          votes.push({yes: yes, no: no})
 
         ReactDOM.render(
-        <MyComponents.rooms chart={chart}/>,
-        $('#chart').get(0)
+        <MyComponents.rooms votes={votes}/>,
+        $('#votes').get(0)
         );
       )
     });
