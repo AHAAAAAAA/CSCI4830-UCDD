@@ -15,8 +15,6 @@ function render(){
   ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
     $('#nav-bar-container').get(0))
 
-    ReactDOM.render(<MyComponents.chart data={data}/>,
-    $('#chart-container').get(0))
   
   ReactDOM.render(
     <MyComponents.App
