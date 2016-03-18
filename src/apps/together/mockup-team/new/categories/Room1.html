@@ -71,6 +71,8 @@
 </div>
       <script type="text/babel" src="./components/chart.jsx"></script>   
       <script type="text/babel" src="../data.jsx"></script>
+      <script type="text/babel" src="/apps/together/mockup-team/new/categories/components/chart.jsx"></script>
+
       <script>
         var ref = new Firebase('https://team-polive.firebaseio.com/users')
         var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
@@ -132,6 +134,22 @@
 
 			return;
 		}
+
+    var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
+    chart =[]
+    votecount.on('value', function(roomies){
+          var no = roomies.no.val()
+          var yes =roomies.yes.val()
+          console.log("hi")
+          chart.push({yes: yes, no: no})
+
+        ReactDOM.render(
+        <MyComponents.rooms chart={chart}/>,
+        $('#chart').get(0)
+        );
+      )
+    });
+
       </script>
  
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -141,6 +159,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
       <script src="js/Chart.js"></script>
       <script src="js/init.js"></script>
+     
       <script>
     var data = [
       {

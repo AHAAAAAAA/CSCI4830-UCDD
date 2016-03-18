@@ -1,22 +1,27 @@
-MyComponents.chart = React.createClass({
+MyComponents.Chart = React.createClass({
 
-componentDidMount() {
-  this.firebaseRef = new Firebase("https://team-polive.firebaseio.com/rooms/");
-  this.firebaseRef.on("child_added", function(dataSnapshot) {
-    this.items.push(dataSnapshot.val());
-    this.setState({
-      rooms: this.rooms
-    });
-  }.bind(this));
-}
-
-  render() {
+  render: function() {
     return (
       <ul className="collection">
-       <b>{this.props.no}:</b> {this.props.yes} Years
+      <li className="collection-item"> <b>{this.props.name}:</b> {this.props.skill.years} Years</li>
       </ul>
     );
   }
 });
 
-MyComponents.chart = chart
+MyComponents.SkillList = React.createClass({
+  render: function() {
+
+    var skillElements = this.props.skills.map(function(s,i){
+      return <MyComponents.Skill skill={s} key={i}/>
+    })
+
+    return (
+      <div className="card teal">
+        <div className="card-content">
+        {skillElements}
+        </div>
+      </div>
+    );
+  }
+});
