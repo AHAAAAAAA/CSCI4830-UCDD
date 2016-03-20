@@ -36,9 +36,7 @@
 	</nav>
 	</div>    
 
-    <div id="nav-bar-container"></div>
-
-    <div id="chart-container"></div>
+    <div id="votes"></div>
 
 
   <div class="container">
@@ -70,9 +68,14 @@
       </div>
     </div>
 </div>
+    
+    <script>
+      // MyComponents is a global object where each property is a reference to a component class
+      MyComponents = {}
+    </script>
       <script type="text/babel" src="./components/chart.jsx"></script>   
       <script type="text/babel" src="../data.jsx"></script>
-      <script type="text/babel" src="/apps/together/mockup-team/new/categories/components/chart.jsx"></script>
+      <!-- <script type="text/babel" src="/apps/together/mockup-team/new/categories/components/chart.jsx"></script> -->
 
       <script>
         var ref = new Firebase('https://team-polive.firebaseio.com/users')
@@ -82,7 +85,8 @@
 		setTitle();
 		//Set video once
 		setVideo();
-		
+		console.log("Snorre king", MyComponents)
+    console.log(MyComponents)
         ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
           var user = snapshot.val()
 		  //Clear card content before loading in users
@@ -138,19 +142,20 @@
 
     var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
     votes =[]
-    votecount.on('value', function(roomies){
-          var no = roomies.no.val()
-          var yes =roomies.yes.val()
-          console.log("hi")
+    votecount.on('value', function(rooms){
+          var no = rooms.no.val()
+          var yes =rooms.yes.val()
+          log("whatthef")
           votes.push({yes: yes, no: no})
-
+        console.log("hi")
+        })
         ReactDOM.render(
-        <MyComponents.rooms votes={votes}/>,
+        <MyComponents.votes votes={votes}/>,
         $('#votes').get(0)
         );
-      )
     });
 
+    console.log("after sigruns votecount")
       </script>
  
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

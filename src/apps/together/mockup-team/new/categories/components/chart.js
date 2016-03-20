@@ -1,20 +1,7 @@
-MyComponents.Chart = React.createClass({
-
-  render: function() {
-    return (
-      <ul className="collection">
-      <li className="collection-item"> <b>{this.props.no}: NO</b> {this.props.yes}: Yes</li>
-      </ul>
-    );
-  }
-});
-
 MyComponents.votes = React.createClass({
   render: function() {
-
-    var skillElements = this.props.Room1.map(function(s,i){
-      return <MyComponents.votes skill={s} key={i}/>
-    })
+    
+  log("snorre king")
 
     return (
       <div className="right col l5 m5 s5" style="margin-top:14%;">
