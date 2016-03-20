@@ -99,6 +99,7 @@ actions.logout = function(){
 
   if (data.user){
     console.log("Logout");
+	
     firebaseRef.unauth()
 
     var userRef = firebaseRef
@@ -116,6 +117,12 @@ actions.logout = function(){
     render()
 
   }
+
+}
+
+actions.loadRooms = function(){
+
+  console.log("here here here!!!!");
 
 }
 
