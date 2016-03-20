@@ -1,8 +1,7 @@
-MyComponents.votes = React.createClass({
+MyComponents.Votes = React.createClass({
   render: function() {
     return (
-      <span> {this.props.votes.no} + "  ss" + {this.props.votes.yes}
-     </span>
+      <span> {this.props.votes.no} + "  ss" + {this.props.votes.yes}</span>
      //  <div className="right col l5 m5 s5" style="margin-top:14%;">
      //    <div className="card-panel light-green darken-1">
      //      <h4 className="card-title" className="center"><b>Live Poll</b></h4>
