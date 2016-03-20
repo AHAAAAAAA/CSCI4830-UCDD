@@ -79,7 +79,7 @@
       </div>
     </div>
     <div class="row">
-        <div id="votes">HELLO SIGRUNN</div>
+        <div id="votes"></div>
     </div>
 </div>
     <script type="text/babel" src="./components/chart.jsx"></script> 
@@ -210,8 +210,7 @@
       ReactDOM.render(
         <MyComponents.Votes votes={votes} data1= {data1}/>,
         $('#votes').get(0));
-      votecount.once('value', function(data) {
-        console.log("Vote once");
+      votecount.on('value', function(data) {
         var roomData = data.val();
         votes.no = roomData.no;
         votes.yes = roomData.yes;        
