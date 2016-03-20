@@ -150,24 +150,8 @@
     <script src="js/Chart.js"></script>
     <script src="js/init.js"></script>
 	
-    <!-- This is the line chart script: -->
+    <!-- This is the chart display script: -->
     <script>
-		var data1 = [
-		  {
-			  value: 30,
-			  color:"#F7464A",
-			  highlight: "#FF5A5E",
-			  label: "Red"
-		  },
-		  {
-			  value: 50,
-			  color: "#46BFBD",
-			  highlight: "#5AD3D1",
-			  label: "Green"
-		  }
-		]
-		var ctx = document.getElementById("myChart").getContext("2d");
-		var myDoughnutChart = new Chart(ctx).Doughnut(data1);
 		var ctx = document.getElementById("myChart2").getContext("2d");
 		var data = {
 		  labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -197,38 +181,38 @@
 		var options = {bezierCurve: false}
 		var myLineChart = new Chart(ctx).Line(data, options);
     </script>
-	<!-- End of the line chart script: -->
+	<!-- End of chart script: -->
 	
 	<!-- Get Votes from firebase -->
     <script type="text/babel">
         var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
         var votes = {no: 0, yes: 0}
         ReactDOM.render(
-          <MyComponents.Votes votes={votes} data1= {data1}/>,
+          <MyComponents.Votes votes={votes}/>,
           $('#votes').get(0));
           votecount.on('value', function(data) {
             var roomData = data.val();
             votes.no = roomData.no;
             votes.yes = roomData.yes;        
             ReactDOM.render(
-              <MyComponents.Votes votes={votes} data1={data1}/>,
+              <MyComponents.Votes votes={votes}/>,
               $('#votes').get(0)
             );
           });
     </script>
   
-  <script>
-    // MyComponents is a global object where each property is a reference to a component class
-    MyComponents = {}
-    $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-  </script>
-  <!-- JSX scripts to components-->
-  <script type="text/babel" src="../components/navbar.jsx"></script>
-  <script type="text/babel" src="../components/user.jsx"></script>
-  <!-- Connect the app and data -->
-  <script type="text/babel" src="../data.jsx"></script>
+    <script>
+      // MyComponents is a global object where each property is a reference to a component class
+      MyComponents = {}
+      $(document).ready(function(){
+        $('.parallax').parallax();
+      });
+    </script>
+    <!-- JSX scripts to components-->
+    <script type="text/babel" src="../components/navbar.jsx"></script>
+    <script type="text/babel" src="../components/user.jsx"></script>
+    <!-- Connect the app and data -->
+    <script type="text/babel" src="../data.jsx"></script>
   
    </body>
   </html>

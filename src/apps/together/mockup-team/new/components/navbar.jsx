@@ -16,7 +16,6 @@ class NavBar extends React.Component {
   
   /*This function invoked when navbar changes -- must have alongside componentDidMount()*/
   componentDidUpdate(){
-		//console.log($('.dropdown-button').dropdown)
 		$('.dropdown-button').dropdown({
 		  inDuration: 300,
 		  outDuration: 225,
