@@ -1,8 +1,8 @@
 <!DOCTYPE html>
   <html>
     <head>
-    <ul id="tab_title">
-	<ul>
+    <ul id="tab_title"></ul>
+  <meta charset="UTF-8" />
     <link rel="icon" type="x-icon" href="images/ficon.ico">
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -10,11 +10,24 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <script src="lib/react.js"></script>
+      <script src="lib/react-dom.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+      <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+       <script>
+      // MyComponents is a global object where each property is a reference to a component class
+      MyComponents = {}
+    </script>
+      <script type="text/babel" src="./components/chart.js"></script> 
+      <script type="text/babel" src="../data.jsx"></script>
+      
+      <div id="votes"></div>
     </head>
 
     <body>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-        <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
 
 		<ul id="categories_dropdown" class="dropdown-content">
@@ -36,7 +49,6 @@
 	</nav>
 	</div>    
 
-    <div id="votes"></div>
 
 
   <div class="container">
@@ -69,58 +81,50 @@
     </div>
 </div>
     
-    <script>
-      // MyComponents is a global object where each property is a reference to a component class
-      MyComponents = {}
-    </script>
-      <script type="text/babel" src="./components/chart.jsx"></script>   
-      <script type="text/babel" src="../data.jsx"></script>
-      <!-- <script type="text/babel" src="/apps/together/mockup-team/new/categories/components/chart.jsx"></script> -->
-
       <script>
         var ref = new Firebase('https://team-polive.firebaseio.com/users')
         var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
+        var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
+
 		
 		//Set title once
 		setTitle();
 		//Set video once
 		setVideo();
-		console.log("Snorre king", MyComponents)
-    console.log(MyComponents)
-        ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
-          var user = snapshot.val()
+    
+    ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
+      var user = snapshot.val()
 		  //Clear card content before loading in users
 		  document.getElementById("name").innerHTML = "";
-          snapshot.forEach(function(users) {
-            var name = users.child("name").val()
-            $('#name').append('<li class="collection-item">' + name + '</li>') 
-            })
+      snapshot.forEach(function(users) {
+        var name = users.child("name").val()
+        $('#name').append('<li class="collection-item">' + name + '</li>') 
         })
+      })
 		
 		//Load active rooms
 		//Only add rooms that are active i.e. NOT available, if available then no debate currently active
-	    roomsRef.orderByChild("available").equalTo(0).on("value", function(snapshot) {
+	  roomsRef.orderByChild("available").equalTo(0).on("value", function(snapshot) {
 	    //clear old rooms
 	    document.getElementById('categories_dropdown').innerHTML = "";
 		  //Add available rooms
 		  snapshot.forEach(function(data) {
 		    var room = data.key();
 		    roomsRef.child(room).once("value", function(snapshot){
-			  snapshot.forEach(function(childSnapshot) {
-				if(childSnapshot.key() == 'name'){
-					$('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
-				}
-			  })
+			    snapshot.forEach(function(childSnapshot) {
+				    if(childSnapshot.key() == 'name'){
+					     $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
+				    }
+			   })
 		    });
 		  });
-	    });
-		
+	  });
+
 		function setTitle(){
-		    var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
+		  var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
 			var title = "";
 			ref.once("value", function(data) {
 			    title = data.val();
-			    //console.log(title.name)
 				$('#category_title').append('<a href="#!" class="brand-logo center">' +title.name+ ' <img src="olive.png" height="20px" style="margin-top:15px;"></a>');
 				$('#tab_title').append('<title>Polive - '+ title.name+'</title>');
 			});
@@ -129,34 +133,31 @@
 		}
 		
 		function setVideo(){
-		    var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
+		  var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
 			var video = "";
 			ref.once("value", function(data) {
-			    video = data.val();
+			  video = data.val();
 
 				$('#video_link').append('<div class="video col l7 m7 s6 left"><iframe style="width:100%; height:400px; margin-top:20%;" src='+video.video+' frameborder="0" allowfullscreen></iframe></div>');
 			});
 
 			return;
 		}
+  </script>
 
-    var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
-    votes =[]
-    votecount.on('value', function(rooms){
-          var no = rooms.no.val()
-          var yes =rooms.yes.val()
-          log("whatthef")
-          votes.push({yes: yes, no: no})
-        console.log("hi")
-        })
+  
+  <script type="text/babel">
+      var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
+      votes =[]
+      votecount.once('value', function(data) {
+        var roomData = data.val();
+        votes.push({ no: roomData.no, yes: roomData.yes })
         ReactDOM.render(
         <MyComponents.votes votes={votes}/>,
         $('#votes').get(0)
         );
-    });
-
-    console.log("after sigruns votecount")
-      </script>
+      });
+  </script>
  
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
