@@ -88,34 +88,36 @@
 		//Set video once
 		setVideo();
     
-    ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
-      var user = snapshot.val()
-		  //Clear card content before loading in users
-		  document.getElementById("name").innerHTML = "";
-      snapshot.forEach(function(users) {
-        var name = users.child("name").val()
-        $('#name').append('<li class="collection-item">' + name + '</li>') 
-        })
-      })
-		
-		//Load active rooms
-		//Only add rooms that are active i.e. NOT available, if available then no debate currently active
-	  roomsRef.orderByChild("available").equalTo(0).on("value", function(snapshot) {
-	    //clear old rooms
-	    document.getElementById('categories_dropdown').innerHTML = "";
+		ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
+		  var user = snapshot.val()
+			  //Clear card content before loading in users
+			  document.getElementById("name").innerHTML = "";
+		  snapshot.forEach(function(users) {
+			var name = users.child("name").val()
+			$('#name').append('<li class="collection-item">' + name + '</li>') 
+			})
+		  })
+		 
+		 //TODO: NavBar React needs to do this now
+		 //Load active rooms
+		 //Only add rooms that are active i.e. NOT available, if available then no debate currently active
+	     roomsRef.orderByChild("available").equalTo(0).on("value", function(snapshot) {
+		 //clear old rooms
+		 document.getElementById('categories_dropdown').innerHTML = "";
 		  //Add available rooms
 		  snapshot.forEach(function(data) {
-		    var room = data.key();
-		    roomsRef.child(room).once("value", function(snapshot){
-			    snapshot.forEach(function(childSnapshot) {
-				    if(childSnapshot.key() == 'name'){
-					     $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
-				    }
+			var room = data.key();
+			roomsRef.child(room).once("value", function(snapshot){
+				snapshot.forEach(function(childSnapshot) {
+					if(childSnapshot.key() == 'name'){
+						 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
+					}
 			   })
-		    });
+			});
 		  });
-	  });
-
+	     });
+		 
+        //TODO: NavBar React needs to do this now
 		function setTitle(){
 		  var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
 			var title = "";
@@ -133,84 +135,87 @@
 			var video = "";
 			ref.once("value", function(data) {
 			  video = data.val();
-
 				$('#video_link').append('<div class="video col l7 m7 s6 left"><iframe style="width:100%; height:400px; margin-top:20%;" src='+video.video+' frameborder="0" allowfullscreen></iframe></div>');
 			});
 
 			return;
 		}
-  </script>
- 
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-      <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-      <script src="js/Chart.js"></script>
-      <script src="js/init.js"></script>
-     
-      <script>
-    var data1 = [
-      {
-          value: 30,
-          color:"#F7464A",
-          highlight: "#FF5A5E",
-          label: "Red"
-      },
-      {
-          value: 50,
-          color: "#46BFBD",
-          highlight: "#5AD3D1",
-          label: "Green"
-      }
-    ]
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var myDoughnutChart = new Chart(ctx).Doughnut(data1);
-    var ctx = document.getElementById("myChart2").getContext("2d");
-    var data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 27, 90]
-        }
-    ]
-};
-    var options = {bezierCurve: false}
-    var myLineChart = new Chart(ctx).Line(data, options);
     </script>
-  <script type="text/babel">
-      var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
-      var votes = {no: 0, yes: 0}
-      ReactDOM.render(
-        <MyComponents.Votes votes={votes} data1= {data1}/>,
-        $('#votes').get(0));
-      votecount.on('value', function(data) {
-        var roomData = data.val();
-        votes.no = roomData.no;
-        votes.yes = roomData.yes;        
+ 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/init.js"></script>
+	
+    <!-- This is the line chart script: -->
+    <script>
+		var data1 = [
+		  {
+			  value: 30,
+			  color:"#F7464A",
+			  highlight: "#FF5A5E",
+			  label: "Red"
+		  },
+		  {
+			  value: 50,
+			  color: "#46BFBD",
+			  highlight: "#5AD3D1",
+			  label: "Green"
+		  }
+		]
+		var ctx = document.getElementById("myChart").getContext("2d");
+		var myDoughnutChart = new Chart(ctx).Doughnut(data1);
+		var ctx = document.getElementById("myChart2").getContext("2d");
+		var data = {
+		  labels: ["January", "February", "March", "April", "May", "June", "July"],
+		  datasets: [
+			  {
+				label: "My First dataset",
+				fillColor: "rgba(220,220,220,0.2)",
+				strokeColor: "rgba(220,220,220,1)",
+				pointColor: "rgba(220,220,220,1)",
+				pointStrokeColor: "#fff",
+				pointHighlightFill: "#fff",
+				pointHighlightStroke: "rgba(220,220,220,1)",
+				data: [65, 59, 80, 81, 56, 55, 40]
+			  },
+			  {
+				label: "My Second dataset",
+				fillColor: "rgba(151,187,205,0.2)",
+				strokeColor: "rgba(151,187,205,1)",
+				pointColor: "rgba(151,187,205,1)",
+				pointStrokeColor: "#fff",
+				pointHighlightFill: "#fff",
+				pointHighlightStroke: "rgba(151,187,205,1)",
+				data: [28, 48, 40, 19, 86, 27, 90]
+			  }
+		  ]
+		};
+		var options = {bezierCurve: false}
+		var myLineChart = new Chart(ctx).Line(data, options);
+    </script>
+	<!-- End of the line chart script: -->
+	
+	<!-- Get Votes from firebase -->
+    <script type="text/babel">
+        var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
+        var votes = {no: 0, yes: 0}
         ReactDOM.render(
-        <MyComponents.Votes votes={votes} data1={data1}/>,
-        $('#votes').get(0)
-        );
-      });
-  </script>
+          <MyComponents.Votes votes={votes} data1= {data1}/>,
+          $('#votes').get(0));
+          votecount.on('value', function(data) {
+            var roomData = data.val();
+            votes.no = roomData.no;
+            votes.yes = roomData.yes;        
+            ReactDOM.render(
+              <MyComponents.Votes votes={votes} data1={data1}/>,
+              $('#votes').get(0)
+            );
+          });
+    </script>
   
   <script>
     // MyComponents is a global object where each property is a reference to a component class
