@@ -42,7 +42,17 @@ class Votes extends React.Component {
   
   render(){
     return (
-      <span> {this.props.votes.no} + "  ss" + {this.props.votes.yes}</span>
+      // <span> {this.props.votes.no} + {this.props.votes.yes}</span>
+     <div className="right col l5 m5 s5" style={{marginTop: '14%'}}>
+        <div className="card-panel light-green darken-1">
+          <h4 className="card-title"><b>Live Poll</b></h4>
+          <canvas id="myChart" className="center" />
+          <div className="row center">
+            <a className="center waves-effect waves-light red btn">Red</a>
+            <a className="center waves-effect waves-light blue btn">Blue</a>
+          </div>
+        </div>
+      </div>
     );
   }
 }
