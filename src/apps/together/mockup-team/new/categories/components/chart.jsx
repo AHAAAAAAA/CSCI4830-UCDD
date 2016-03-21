@@ -1,5 +1,11 @@
 class Votes extends React.Component {
 
+  componentDidMount(){
+    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+
+  }
+
   /*Animate initial chart*/
   componentDidMount(){
     var data1 = [
@@ -42,17 +48,15 @@ class Votes extends React.Component {
   
   render(){
     return (
-      // <span> {this.props.votes.no} + {this.props.votes.yes}</span>
-     <div className="right col l5 m5 s5" style={{marginTop: '14%'}}>
-        <div className="card-panel light-green darken-1">
-          <h4 className="card-title"><b>Live Poll</b></h4>
-          <canvas id="myChart" className="center" />
+        <div className="card-panel light-green darken-3">
+          <h4 className="card-title" className="center"><b>Live Poll</b></h4>
+          <canvas id="myChart" className="center"></canvas>
           <div className="row center">
-            <a className="center waves-effect waves-light red btn">Red</a>
-            <a className="center waves-effect waves-light blue btn">Blue</a>
+            <a className="center waves-effect waves-light red btn"><i className="material-icons">thumb_down</i></a>
+            <a className="center waves-effect waves-light blue btn"><i className="material-icons">thumb_up</i></a>
           </div>
         </div>
-      </div>
+ 
     );
   }
 }

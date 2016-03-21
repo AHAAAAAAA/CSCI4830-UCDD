@@ -22,44 +22,24 @@
 
     <body>
     <div id="nav-bar-container"></div>
-    <!-- Old Dropdown 
-	<ul id="categories_dropdown" class="dropdown-content"></ul>
-	<div class="navbar-fixed">
-	  <nav>
-		<nav class = "light-green darken-3"
-		  <div class="nav-wrapper">
-			<ul id="category_title"></ul>
-			<ul class="right hide-on-med-and-down">
-			  <li><a href="/apps/together/mockup-team/new/index.html">Home</a></li>
-			  <li><a href="#">Login</a></li>
-			  
-			  <li><a class="dropdown-button" href="#!" data-activates="categories_dropdown">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
-			</ul>
-		 </div>
-	  </nav>
-	 </nav>
-   </div>    
-   -->
-
-  <div class="container">
-    <div class="section">
+    <div class="card-panel light-green lighten-3">
       <div class="row">
-	  <ul id="video_link">
-	  </ul>
-    <div id="votes"></div>
-    </div> 
-  </div>
-    <div class="row">
-      <div class="col s12 m5">
-        <div class="card-panel light-green darken-1">
-          <span class="white-text"><h5> Current Users in Room: </h5>
-            <ul  id="name">
+        <div class="col s12"><h1 class="black-text center">Sports</h1></div>
+        <div class="col s12 m4 l2">
+          <div class="card-panel light-green darken-3">
+            <h4 class="card-title"><b>Voters:</b></h4>
+          <span class="white-text">
+            <ul id="name">
             </ul>
           </span>
         </div>
       </div>
+      <ul id="video_link"> 
+      </ul>
+    <div class="col s12 m4 l3">
+      <div id="votes"></div>
     </div>
-        
+  </div>
 </div>
 
     <script type="text/babel" src="./components/chart.jsx"></script> 
@@ -103,7 +83,7 @@
 			var video = "";
 			ref.once("value", function(data) {
 			  video = data.val();
-				$('#video_link').append('<div class="video col l7 m7 s6 left"><iframe style="width:100%; height:400px; margin-top:20%;" src='+video.video+' frameborder="0" allowfullscreen></iframe></div>');
+				$('#video_link').append('<div class="video col l7 m7 s6 center"><iframe style="width:93%; height:400px;" src='+video.video+' frameborder="0" allowfullscreen></iframe></div>');
 			});
 
 			return;
