@@ -70,7 +70,7 @@ class NavBar extends React.Component {
       <nav>
         <div className="nav-wrapper light-green darken-3">
           <div className="container">
-            <a href="/apps/together/mockup-team/new/index.html" className="brand-logo">Polive</a>
+          	<a href="/apps/together/mockup-team/new/index.html" className="brand-logo center">Polive<img src="/apps/together/mockup-team/new/images/olive.png" height="20px" style={{marginTop: 15}} /></a>
 			<a href="#">{this.props.data.category}</a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
 			  <li><a href="/apps/together/mockup-team/new/index.html">Home</a></li>
@@ -90,13 +90,13 @@ class NavBar extends React.Component {
         <nav>
           <div className="nav-wrapper light-green darken-3">
             <div className="container">
-              <a href="/apps/together/mockup-team/new/index.html" className="brand-logo">Polive</a>
+            <a href="/apps/together/mockup-team/new/index.html" className="brand-logo center">Polive2<img src="/apps/together/mockup-team/new/images/olive.png" height="20px" style={{marginTop: 15}} /></a>
 			  <a href="#">{this.props.data.category}</a>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
 			    <li><a href="/apps/together/mockup-team/new/index.html">Home</a></li>
                 <li><a href="#" onClick={this.props.actions.login}> Login</a></li>
 				<li><a className="dropdown-button white-text" href="#!" data-activates="categories_dropdown">Categories<i className="material-icons right">arrow_drop_down</i></a>
-                  <ul id='categories_dropdown' className='dropdown-content'></ul>
+                <ul id='categories_dropdown' className='dropdown-content'></ul>
                 </li>
               </ul>
             </div>
