@@ -97,26 +97,7 @@
 			$('#name').append('<li class="collection-item">' + name + '</li>') 
 			})
 		  })
-		 
-		 //TODO: NavBar React needs to do this now
-		 //Load active rooms
-		 //Only add rooms that are active i.e. NOT available, if available then no debate currently active
-	     roomsRef.orderByChild("available").equalTo(0).on("value", function(snapshot) {
-		 //clear old rooms
-		 document.getElementById('categories_dropdown').innerHTML = "";
-		  //Add available rooms
-		  snapshot.forEach(function(data) {
-			var room = data.key();
-			roomsRef.child(room).once("value", function(snapshot){
-				snapshot.forEach(function(childSnapshot) {
-					if(childSnapshot.key() == 'name'){
-						 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
-					}
-			   })
-			});
-		  });
-	     });
-		 
+		
         //TODO: NavBar React needs to do this now
 		function setTitle(){
 		  var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
@@ -186,6 +167,7 @@
 	<!-- Get Votes from firebase -->
     <script type="text/babel">
         var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
+		var getTitle = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
         var votes = {no: 0, yes: 0}
         ReactDOM.render(
           <MyComponents.Votes votes={votes}/>,
@@ -193,7 +175,7 @@
           votecount.on('value', function(data) {
             var roomData = data.val();
             votes.no = roomData.no;
-            votes.yes = roomData.yes;        
+            votes.yes = roomData.yes; 		
             ReactDOM.render(
               <MyComponents.Votes votes={votes}/>,
               $('#votes').get(0)

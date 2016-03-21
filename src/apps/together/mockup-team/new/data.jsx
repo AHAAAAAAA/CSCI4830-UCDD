@@ -120,10 +120,4 @@ actions.logout = function(){
 
 }
 
-actions.loadRooms = function(){
-
-  console.log("here here here!!!!");
-
-}
-
 render();
