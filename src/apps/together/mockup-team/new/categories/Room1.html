@@ -17,7 +17,9 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
-      
+      <!-- Polive React scripts -->
+	  <script type="text/babel" src="./components/chart.jsx"></script> 
+	  <script type="text/babel" src="./components/title.jsx"></script>
     </head> 
 
     <body>
@@ -41,18 +43,12 @@
   </div>
 </div>
 
-    <script type="text/babel" src="./components/chart.jsx"></script> 
-	<script type="text/babel" src="./components/title.jsx"></script>
       <!-- <script type="text/babel" src="../data.jsx"></script> -->
       <script>
         var ref = new Firebase('https://team-polive.firebaseio.com/users')
         var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
         var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
 
-		
-		//Set title once
-		//setTitle();
-		//Set video once
 		setVideo();
     
 		ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
@@ -64,20 +60,6 @@
 			$('#name').append('<li class="collection-item">' + name + '</li>') 
 			})
 		  })
-		
-		/*
-        //TODO: NavBar React needs to do this now
-		function setTitle(){
-		  var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
-			var title = "";
-			ref.once("value", function(data) {
-			    title = data.val();
-				$('#category_title').append('<a href="#!" class="brand-logo center">' +title.name+ ' <img src="olive.png" height="20px" style="margin-top:15px;"></a>');
-				$('#tab_title').append('<title>Polive - '+ title.name+'</title>');
-			});
-
-			return;
-		}*/
 		
 		function setVideo(){
 		  var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
