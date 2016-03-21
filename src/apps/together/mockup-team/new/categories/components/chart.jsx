@@ -1,13 +1,10 @@
 class Votes extends React.Component {
 
-  componentDidMount(){
-    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-
-
-  }
-
   /*Animate initial chart*/
   componentDidMount(){
+  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	
     var data1 = [
 	  {
 		  value: this.props.votes.no,
@@ -61,3 +58,4 @@ class Votes extends React.Component {
   }
 }
 MyComponents.Votes = Votes
+
