@@ -1,8 +1,7 @@
 // a single 'data' object that holds the data of your entire app, with initial values
 var data = {
-  center: [37.78, -122.41], // San Francisco
-  providers: [],
-  user: null
+  vote: -1, // vote of the user
+  room: null
 }
 
 // a single 'handlers' object that holds all the actions of your entire app
@@ -16,13 +15,13 @@ function render(){
     $('#nav-bar-container').get(0))
 
   
-  ReactDOM.render(
-    <MyComponents.App
-        data={data}
-        actions={actions}/>,
-    $('#app-container').get(0)
+  // ReactDOM.render(
+  //   <MyComponents.Votes
+  //       data={data}
+  //       actions={actions}/>,
+  //   $('#app-container').get(0)
 
-  )
+  // )
 }
 
 //
@@ -32,28 +31,23 @@ function render(){
 var firebaseRef = new Firebase('https://team-polive.firebaseio.com')
 
 // Real-time Data (load constantly on changes)
-firebaseRef.child('providers')
-  .on('value', function(snapshot){
+// firebaseRef.child('providers')
+//   .on('value', function(snapshot){
 
-    data.providers = _.values(snapshot.val())
+//     data.providers = _.values(snapshot.val())
 
-    render()
+//     render()
 
-  })
+//   })
 
-//
-// ACTIONS
-//
-
-// Actions
+// Votes
 actions.setUserLocation = function(latlng){
 
   if (data.user){
     firebaseRef
       .child('users')
       .child(data.user.username)
-      .child('pos')
-      .set([latlng.lat, latlng.lng])
+      .set(vote)
   }
 }
 
@@ -73,8 +67,9 @@ actions.login = function(){
         username: authData.github.username,
         id: authData.github.id,
         status: 'online',
-        pos: data.center,  // position, default to the map center
-        imgURL: authData.github.profileImageURL
+        vote: data.vote,  // user vote
+        imgURL: authData.github.profileImageURL,
+        room: data.room //todo: needs to be changed to be the room that they are in.
       }
       
       var userRef = firebaseRef.child('users').child(user.username)
