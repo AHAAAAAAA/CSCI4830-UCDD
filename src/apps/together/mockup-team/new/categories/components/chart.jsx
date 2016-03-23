@@ -4,6 +4,7 @@ class Votes extends React.Component {
   componentDidMount(){
   
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    var firebase = new Firebase('https://team-polive.firebaseio.com/');
 	
     var data1 = [
 	  {
@@ -41,6 +42,7 @@ class Votes extends React.Component {
 	]
 	var ctx = document.getElementById("myChart").getContext("2d");
 	var myDoughnutChart = new Chart(ctx).Doughnut(data1);
+
   }
   
   render(){
@@ -49,13 +51,14 @@ class Votes extends React.Component {
           <h4 className="card-title" className="center"><b>Live Poll</b></h4>
           <canvas id="myChart" className="center"></canvas>
           <div className="row center">
-            <a className="center waves-effect waves-light red btn"><i className="material-icons">thumb_down</i></a>
-            <a className="center waves-effect waves-light blue btn"><i className="material-icons">thumb_up</i></a>
+            <a id ="noButton" className="center waves-effect waves-light red btn"><i className="material-icons">thumb_down</i></a>
+            <a id= "yesButton" className="center waves-effect waves-light blue btn"><i className="material-icons">thumb_up</i></a>
           </div>
         </div>
  
     );
   }
 }
+
 MyComponents.Votes = Votes
 

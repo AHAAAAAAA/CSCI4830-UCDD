@@ -1,5 +1,6 @@
 class NavBar extends React.Component {
   /*This function only invoked once on initial page load-- need invoked on react changes to navbar*/
+  
   componentDidMount(){
 		//console.log($('.dropdown-button').dropdown)
 		$('.dropdown-button').dropdown({
