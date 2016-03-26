@@ -51,6 +51,17 @@ actions.setUserLocation = function(latlng){
   }
 }
 
+//Set user room
+actions.setUserRoom = function(room){
+  //if user logged in, set their room number
+  if (data.user){
+    firebaseRef
+      .child('users')
+      .child(data.user.room)
+      .set(room)
+  }
+}
+
 actions.login = function(){
 
   firebaseRef.authWithOAuthPopup("github", function(error, authData){

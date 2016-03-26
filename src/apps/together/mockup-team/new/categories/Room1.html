@@ -40,6 +40,9 @@
     <div class="col s12 m4 l3">
       <div id="votes"></div>
     </div>
+	<div class="col s12 m4 l3">
+      <div id="roomNumber"></div>
+    </div>
   </div>
 </div>
 
@@ -148,7 +151,15 @@
             );
           });
     </script>
-  
+    
+	<script type="text/babel">
+		//Set room prop 
+		ReactDOM.render(
+		  <GroceryList items={['Apple', 'Banana', 'Cranberry']} />, mountNode
+		);
+		
+	</script>
+	
     <script>
       // MyComponents is a global object where each property is a reference to a component class
       MyComponents = {}
