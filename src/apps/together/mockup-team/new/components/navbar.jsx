@@ -1,7 +1,8 @@
 class NavBar extends React.Component {
+
   /*This function only invoked once on initial page load-- need invoked on react changes to navbar*/
-  
   componentDidMount(){
+        var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
 		//console.log($('.dropdown-button').dropdown)
 		$('.dropdown-button').dropdown({
 		  inDuration: 300,
@@ -95,8 +96,8 @@ class NavBar extends React.Component {
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li><a href="#" onClick={this.props.actions.login}> Login</a></li>
 				<li><a className="dropdown-button white-text" href="#!" data-activates="categories_dropdown">Categories<i className="material-icons right">arrow_drop_down</i></a>
-                <ul id='categories_dropdown' className='dropdown-content'></ul>
-                </li>
+				  <ul id='categories_dropdown' className='dropdown-content'></ul>
+			    </li>
               </ul>
             </div>
           </div>
