@@ -68,6 +68,7 @@ class NavBar extends React.Component {
   
   render(){
     if(this.props.data.user){
+	  this.props.actions.setUserRoom
       return (
       <nav>
         <div className="nav-wrapper light-green darken-3">

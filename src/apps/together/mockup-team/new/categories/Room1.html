@@ -17,9 +17,18 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
       <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+	  
       <!-- Polive React scripts -->
+	  <!-- JSX scripts to components-->
+      <script type="text/babel" src="../components/navbar.jsx"></script>
+	  <script type="text/babel" src="../components/room1.jsx"></script>
+      <script type="text/babel" src="../components/user.jsx"></script>
+      <!-- Connect the app and data -->
+      <script type="text/babel" src="../data.jsx"></script>
 	  <script type="text/babel" src="./components/chart.jsx"></script> 
 	  <script type="text/babel" src="./components/title.jsx"></script>
+	  
+	  
     </head> 
 
     <body>
@@ -27,6 +36,7 @@
     <div class="card-panel light-green lighten-3">
       <div class="row">
         <div class="col s12" id = "category_title"></div>
+		<div class="col s12" id = "roomNumber"></div>
         <div class="col s12 m4 l2">
           <div class="card-panel light-green darken-3">
             <h4 class="card-title"><b>Voters:</b></h4>
@@ -39,9 +49,6 @@
       </ul>
     <div class="col s12 m4 l3">
       <div id="votes"></div>
-    </div>
-	<div class="col s12 m4 l3">
-      <div id="roomNumber"></div>
     </div>
   </div>
 </div>
@@ -151,14 +158,6 @@
             );
           });
     </script>
-    
-	<script type="text/babel">
-		//Set room prop 
-		ReactDOM.render(
-		  <GroceryList items={['Apple', 'Banana', 'Cranberry']} />, mountNode
-		);
-		
-	</script>
 	
     <script>
       // MyComponents is a global object where each property is a reference to a component class
@@ -167,11 +166,7 @@
         $('.parallax').parallax();
       });
     </script>
-    <!-- JSX scripts to components-->
-    <script type="text/babel" src="../components/navbar.jsx"></script>
-    <script type="text/babel" src="../components/user.jsx"></script>
-    <!-- Connect the app and data -->
-    <script type="text/babel" src="../data.jsx"></script>
+    
   
    </body>
   </html>

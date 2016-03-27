@@ -13,6 +13,10 @@ var actions = {}
 function render(){
   ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
     $('#nav-bar-container').get(0))
+  
+  //Render current room info for users  
+  ReactDOM.render(<MyComponents.Room data={data} actions={actions}/>,
+    $('#roomNumber').get(0))
 
   
   // ReactDOM.render(
@@ -52,13 +56,13 @@ actions.setUserLocation = function(latlng){
 }
 
 //Set user room
-actions.setUserRoom = function(room){
+actions.setUserRoom = function(){
   //if user logged in, set their room number
   if (data.user){
     firebaseRef
       .child('users')
       .child(data.user.room)
-      .set(room)
+      .set(data.room)
   }
 }
 
@@ -97,12 +101,9 @@ actions.login = function(){
 
     }
   })
-
 }
 
 actions.logout = function(){
-
-
   if (data.user){
     console.log("Logout");
 	
@@ -111,19 +112,23 @@ actions.logout = function(){
     var userRef = firebaseRef
       .child('users')
       .child(data.user.username)
+    var userRef2 = firebaseRef
+      .child('users')
+      .child(data.user.username)
 
     // unsubscribe to the user data
     userRef.off()
 
     // set the user's status to offline
     userRef.child('status').set('offline')
+	
+	userRef2.child('room').set('None')
 
     data.user = null
 
     render()
 
   }
-
 }
 
 render();
