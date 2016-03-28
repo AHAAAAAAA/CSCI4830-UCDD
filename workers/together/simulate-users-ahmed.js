@@ -67,31 +67,50 @@ function updateVote(person){
   //Timestamps
   var now = new Date();
   var time = now.getHours() + " hours " + now.getMinutes() + " minutes " + now.getSeconds() + " seconds";
-  // read data from the location once
+  
+  //Snag old vote value
   var prevVote = -1
   usersRef.child(person.name).once('value', function(snapshot){
     var tmp = snapshot.val()
-    prevVote = tmp.vote
+    prevVote = tmp.vote//get old vote before update occurs
     }, function (errorObject) {
-  console.log("The read failed: " + errorObject.code);
+       console.log("The read failed: " + errorObject.code);
     });
-
+  
+  //Update with new vote
+  var newVote = Math.floor(Math.random()*2); 
+  usersRef.child(person.name).update({
+	vote: newVote
+  });
+  
   voteRef.child(person.room).once('value', function(snapshot){
 	snapshot.forEach(function(childSnapshot) {
 	 var key = childSnapshot.key();
 	 var childData = childSnapshot.val();
-   if (prevVote==1){
-    var total = childData
-    voteRef.child(person.room).update({
-       yes: total-1
-     });
-   }
-   if (prevVote==0){
-    var total = childData
-    voteRef.child(person.room).update({
-       no: total-1
-     });
-   }
+	 
+     if (prevVote==1){
+	  if(key == 'yes'){
+	   if(childData > 0){	
+		  childData = childData - 1//update childData value before updating vote below
+		  var total = childData
+		  voteRef.child(person.room).update({
+			yes: total
+		  });
+	   }
+	  }
+     }
+	 
+     if (prevVote==0){
+	  if(key == 'no'){
+	   if(childData > 0){		   
+		   childData = childData - 1//update childData value before updating vote below
+		   var total = childData
+		   voteRef.child(person.room).update({
+			 no: total
+		   });
+	   }
+	  }
+     }
 
 	 //user votes yes
 	 if(person.vote == 1){
