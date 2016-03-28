@@ -59,7 +59,6 @@ class Votes extends React.Component {
             <a id= "yesButton" className="center waves-effect waves-light blue btn"><i className="material-icons">thumb_up</i></a>
           </div>
         </div>
- 
     );
   }
 }

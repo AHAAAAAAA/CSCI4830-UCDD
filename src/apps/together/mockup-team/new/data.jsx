@@ -11,13 +11,18 @@ var actions = {}
 // needs to to re-rendered
 // 'data' and 'actions' are injected into the app
 function render(){
+
   ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
     $('#nav-bar-container').get(0))
   
   //Render current room info for users  
   ReactDOM.render(<MyComponents.Room data={data} actions={actions}/>,
     $('#roomNumber').get(0))
-
+  /*
+  //Render current room info for users  
+  ReactDOM.render(<MyComponents.Votes data={data} actions={actions}/>,
+    $('#votes').get(0))
+  */
   
   // ReactDOM.render(
   //   <MyComponents.Votes
@@ -33,16 +38,6 @@ function render(){
 //
 
 var firebaseRef = new Firebase('https://team-polive.firebaseio.com')
-
-// Real-time Data (load constantly on changes)
-// firebaseRef.child('providers')
-//   .on('value', function(snapshot){
-
-//     data.providers = _.values(snapshot.val())
-
-//     render()
-
-//   })
 
 // Votes
 actions.setUserLocation = function(latlng){
