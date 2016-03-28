@@ -22,15 +22,18 @@ export function loadDataAsync(){
 
       // TODO: implement the correct logic to compute the center of the geometry
       // hint: use geolib.getCenter()      
-
-      const center = {
-        latitude: d.coordinates[0][1],
-        longitude: d.coordinates[0][0]
+      var points = [];
+      for (var i = 0; i < d.length; i++){
+        points.push({latitude: d.coordinates[i][1], longitude: x.coordinates[i][0]})
+        console.log(i)
       }
+
+      const center = geolib.getCenter(points)
+      // console.log(d)
 
       return {
         geometry: d,
-        center: center
+        center: geolib.getCenter([{latitude: center.latitude, longitude: center.longitude}])
       }
     })
 
