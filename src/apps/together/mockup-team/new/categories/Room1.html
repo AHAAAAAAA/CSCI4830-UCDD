@@ -31,13 +31,14 @@
 	  
       <!-- Polive React scripts -->
 	  <!-- JSX scripts to components-->
-    <script type="text/babel" src="../components/navbar.jsx"></script>
+      <script type="text/babel" src="../components/navbar.jsx"></script>
 	  <script type="text/babel" src="../components/room1.jsx"></script>
-    <script type="text/babel" src="../components/user.jsx"></script>
       <!-- Connect the app and data -->
-    <script type="text/babel" src="../data.jsx"></script>
+      <script type="text/babel" src="../data.jsx"></script>
+	  <!-- Connect page specific components-->
 	  <script type="text/babel" src="./components/chart.jsx"></script> 
 	  <script type="text/babel" src="./components/title.jsx"></script>
+	  <script type="text/babel" src="./components/users.jsx"></script>
 	  
 	  
     </head> 
@@ -50,7 +51,7 @@
 		<div class="col s12" id = "roomNumber"></div>
         <div class="col s12 m4 l2">
           <div class="card-panel light-green darken-3">
-            <h4 class="card-title"><b>Voters:</b></h4>
+            <h4 class="card-title"><b><u>Voters in Room</u></b></h4>
           <span class="white-text">
             <ul id="name"></ul>
           </span>
@@ -68,19 +69,21 @@
       <script>
         var ref = new Firebase('https://team-polive.firebaseio.com/users')
         var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
-        var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
 
 		setVideo();
-    
-		ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
-		  var user = snapshot.val()
-			  //Clear card content before loading in users
-			  document.getElementById("name").innerHTML = "";
-		  snapshot.forEach(function(users) {
-			var name = users.child("name").val()
-			$('#name').append('<li class="collection-item">' + name + '</li>') 
-			})
-		  })
+        
+		/*
+		//Show users in room -- this works
+        ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
+          var user = snapshot.val()
+		  //Clear card content before loading in users
+		  document.getElementById("name").innerHTML = "";
+          snapshot.forEach(function(users) {
+            var name = users.child("username").val()
+            $('#name').append('<li class="collection-item">' + name + '</li>') 
+            })
+        })
+		*/
 		
 		function setVideo(){
 		  var ref = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
@@ -138,7 +141,7 @@
 	<!-- Get Votes from firebase -->
     <script type="text/babel">
         var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
-        var votes = {no: 0, yes: 0}
+        var votes = {no: 0, yes: 0};
         ReactDOM.render(
           <MyComponents.Votes votes={votes}/>,
           $('#votes').get(0));
@@ -157,7 +160,7 @@
     <!-- Voting -->
     <script type="text/babel">
         var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
-        var votes = {no: 0, yes: 0}
+        var votes = {no: 0, yes: 0};
         ReactDOM.render(
           <MyComponents.Votes votes={votes}/>,
           $('#votes').get(0));
@@ -176,7 +179,7 @@
 	<!-- Get Room Title from firebase -->
     <script type="text/babel">
         var roomtitle = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
-        var titleRoom = {category: 'None'}
+        var titleRoom = {category: 'None'};
         ReactDOM.render(
           <MyComponents.Title title={titleRoom}/>,
           $('#category_title').get(0));
@@ -189,6 +192,49 @@
             );
           });
     </script>
+	
+	<!-- Get users from firebase -->
+	<script type="text/babel">
+	
+	    var roomtitle = new Firebase('https://team-polive.firebaseio.com/users');
+	    var user = [];
+		var tempUser = '';
+		//Initialize the user array
+		user.push(tempUser);
+		
+		ReactDOM.render(
+          <MyComponents.Users users={user}/>,
+          $('#name').get(0));
+          roomtitle.orderByChild("room").equalTo("Room1").on('value', function(data){
+		    data.forEach(function(users) {
+              var userdb = users.child("username").val();		  
+			  tempUser = userdb;
+              user.push(tempUser);			 
+			})
+			for (var i = 0; i < user.length; i++) {
+				console.log("user: ", user[i]);
+			}
+			//Re-render with updates
+		    ReactDOM.render(
+			    <MyComponents.Users users={user}/>,
+				$('#name').get(0)
+			);
+			//After pushing clear the old array
+			user = [];
+          });
+		  
+	/*
+	//Show users in room
+	ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
+	  var user = snapshot.val()
+	  //Clear card content before loading in users
+	  document.getElementById("name").innerHTML = "";
+	  snapshot.forEach(function(users) {
+		var name = users.child("username").val()
+		$('#name').append('<li class="collection-item">' + name + '</li>') 
+		})
+	})*/
+	</script>
 	
     <script>
       // MyComponents is a global object where each property is a reference to a component class

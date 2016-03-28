@@ -75,13 +75,13 @@
 		setTitle();
 		//Set video once
 		setVideo();
-
+        //Show users in room
         ref.orderByChild("room").equalTo("Room3").on('value', function(snapshot){
           var user = snapshot.val()
 		  //Clear card content before loading in users
 		  document.getElementById("name").innerHTML = "";
           snapshot.forEach(function(users) {
-            var name = users.child("name").val()
+            var name = users.child("username").val()
             $('#name').append('<li class="collection-item">' + name + '</li>') 
             })
         })

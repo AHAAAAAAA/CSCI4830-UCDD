@@ -46,7 +46,7 @@ function enter(person){
   var usersRef = ref.child("users");
   
   usersRef.child(person.name).set({
-    name: person.name,
+    username: person.name,
 	room: person.room,
 	vote: person.vote,
 	lastVoted: person.time
