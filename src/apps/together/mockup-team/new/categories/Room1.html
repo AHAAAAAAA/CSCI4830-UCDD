@@ -72,8 +72,8 @@
 
 		setVideo();
         
-		/*
-		//Show users in room -- this works
+		/*KEEP FOR REFERENCE!
+		//Show users in room -- this works 
         ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
           var user = snapshot.val()
 		  //Clear card content before loading in users
@@ -194,8 +194,7 @@
     </script>
 	
 	<!-- Get users from firebase -->
-	<script type="text/babel">
-	
+	<script type="text/babel">	
 	    var roomtitle = new Firebase('https://team-polive.firebaseio.com/users');
 	    var user = [];
 		var tempUser = '';
@@ -222,18 +221,6 @@
 			//After pushing clear the old array
 			user = [];
           });
-		  
-	/*
-	//Show users in room
-	ref.orderByChild("room").equalTo("Room1").on('value', function(snapshot){
-	  var user = snapshot.val()
-	  //Clear card content before loading in users
-	  document.getElementById("name").innerHTML = "";
-	  snapshot.forEach(function(users) {
-		var name = users.child("username").val()
-		$('#name').append('<li class="collection-item">' + name + '</li>') 
-		})
-	})*/
 	</script>
 	
     <script>
