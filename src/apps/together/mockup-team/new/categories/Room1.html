@@ -1,5 +1,15 @@
 <!DOCTYPE html>
   <html>
+  <style>
+  canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 245px;
+}
+  </style>
     <head>
     <ul id="tab_title"></ul>
   <meta charset="UTF-8" />
@@ -13,6 +23,7 @@
 
       <script src="lib/react.js"></script>
       <script src="lib/react-dom.js"></script>
+      <script src="js/Chart.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
@@ -20,11 +31,11 @@
 	  
       <!-- Polive React scripts -->
 	  <!-- JSX scripts to components-->
-      <script type="text/babel" src="../components/navbar.jsx"></script>
+    <script type="text/babel" src="../components/navbar.jsx"></script>
 	  <script type="text/babel" src="../components/room1.jsx"></script>
-      <script type="text/babel" src="../components/user.jsx"></script>
+    <script type="text/babel" src="../components/user.jsx"></script>
       <!-- Connect the app and data -->
-      <script type="text/babel" src="../data.jsx"></script>
+    <script type="text/babel" src="../data.jsx"></script>
 	  <script type="text/babel" src="./components/chart.jsx"></script> 
 	  <script type="text/babel" src="./components/title.jsx"></script>
 	  
@@ -134,12 +145,32 @@
           votecount.on('value', function(data) {
             var roomData = data.val();
             votes.no = roomData.no;
-            votes.yes = roomData.yes; 		
+            votes.yes = roomData.yes;
             ReactDOM.render(
               <MyComponents.Votes votes={votes}/>,
               $('#votes').get(0)
             );
           });
+
+    </script>
+
+    <!-- Voting -->
+    <script type="text/babel">
+        var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
+        var votes = {no: 0, yes: 0}
+        ReactDOM.render(
+          <MyComponents.Votes votes={votes}/>,
+          $('#votes').get(0));
+          votecount.on('value', function(data) {
+            var roomData = data.val();
+            votes.no = roomData.no;
+            votes.yes = roomData.yes;
+            ReactDOM.render(
+              <MyComponents.Votes votes={votes}/>,
+              $('#votes').get(0)
+            );
+          });
+
     </script>
 	
 	<!-- Get Room Title from firebase -->

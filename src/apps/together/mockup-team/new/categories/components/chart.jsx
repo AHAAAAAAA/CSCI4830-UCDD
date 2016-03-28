@@ -40,8 +40,12 @@ class Votes extends React.Component {
 		  label: "Green"
 	  }
 	]
+	var options = {
+    //Boolean - Whether we should show a stroke on each segment
+    animation:false
+}
 	var ctx = document.getElementById("myChart").getContext("2d");
-	var myDoughnutChart = new Chart(ctx).Doughnut(data1);
+	var myDoughnutChart = new Chart(ctx).Doughnut(data1, options);
 
   }
   
@@ -49,7 +53,7 @@ class Votes extends React.Component {
     return (
         <div className="card-panel light-green darken-3">
           <h4 className="card-title" className="center"><b>Live Poll</b></h4>
-          <canvas id="myChart" className="center"></canvas>
+          <canvas id="myChart" className=""></canvas>
           <div className="row center">
             <a id ="noButton" className="center waves-effect waves-light red btn"><i className="material-icons">thumb_down</i></a>
             <a id= "yesButton" className="center waves-effect waves-light blue btn"><i className="material-icons">thumb_up</i></a>
