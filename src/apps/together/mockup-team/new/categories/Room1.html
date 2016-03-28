@@ -171,6 +171,9 @@
 
             var myCastVoteFunction = function(){
               console.log('I am called')
+
+              votes.yes += 1
+              votecount.set(votes)
             }
 
             ReactDOM.render(
