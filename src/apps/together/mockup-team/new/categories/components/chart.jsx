@@ -94,7 +94,7 @@ class Votes extends React.Component {
 
     //Number - Width of the grid lines
     scaleGridLineWidth : 1,
-
+ 
     //Boolean - Whether to show horizontal lines (except X axis)
     scaleShowHorizontalLines: false,
 
@@ -152,13 +152,21 @@ class Votes extends React.Component {
   }
   
   render(){
+
+    var handler = this.props.castVote
+    // function(){
+    //     console.log('button is working')
+    // }
+
+    // console.log('render', this.props)
+
     return (
         <div className="card-panel light-green darken-3">
           <h4 className="card-title" className="center"><b>Live Poll</b></h4>
           <canvas id="myChart" className=""></canvas>
           <canvas id="myChart2" className=""></canvas>
           <div className="row center">            
-          <a id= "yesButton" className="center waves-effect waves-light blue btn"><i className="material-icons">thumb_up</i></a>
+          <a id= "yesButton" onClick={handler} className="center waves-effect waves-light blue btn"><i className="material-icons">thumb_up</i></a>
           <a id ="noButton" className="center waves-effect waves-light red btn"><i className="material-icons">thumb_down</i></a>
           </div>
         </div>

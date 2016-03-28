@@ -168,8 +168,13 @@
             var roomData = data.val();
             votes.no = roomData.no;
             votes.yes = roomData.yes;
+
+            var myCastVoteFunction = function(){
+              console.log('I am called')
+            }
+
             ReactDOM.render(
-              <MyComponents.Votes votes={votes}/>,
+              <MyComponents.Votes votes={votes} castVote={myCastVoteFunction}/>,
               $('#votes').get(0)
             );
           });

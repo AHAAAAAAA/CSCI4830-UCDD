@@ -50,6 +50,11 @@ actions.setUserLocation = function(latlng){
   }
 }
 
+actions.addVote = function(){
+
+  console.log('i want to change data')
+}
+
 //Set user room
 actions.setUserRoom = function(){
   //if user logged in, set their room number
