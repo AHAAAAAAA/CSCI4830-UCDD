@@ -1,0 +1,21 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700&subset=latin,cyrillic-ext);
+html {
+	background-color: #fff;
+	font-family: 'Roboto Slab', serif;
+	sx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	color: #1a1a1a;
+}
+html, body {
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+#react {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding: 0px;
+	height: 100%;
+	width: 100%;
+}
