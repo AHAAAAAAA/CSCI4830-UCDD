@@ -38,6 +38,13 @@ function render(){
 //
 
 var firebaseRef = new Firebase('https://team-polive.firebaseio.com')
+var authData = ref.getAuth();
+
+if (authData) {
+  console.log("User " + authData.uid + " is logged in with " + authData.provider + " OK");
+} else {
+  console.log("User is logged out");
+}
 
 // Votes
 actions.setUserLocation = function(latlng){
