@@ -10,7 +10,7 @@ export default class SelectedPosition extends Component {
     if (selectedPosition){
 
       // TODO: create a <Circle/> using NEARBY_METERS as the radius
-      const nearbyCircle = <div/>
+      const nearbyCircle = <Circle center={selectedPosition} map={map} radius={NEARBY_METERS}/>
 
       const marker = <CircleMarker center={selectedPosition} map={map} radius={10}/>
 
