@@ -16,8 +16,13 @@ export default class FiberLayerGroup extends Component {
 
       // TODO: add logic here to highlight the selected fiber in blue
       // hint: check the flag: fiber.isSelected and set the color accordingly
-      const color = 'blue'
-
+      var color = 'black'
+      if (fiber.isSelected){
+        color = 'red'
+      }
+      else{
+        color = 'blue'
+      }
       return <FiberGeometry geometry={fiber.geometry} selectedPosition={selectedPosition} key={i} map={map} color={color}/>
       // Q: Why do we have to specify map={map}?
       // Q: Why do we have to specify key={i}?

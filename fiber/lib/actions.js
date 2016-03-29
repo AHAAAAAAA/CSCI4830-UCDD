@@ -57,8 +57,12 @@ function forEachFiberSetIsSelected(fiber){
    // TODO: implement the logic to set fiber.isSelected if the fiber's geometry center
    // is within a certain distance from the selected position 'NEARBY_METERS'
    // hint: use geolib.getDistance()
-
   fiber.isSelected = false
+  var center = geolib.getCenter(fiber.geometry.coordinates)
+  var selected = store.selectedPosition
+  if (geolib.getDistance(center, selected)<=NEARBY_METERS){
+    fiber.isSelected = true
+  }
 }
 
 // helper to set the cost of connecting this fiber to the selected position
