@@ -3,7 +3,7 @@ class NavBar extends React.Component {
   /*This function only invoked once on initial page load-- need invoked on react changes to navbar*/
   componentDidMount(){
         //Try to connect to firebase for the life of THIS window
-        this.roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
+        var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
 		
 		//console.log($('.dropdown-button').dropdown)
 		$('.dropdown-button').dropdown({
@@ -34,6 +34,7 @@ class NavBar extends React.Component {
 		 });
 	   });
 	  });
+	  
 	  
 	  console.log('Mounted!', this.props.data.roomNumber)
   }
