@@ -37,15 +37,17 @@ function render(){
 // DATA
 //
 
-var firebaseRef = new Firebase('https://team-polive.firebaseio.com')
-var authData = ref.getAuth();
+var firebaseRef = new Firebase('https://team-polive.firebaseio.com');
+
+/*//Tom's persistent login example
+var authData = firebaseRef.getAuth();
 
 if (authData) {
   console.log("User " + authData.uid + " is logged in with " + authData.provider + " OK");
 } else {
   console.log("User is logged out");
 }
-
+*/
 // Votes
 actions.setUserLocation = function(latlng){
 
