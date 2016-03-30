@@ -156,7 +156,7 @@ class Votes extends React.Component {
   render(){
     
 	//castVote currently lives in Room1.html as an example of how to call functions from javascript
-    var handler = this.props.addVote
+    var handler = this.props.castVote
 	/*
      var handler = function(){
          console.log('button is working')
