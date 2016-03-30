@@ -1,7 +1,8 @@
 // a single 'data' object that holds the data of your entire app, with initial values
 var data = {
   vote: -1, // vote of the user
-  room: null
+  room: null, // room user is in
+  roomNumber: ''
 }
 
 // a single 'handlers' object that holds all the actions of your entire app
@@ -18,6 +19,7 @@ function render(){
   //Render current room info for users  
   ReactDOM.render(<MyComponents.Room data={data} actions={actions}/>,
     $('#roomNumber').get(0))
+  
   /*
   //Render current room info for users  
   ReactDOM.render(<MyComponents.Votes data={data} actions={actions}/>,
@@ -34,7 +36,7 @@ function render(){
 }
 
 //
-// DATA
+// ACTIONS
 //
 
 var firebaseRef = new Firebase('https://team-polive.firebaseio.com');
@@ -60,8 +62,13 @@ actions.setUserLocation = function(latlng){
 }
 
 actions.addVote = function(){
-
   console.log('i want to change data')
+}
+
+//Set room data from navbar
+actions.setRoomData = function(){
+  data.roomNumber = '666';
+  console.log("I got called to set this rooms data!");
 }
 
 //Set user room
@@ -79,11 +86,11 @@ actions.login = function(){
 
   firebaseRef.authWithOAuthPopup("github", function(error, authData){
 
-    // handle the result of the authentication
-    if (error) {
-      console.log("Login Failed!", error);
-    } else {
-      console.log("Authenticated successfully with payload:", authData);
+      // handle the result of the authentication
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
 
       // create a user object based on authData
       var user = {

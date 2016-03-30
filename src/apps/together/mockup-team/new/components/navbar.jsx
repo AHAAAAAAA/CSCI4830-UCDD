@@ -3,6 +3,7 @@ class NavBar extends React.Component {
   /*This function only invoked once on initial page load-- need invoked on react changes to navbar*/
   componentDidMount(){
         var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
+		
 		//console.log($('.dropdown-button').dropdown)
 		$('.dropdown-button').dropdown({
 		  inDuration: 300,
@@ -14,6 +15,7 @@ class NavBar extends React.Component {
 		  alignment: 'left' // Displays dropdown with edge aligned to the left of button
 		}
 	  );
+	  
 	  //Load active rooms reactfully 
 	  //Only add rooms that are active i.e. NOT available, if available then no debate currently active
 	  roomsRef.orderByChild("available").equalTo(0).on("value", function(snapshot) {
@@ -25,12 +27,16 @@ class NavBar extends React.Component {
 		 roomsRef.child(room).once("value", function(snapshot){
 			 snapshot.forEach(function(childSnapshot) {
 				 if(childSnapshot.key() == 'name'){
-					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
+					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html" onClick={this.props.actions.setRoomData}>'+childSnapshot.val()+'</a></li><li class="divider"></li>');
 				 }
 		     })
 		 });
 	   });
 	  });
+	  
+	  //Idea: put all room numbers into an array THEN append with onClick()
+	  
+	  console.log('Mounted!', this.props.data.roomNumber)
   }
   
   /* This function invoked when navbar changes -- must have alongside componentDidMount() since is only called after initial render*/
@@ -58,17 +64,20 @@ class NavBar extends React.Component {
 		 roomsRef.child(room).once("value", function(snapshot){
 			 snapshot.forEach(function(childSnapshot) {
 				 if(childSnapshot.key() == 'name'){
-					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
+					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html" onClick={this.props.actions.setRoomData}>'+childSnapshot.val()+'</a></li><li class="divider"></li>');
 				 }
 		     })
 		 });
 	   });
 	  });
+	  
+	  console.log('DidMount!', this.props.data.roomNumber)
   }
   
   render(){
+    //console.log('render', this.props.actions)
+	
     if(this.props.data.user){
-	  this.props.actions.setUserRoom
       return (
       <nav>
         <div className="nav-wrapper light-green darken-3">
