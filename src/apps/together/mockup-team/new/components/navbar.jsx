@@ -2,7 +2,8 @@ class NavBar extends React.Component {
 
   /*This function only invoked once on initial page load-- need invoked on react changes to navbar*/
   componentDidMount(){
-        var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
+        //Try to connect to firebase for the life of THIS window
+        this.roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
 		
 		//console.log($('.dropdown-button').dropdown)
 		$('.dropdown-button').dropdown({
@@ -27,14 +28,12 @@ class NavBar extends React.Component {
 		 roomsRef.child(room).once("value", function(snapshot){
 			 snapshot.forEach(function(childSnapshot) {
 				 if(childSnapshot.key() == 'name'){
-					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html" onClick={this.props.actions.setRoomData}>'+childSnapshot.val()+'</a></li><li class="divider"></li>');
+					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html" >'+childSnapshot.val()+'</a></li><li class="divider"></li>');
 				 }
 		     })
 		 });
 	   });
 	  });
-	  
-	  //Idea: put all room numbers into an array THEN append with onClick()
 	  
 	  console.log('Mounted!', this.props.data.roomNumber)
   }
@@ -64,14 +63,14 @@ class NavBar extends React.Component {
 		 roomsRef.child(room).once("value", function(snapshot){
 			 snapshot.forEach(function(childSnapshot) {
 				 if(childSnapshot.key() == 'name'){
-					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html" onClick={this.props.actions.setRoomData}>'+childSnapshot.val()+'</a></li><li class="divider"></li>');
+					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html" >'+childSnapshot.val()+'</a></li><li class="divider"></li>');
 				 }
 		     })
 		 });
 	   });
 	  });
 	  
-	  console.log('DidMount!', this.props.data.roomNumber)
+	  console.log('DidMount!', this.props.data.room)
   }
   
   render(){
