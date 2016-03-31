@@ -9,7 +9,7 @@ export default class FiberCostTable extends Component {
     const { fibers } = this.props
 
     // TODO: implement the table header
-    const rowHeaders = <div className="card center">Cost Table</div>
+    const rowHeaders = <div className="card-panel center grey lighten-4"><div className="col s2">id</div><div className="col s5">Cost($)</div><div className="col s5">Distance(m)</div></div>
 
     const rowElements = _.map(fibers, (fiber, i) => {
 
@@ -21,9 +21,9 @@ export default class FiberCostTable extends Component {
       const className = 'row'//!fiber.isSelected ? 'row' : 'row yellow'
 
       return <div key={i} className={className} style={{marginBottom:0}}>
-        <div className="col s2"> {i} </div>
-        <div className="col s5"> {fiber.cost.toFixed(0)} </div>
-        <div className="col s5"> {fiber.distance} </div>
+        <div className="center col s2"> {i} </div>
+        <div className="center col s5"> {fiber.cost.toFixed(0)} </div>
+        <div className="center col s5"> {fiber.distance} </div>
       </div>
 
     })
