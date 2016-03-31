@@ -21,7 +21,7 @@ export function loadDataAsync(){
 
 
       // TODO: implement the correct logic to compute the center of the geometry
-      // hint: use geolib.getCenter()      
+      // hint: use geolib.getCenter()
 
       const center = geolib.getCenter(d.coordinates)
 
@@ -57,6 +57,9 @@ function forEachFiberSetIsSelected(fiber){
    // TODO: implement the logic to set fiber.isSelected if the fiber's geometry center
    // is within a certain distance from the selected position 'NEARBY_METERS'
    // hint: use geolib.getDistance()
+
+
+
   fiber.isSelected = false
   var center = geolib.getCenter(fiber.geometry.coordinates)
   var selected = store.selectedPosition
@@ -71,6 +74,12 @@ function forEachFiberSetCost(fiber){
   // TODO: implement the logic to calcualte the cost of connecting from the selected
   // position to this fiber, and the distance between them.
 
-  fiber.distance = Math.round((2000 * Math.random()))
+  const fiberPosition = {
+latitude: fiber.geometry.coordinates[0][1],
+longitude: fiber.geometry.coordinates[0][0]
+}
+
+
+fiber.distance = geolib.getDistance(store.selectedPosition, fiberPosition)
   fiber.cost = Math.round((1000 * Math.random()))
 }
