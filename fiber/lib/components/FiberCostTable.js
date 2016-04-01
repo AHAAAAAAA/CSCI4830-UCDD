@@ -18,7 +18,7 @@ export default class FiberCostTable extends Component {
       // hint: (1) add "backgroundColor" in style={}, or
       // (2) add a color word, like className="row yellow"
 
-      const className = 'row'//!fiber.isSelected ? 'row' : 'row yellow'
+      const className = !fiber.isSelected ? 'row' : 'row yellow'
 
       return <div key={i} className={className} style={{marginBottom:0}}>
         <div className="center col s2"> {i} </div>
