@@ -81,5 +81,5 @@ longitude: fiber.geometry.coordinates[0][0]
 
 
 fiber.distance = geolib.getDistance(store.selectedPosition, fiberPosition)
-  fiber.cost = Math.round((1000 * Math.random()))
+  fiber.cost = Math.round((40 * fiber.distance)) //Assuming $40/metre of fiber
 }
