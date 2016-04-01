@@ -4,6 +4,10 @@ class NavBar extends React.Component {
   componentDidMount(){
         //Try to connect to firebase for the life of THIS window
         var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
+		/*
+		function callme() {
+		    console.log('called!!!');
+		}*/
 		
 		//console.log($('.dropdown-button').dropdown)
 		$('.dropdown-button').dropdown({
@@ -28,7 +32,7 @@ class NavBar extends React.Component {
 		 roomsRef.child(room).once("value", function(snapshot){
 			 snapshot.forEach(function(childSnapshot) {
 				 if(childSnapshot.key() == 'name'){
-					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html" >'+childSnapshot.val()+'</a></li><li class="divider"></li>');
+					 $('#categories_dropdown').append('<li><a href="#" onClick="setRoomData()">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
 				 }
 		     })
 		 });
@@ -38,7 +42,7 @@ class NavBar extends React.Component {
 	  
 	  console.log('Mounted!', this.props.data.roomNumber)
   }
-  
+
   /* This function invoked when navbar changes -- must have alongside componentDidMount() since is only called after initial render*/
   componentDidUpdate(){
       var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
