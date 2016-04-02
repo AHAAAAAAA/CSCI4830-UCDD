@@ -83,11 +83,11 @@ function forEachFiberSetCost(fiber){
   // position to this fiber, and the distance between them.
 
   const fiberPosition = {
-latitude: fiber.geometry.coordinates[0][1],
-longitude: fiber.geometry.coordinates[0][0]
-}
+    latitude: fiber.geometry.coordinates[0][1],
+    longitude: fiber.geometry.coordinates[0][0]
+    }
 
 
 fiber.distance = geolib.getDistance(store.selectedPosition, fiberPosition)
-  fiber.cost = Math.round((40 * fiber.distance)) //Assuming $40/metre of fiber
+fiber.cost = Math.round((40 * fiber.distance)) //Assuming $40/metre of fiber
 }
