@@ -12,7 +12,7 @@ var actions = {}
 // 'data' and 'actions' are injected into the app
 function render(){
 
-  //Render current room info for users  
+  //Render current room info for users -- RENDER ME FIRST SO OTHER JSX FILES SEE MY UPDATES!  
   ReactDOM.render(<MyComponents.Room data={data} actions={actions}/>,
     $('#roomNumber').get(0))
 
