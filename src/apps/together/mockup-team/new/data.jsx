@@ -1,8 +1,7 @@
 // a single 'data' object that holds the data of your entire app, with initial values
 var data = {
   vote: -1, // vote of the user
-  room: null, // room user is in
-  roomNumber: ''
+  room: null // room user is in
 }
 
 // a single 'handlers' object that holds all the actions of your entire app
@@ -13,18 +12,14 @@ var actions = {}
 // 'data' and 'actions' are injected into the app
 function render(){
 
-  ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
-    $('#nav-bar-container').get(0))
-  
   //Render current room info for users  
   ReactDOM.render(<MyComponents.Room data={data} actions={actions}/>,
     $('#roomNumber').get(0))
+
+  ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
+    $('#nav-bar-container').get(0))
   
-  /*
-  //Render current room info for users  
-  ReactDOM.render(<MyComponents.Votes data={data} actions={actions}/>,
-    $('#votes').get(0))
-  */
+  
   
   // ReactDOM.render(
   //   <MyComponents.Votes
@@ -63,12 +58,6 @@ actions.setUserLocation = function(latlng){
 
 actions.addVote = function(){
   console.log('i want to change data')
-}
-
-//Set room data from navbar
-actions.setRoomData = function(){
-  data.roomNumber = 'Room1';
-  console.log("I got called to set this room's data!");
 }
 
 //Set user room
@@ -114,7 +103,6 @@ actions.login = function(){
       
       // set the user data
       userRef.set(user)
-
     }
   })
 }

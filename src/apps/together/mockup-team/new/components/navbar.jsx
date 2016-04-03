@@ -4,7 +4,7 @@ class NavBar extends React.Component {
   componentDidMount(){
         //Try to connect to firebase for the life of THIS window
         var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
-
+		
 		//Expose props and/ or actions that are available in console
 		console.log('render', this.props.actions)
 		
@@ -31,14 +31,13 @@ class NavBar extends React.Component {
 		 roomsRef.child(room).once("value", function(snapshot){
 			 snapshot.forEach(function(childSnapshot) {
 				 if(childSnapshot.key() == 'name'){
-					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
+					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html" onClick="setRoomData()">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
 				 }
 		     })
-             
+
 		 });
 	   });
 	  });
-	  console.log(this.props.data.room)
 	  console.log('Mounted broh!', this.props.data.roomNumber)
   }
 
@@ -80,7 +79,6 @@ class NavBar extends React.Component {
   
   render(){
     //console.log('render', this.props.actions)
-	
     if(this.props.data.user){
       return (
       <nav>
