@@ -68,7 +68,7 @@ actions.addVote = function(){
 //Set room data from navbar
 actions.setRoomData = function(){
   data.roomNumber = 'Room1';
-  console.log("I got called to set this rooms data!");
+  console.log("I got called to set this room's data!");
 }
 
 //Set user room

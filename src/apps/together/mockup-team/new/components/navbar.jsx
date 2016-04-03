@@ -4,10 +4,9 @@ class NavBar extends React.Component {
   componentDidMount(){
         //Try to connect to firebase for the life of THIS window
         var roomsRef = new Firebase('https://team-polive.firebaseio.com/rooms/');
-		/*
-		function callme() {
-		    console.log('called!!!');
-		}*/
+
+		//Expose props and/ or actions that are available in console
+		console.log('render', this.props.actions)
 		
 		//console.log($('.dropdown-button').dropdown)
 		$('.dropdown-button').dropdown({
@@ -35,12 +34,12 @@ class NavBar extends React.Component {
 					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
 				 }
 		     })
+             console.log('fuuuuck')
 		 });
 	   });
 	  });
-	  
-	  
-	  console.log('Mounted!', this.props.data.roomNumber)
+	  console.log(this.props.data.room)
+	  console.log('Mounted broh!', this.props.data.roomNumber)
   }
 
   /* This function invoked when navbar changes -- must have alongside componentDidMount() since is only called after initial render*/
@@ -71,11 +70,12 @@ class NavBar extends React.Component {
 					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html" >'+childSnapshot.val()+'</a></li><li class="divider"></li>');
 				 }
 		     })
+
 		 });
 	   });
 	  });
 	  
-	  console.log('DidMount!', this.props.data.room)
+	  console.log('DidMount broh!', this.props.data.room)
   }
   
   render(){
