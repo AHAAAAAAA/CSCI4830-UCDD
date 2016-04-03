@@ -34,7 +34,7 @@ class NavBar extends React.Component {
 					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
 				 }
 		     })
-             console.log('fuuuuck')
+             
 		 });
 	   });
 	  });
