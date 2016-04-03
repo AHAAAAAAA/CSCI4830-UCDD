@@ -1,7 +1,8 @@
 // a single 'data' object that holds the data of your entire app, with initial values
 var data = {
   vote: -1, // vote of the user
-  room: null // room user is in
+  room: null, // room number user is in
+  category: null //Room title e.g. 'Sports'
 }
 
 // a single 'handlers' object that holds all the actions of your entire app
@@ -14,10 +15,14 @@ function render(){
 
   //Render current room info for users -- RENDER ME FIRST SO OTHER JSX FILES SEE MY UPDATES!  
   ReactDOM.render(<MyComponents.Room data={data} actions={actions}/>,
-    $('#roomNumber').get(0))
+    $('#roomNumber').get(0));
 
   ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
-    $('#nav-bar-container').get(0))
+    $('#nav-bar-container').get(0));
+  
+  //Inject data into title component
+  ReactDOM.render(<MyComponents.Title data={data} actions={actions}/>,
+    $('#categoryTitle').get(0));
   
   // ReactDOM.render(
   //   <MyComponents.Votes
