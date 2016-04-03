@@ -32,7 +32,7 @@ class NavBar extends React.Component {
 		 roomsRef.child(room).once("value", function(snapshot){
 			 snapshot.forEach(function(childSnapshot) {
 				 if(childSnapshot.key() == 'name'){
-					 $('#categories_dropdown').append('<li><a href="#" onClick="setRoomData()">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
+					 $('#categories_dropdown').append('<li><a href="/apps/together/mockup-team/new/categories/'+room+'.html">'+childSnapshot.val()+'</a></li><li class="divider"></li>');
 				 }
 		     })
 		 });
