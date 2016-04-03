@@ -19,8 +19,6 @@ function render(){
   ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
     $('#nav-bar-container').get(0))
   
-  
-  
   // ReactDOM.render(
   //   <MyComponents.Votes
   //       data={data}
