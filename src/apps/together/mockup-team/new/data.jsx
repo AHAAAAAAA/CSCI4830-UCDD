@@ -110,6 +110,9 @@ actions.setUserVoteYes = function(){
       roomRef.child('yes').set(parseInt(data.yesVotes)+1)
       roomRef.child('no').set(parseInt(data.noVotes)-1)   
     }
+    else if(currVote==-1){
+      roomRef.child('yes').set(parseInt(data.yesVotes)+1)
+    }
 	  
 	  userRef.child('vote').set(data.vote)
 	  
@@ -143,7 +146,9 @@ actions.setUserVoteNo = function(){
       console.log("VOTED NO")
       roomRef.child('yes').set(parseInt(data.yesVotes)-1)
       roomRef.child('no').set(parseInt(data.noVotes)+1)
-   }
+   }else if(currVote==-1){
+      roomRef.child('no').set(parseInt(data.noVotes)+1)
+    }
     
 	  userRef.child('vote').set(data.vote)
 	  
