@@ -20,10 +20,6 @@ function render(){
   ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
     $('#nav-bar-container').get(0));
   
-  //Inject data into title component
-  ReactDOM.render(<MyComponents.Title data={data} actions={actions}/>,
-    $('#categoryTitle').get(0));
-  
   // ReactDOM.render(
   //   <MyComponents.Votes
   //       data={data}
