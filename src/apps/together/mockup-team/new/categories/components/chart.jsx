@@ -1,38 +1,38 @@
 class Votes extends React.Component {
-/*
+
   //Animate initial chart
   componentDidMount(){
-  
+    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     var firebase = new Firebase('https://team-polive.firebaseio.com/');
 	
     var data1 = [
 	  {
-		  value: this.props.votes.no,
+		  value: this.props.data.noVotes,
 		  color:"#F7464A",
 		  highlight: "#FF5A5E",
 		  label: "No"
 	  },
 	  {
-		  value: this.props.votes.yes,
+		  value: this.props.data.yesVotes,
 		  color: "#46BFBD",
 		  highlight: "#5AD3D1",
 		  label: "Yes"
 	  }
 	]
 	var data = {
-    labels: ["Yes", "No"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data: [this.props.votes.yes, this.props.votes.no]
-        }
-    ]
-};
+      labels: ["Yes", "No"],
+      datasets: [
+          {
+              label: "My First dataset",
+              fillColor: "rgba(220,220,220,0.5)",
+              strokeColor: "rgba(220,220,220,0.8)",
+              highlightFill: "rgba(220,220,220,0.75)",
+              highlightStroke: "rgba(220,220,220,1)",
+              data: [this.props.data.yesVotes, this.props.data.noVotes]
+          }
+      ]
+    };
 	var options = {
     //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
     scaleBeginAtZero : false,
@@ -68,8 +68,11 @@ class Votes extends React.Component {
 
     //String - A legend template
     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
+    
 }
+    //Set room votes
+    this.props.actions.setRoomVotes();
+	console.log("votes are: ", this.props.data.noVotes)
 	var ctx = document.getElementById("myChart").getContext("2d");
 	var myDoughnutChart = new Chart(ctx).Doughnut(data1);
 	var ctx2 = document.getElementById("myChart2").getContext("2d");
@@ -79,7 +82,8 @@ class Votes extends React.Component {
   
   //Reanimate component on chart updates
   componentDidUpdate(){
-    
+    var yes = this.props.data.yesVotes;
+	var no = this.props.data.noVotes;
 	var options = {
     //Boolean - Whether we should show a stroke on each segment
     animation:false
@@ -121,13 +125,13 @@ class Votes extends React.Component {
 }
 	var data1 = [
 	  {
-		  value: this.props.votes.no,
+		  value: this.props.data.noVotes,
 		  color:"#F7464A",
 		  highlight: "#FF5A5E",
 		  label: "No"
 	  },
 	  {
-		  value: this.props.votes.yes,
+		  value: this.props.data.yesVotes,
 		  color: "#46BFBD",
 		  highlight: "#5AD3D1",
 		  label: "Yes"
@@ -142,20 +146,19 @@ class Votes extends React.Component {
             strokeColor: "rgba(220,220,220,0.8)",
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
-            data: [this.props.votes.yes, this.props.votes.no]
+            data: [yes, no]
         }
     ]
 };
+    this.props.actions.setRoomVotes();
 	var ctx = document.getElementById("myChart").getContext("2d");
 	var ctx2 = document.getElementById("myChart2").getContext("2d");
 	var myDoughnutChart = new Chart(ctx).Doughnut(data1, options);
 	var myBarChart = new Chart(ctx2).Bar(data, options2);
-
   }
-  */
   
   render(){
-
+    
     return (
         <div className="card-panel light-green darken-3">
           <h4 className="card-title" className="center"><b>Live Poll</b></h4>

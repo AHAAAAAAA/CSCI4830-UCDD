@@ -38,7 +38,7 @@ class NavBar extends React.Component {
 		 });
 	   });
 	  });
-	  console.log('Mounted broh!', this.props.data.roomNumber)
+	  console.log('Mounted broh!', this.props.data.room)
   }
 
   /* This function invoked when navbar changes -- must have alongside componentDidMount() since is only called after initial render*/

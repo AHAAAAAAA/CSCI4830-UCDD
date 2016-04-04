@@ -41,11 +41,13 @@ class Room extends React.Component {
 	  for (var i = 0; i < user.length; i++) {
           $('#name').append('<li class="collection-item">' +user[i]+ '</li>'); 
 	  }
-	  
+
 	  //After pushing clear the old array
 	  user = [];
     });
 	
+	//Now update the votes for the room whenever a user enters this room
+    this.props.actions.setRoomDataVotes();
 	
     return (
 	    null

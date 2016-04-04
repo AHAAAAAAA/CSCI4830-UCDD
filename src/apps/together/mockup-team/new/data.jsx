@@ -37,15 +37,6 @@ function render(){
 
 var firebaseRef = new Firebase('https://team-polive.firebaseio.com');
 
-/*//Tom's persistent login example
-var authData = firebaseRef.getAuth();
-
-if (authData) {
-  console.log("User " + authData.uid + " is logged in with " + authData.provider + " OK");
-} else {
-  console.log("User is logged out");
-}
-*/
 // Votes
 actions.setUserLocation = function(latlng){
 
@@ -57,8 +48,23 @@ actions.setUserLocation = function(latlng){
   }
 }
 
-actions.addVote = function(){
-  console.log('i want to change data')
+//set temp data
+actions.setRoomDataVotes = function(){
+    console.log("called data settingggggg ", localStorage.getItem("noVotes"))
+    data.noVotes = localStorage.getItem("noVotes");
+    data.yesVotes = localStorage.getItem("yesVotes");
+}
+
+//Collect room votes
+actions.setRoomVotes = function(){
+    console.log("I done got called and am now chillin in a loop")
+	
+	firebaseRef.child('rooms').child(data.room).on('value', function(data) {
+	  var roomData = data.val();
+	  console.log("in room getting vote: ", roomData.name, " ", roomData.no)
+	  localStorage.setItem("noVotes", roomData.no);
+	  localStorage.setItem("yesVotes", roomData.yes);
+    });	
 }
 
 //Set user room
@@ -85,6 +91,11 @@ actions.setUserVoteYes = function(){
       .child(data.username)
 	  
 	  userRef.child('vote').set(data.vote)
+	  
+	  //update the vote data
+	  console.log("reload data")
+	  actions.setRoomDataVotes();
+	  render(); 
   }
 }
 
@@ -100,6 +111,11 @@ actions.setUserVoteNo = function(){
       .child(data.username)
 	  
 	  userRef.child('vote').set(data.vote)
+	  
+	  //update the vote data s.t. it renders again
+	  console.log("reload data")
+	  actions.setRoomDataVotes();
+	  render(); 
   }
 }
 
@@ -195,7 +211,6 @@ actions.logout = function(){
 
     // set the user's status to offline
     userRef.child('status').set('offline')
-	
 	userRef2.child('room').set('None')
     
 	//Remove user creds from localstorage

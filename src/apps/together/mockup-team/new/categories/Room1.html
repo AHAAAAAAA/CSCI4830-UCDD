@@ -33,12 +33,9 @@
 	  <!-- JSX scripts to components-->
 	  <script type="text/babel" src="../components/room1.jsx"></script>
       <script type="text/babel" src="../components/navbar.jsx"></script>  
-      
-	  <!-- Connect page specific components-->
 	  <script type="text/babel" src="./components/chart.jsx"></script> 
-
 	  <!-- IMPORTANT: THIS MUST BE LAST SCRIPT LOADED! Connect the app and data -->
-    <script type="text/babel" src="../data.jsx"></script>
+      <script type="text/babel" src="../data.jsx"></script>
 	  
 	  
     </head> 
@@ -137,34 +134,6 @@
 		// var myLineChart = new Chart(ctx).Line(data, options);
     </script>
 	<!-- End of chart script: -->
-	
-    <!-- Voting -->
-    <script type="text/babel">
-	/*
-        var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
-        var votes = {no: 0, yes: 0};
-        ReactDOM.render(
-          <MyComponents.Votes votes={votes}/>,
-          $('#votes').get(0));
-          votecount.on('value', function(data) {
-            var roomData = data.val();
-            votes.no = roomData.no;
-            votes.yes = roomData.yes;
-
-            var myCastVoteFunction = function(){
-              console.log('I am called in Room1.html')
-
-              votes.yes += 1
-              votecount.set(votes)
-            }
-
-            ReactDOM.render(
-              <MyComponents.Votes votes={votes} castVote={myCastVoteFunction}/>,
-              $('#votes').get(0)
-            );
-          });
-*/
-    </script>
 	
     <script>
       // MyComponents is a global object where each property is a reference to a component class
