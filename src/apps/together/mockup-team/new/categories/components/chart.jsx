@@ -5,7 +5,36 @@ class Votes extends React.Component {
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     var firebase = new Firebase('https://team-polive.firebaseio.com/');
-	
+	 if (this.props.data.noVotes==0&&this.props.data.yesVotes==0){
+    var data1 = [
+    {
+      value: 1,
+      color:"#F7464A",
+      highlight: "#FF5A5E",
+      label: "No"
+    },
+    {
+      value: 1,
+      color: "#46BFBD",
+      highlight: "#5AD3D1",
+      label: "Yes"
+    }
+  ];
+  var data = {
+      labels: ["Yes", "No"],
+      datasets: [
+          {
+              label: "My First dataset",
+              fillColor: "rgba(220,220,220,0.5)",
+              strokeColor: "rgba(220,220,220,0.8)",
+              highlightFill: "rgba(220,220,220,0.75)",
+              highlightStroke: "rgba(220,220,220,1)",
+              data: [1, 1]
+          }
+      ]
+    };
+   }
+   else{
     var data1 = [
 	  {
 		  value: this.props.data.noVotes,
@@ -20,7 +49,7 @@ class Votes extends React.Component {
 		  label: "Yes"
 	  }
 	]
-	var data = {
+  var data = {
       labels: ["Yes", "No"],
       datasets: [
           {
@@ -33,6 +62,8 @@ class Votes extends React.Component {
           }
       ]
     };
+}
+	
 	var options = {
     //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
     scaleBeginAtZero : true,
@@ -123,33 +154,64 @@ class Votes extends React.Component {
     legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
 }
-	var data1 = [
-	  {
-		  value: this.props.data.noVotes,
-		  color:"#F7464A",
-		  highlight: "#FF5A5E",
-		  label: "No"
-	  },
-	  {
-		  value: this.props.data.yesVotes,
-		  color: "#46BFBD",
-		  highlight: "#5AD3D1",
-		  label: "Yes"
-	  }
-	]
-	var data = {
-    labels: ["Yes", "No"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data: [yes, no]
-        }
-    ]
-};
+if (this.props.data.noVotes==0&&this.props.data.yesVotes==0){
+    var data1 = [
+    {
+      value: 1,
+      color:"#F7464A",
+      highlight: "#FF5A5E",
+      label: "No"
+    },
+    {
+      value: 1,
+      color: "#46BFBD",
+      highlight: "#5AD3D1",
+      label: "Yes"
+    }
+  ];
+  var data = {
+      labels: ["Yes", "No"],
+      datasets: [
+          {
+              label: "My First dataset",
+              fillColor: "rgba(220,220,220,0.5)",
+              strokeColor: "rgba(220,220,220,0.8)",
+              highlightFill: "rgba(220,220,220,0.75)",
+              highlightStroke: "rgba(220,220,220,1)",
+              data: [1, 1]
+          }
+      ]
+    };
+   }
+   else{
+    var data1 = [
+    {
+      value: this.props.data.noVotes,
+      color:"#F7464A",
+      highlight: "#FF5A5E",
+      label: "No"
+    },
+    {
+      value: this.props.data.yesVotes,
+      color: "#46BFBD",
+      highlight: "#5AD3D1",
+      label: "Yes"
+    }
+  ]
+  var data = {
+      labels: ["Yes", "No"],
+      datasets: [
+          {
+              label: "My First dataset",
+              fillColor: "rgba(220,220,220,0.5)",
+              strokeColor: "rgba(220,220,220,0.8)",
+              highlightFill: "rgba(220,220,220,0.75)",
+              highlightStroke: "rgba(220,220,220,1)",
+              data: [this.props.data.yesVotes, this.props.data.noVotes]
+          }
+      ]
+    };
+}
     this.props.actions.setRoomVotes();
 	var ctx = document.getElementById("myChart").getContext("2d");
 	var ctx2 = document.getElementById("myChart2").getContext("2d");
