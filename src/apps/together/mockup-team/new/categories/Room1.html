@@ -36,7 +36,7 @@
       
 	  <!-- Connect page specific components-->
 	  <script type="text/babel" src="./components/chart.jsx"></script> 
-	  <script type="text/babel" src="./components/users.jsx"></script>
+
 	  <!-- IMPORTANT: THIS MUST BE LAST SCRIPT LOADED! Connect the app and data -->
       <script type="text/babel" src="../data.jsx"></script>
 	  
@@ -183,36 +183,6 @@
           });
 
     </script>
-	
-	<!-- Get users from firebase -->
-	<script type="text/babel">	
-	    var roomtitle = new Firebase('https://team-polive.firebaseio.com/users');
-	    var user = [];
-		var tempUser = '';
-		//Initialize the user array
-		user.push(tempUser);
-		
-		ReactDOM.render(
-          <MyComponents.Users users={user}/>,
-          $('#name').get(0));
-          roomtitle.orderByChild("room").equalTo("Room1").on('value', function(data){
-		    data.forEach(function(users) {
-              var userdb = users.child("username").val();		  
-			  tempUser = userdb;
-              user.push(tempUser);			 
-			})
-			for (var i = 0; i < user.length; i++) {
-				console.log("user: ", user[i]);
-			}
-			//Re-render with updates
-		    ReactDOM.render(
-			    <MyComponents.Users users={user}/>,
-				$('#name').get(0)
-			);
-			//After pushing clear the old array
-			user = [];
-          });
-	</script>
 	
 	<!-- funciton to set room data -- since navbar contents live here this is where the function must also live-->
 	<script>
