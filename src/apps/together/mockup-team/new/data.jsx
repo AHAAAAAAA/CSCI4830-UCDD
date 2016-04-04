@@ -24,6 +24,10 @@ function render(){
   ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
     $('#nav-bar-container').get(0));
   
+  //Make data and actions available to chart.jsx  
+  ReactDOM.render(<MyComponents.Votes data={data} actions={actions}/>,
+    $('#votes').get(0));
+  
   console.log("logged in user is: ", data.username, " in room ", data.room)
 }
 
@@ -69,6 +73,36 @@ actions.setUserRoom = function(){
   }
 }
 
+//Set user vote
+actions.setUserVoteYes = function(){
+  //if user logged in, set their room number
+  if (data.status){
+    console.log("I'm voting YES from data.jsx now!")
+	//update the user vote in data
+	data.vote = 1;
+    var userRef = firebaseRef
+      .child('users')
+      .child(data.username)
+	  
+	  userRef.child('vote').set(data.vote)
+  }
+}
+
+//Set user vote
+actions.setUserVoteNo = function(){
+  //if user logged in, set their room number
+  if (data.status){
+    console.log("I'm voting NO from data.jsx now!")
+	//update the user vote in data
+	data.vote = 0;
+    var userRef = firebaseRef
+      .child('users')
+      .child(data.username)
+	  
+	  userRef.child('vote').set(data.vote)
+  }
+}
+
 actions.login = function(){
 
   firebaseRef.authWithOAuthPopup("github", function(error, authData){
@@ -103,7 +137,7 @@ actions.login = function(){
 	  // Store
 	  localStorage.setItem("status", user.status);
 	  localStorage.setItem("username", user.username);
-	  // Retrieve
+	  // Retrieve 
 	  console.log( "User creds: ",localStorage.getItem("status"), " ", localStorage.getItem("username"));
 	  
       // set the user data

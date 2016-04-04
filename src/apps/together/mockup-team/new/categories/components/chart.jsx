@@ -1,6 +1,6 @@
 class Votes extends React.Component {
-
-  /*Animate initial chart*/
+/*
+  //Animate initial chart
   componentDidMount(){
   
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -152,17 +152,9 @@ class Votes extends React.Component {
 	var myBarChart = new Chart(ctx2).Bar(data, options2);
 
   }
+  */
   
   render(){
-    
-	//castVote currently lives in Room1.html as an example of how to call functions from javascript
-    var handler = this.props.castVote
-	/*
-     var handler = function(){
-         console.log('button is working')
-     }
-    */
-    // console.log('render', this.props)
 
     return (
         <div className="card-panel light-green darken-3">
@@ -170,8 +162,8 @@ class Votes extends React.Component {
           <canvas id="myChart" className=""></canvas>
           <canvas id="myChart2" className=""></canvas>
           <div className="row center">            
-          <a id= "yesButton" onClick={handler} className="center waves-effect waves-light blue btn"><i className="material-icons">thumb_up</i></a>
-          <a id ="noButton" className="center waves-effect waves-light red btn"><i className="material-icons">thumb_down</i></a>
+          <a id= "yesButton" onClick={this.props.actions.setUserVoteYes} className="center waves-effect waves-light blue btn"><i className="material-icons">thumb_up</i></a>
+          <a id ="noButton"  onClick={this.props.actions.setUserVoteNo} className="center waves-effect waves-light red btn"><i className="material-icons">thumb_down</i></a>
           </div>
         </div>
     );
