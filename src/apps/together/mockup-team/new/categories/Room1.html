@@ -138,25 +138,6 @@
     </script>
 	<!-- End of chart script: -->
 	
-	<!-- Get Votes from firebase -->
-    <script type="text/babel">
-        var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
-        var votes = {no: 0, yes: 0};
-        ReactDOM.render(
-          <MyComponents.Votes votes={votes}/>,
-          $('#votes').get(0));
-          votecount.on('value', function(data) {
-            var roomData = data.val();
-            votes.no = roomData.no;
-            votes.yes = roomData.yes;
-            ReactDOM.render(
-              <MyComponents.Votes votes={votes}/>,
-              $('#votes').get(0)
-            );
-          });
-
-    </script>
-
     <!-- Voting -->
     <script type="text/babel">
         var votecount = new Firebase('https://team-polive.firebaseio.com/rooms/Room1');
@@ -183,14 +164,6 @@
           });
 
     </script>
-	
-	<!-- funciton to set room data -- since navbar contents live here this is where the function must also live-->
-	<script>
-		function setRoomData() {
-			console.log('called!!!');
-			//ReactDOM.actions.setRoomData;
-		}
-	</script>
 	
     <script>
       // MyComponents is a global object where each property is a reference to a component class

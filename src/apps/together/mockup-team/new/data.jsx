@@ -2,7 +2,9 @@
 var data = {
   vote: -1, // vote of the user
   room: null, // room number user is in
-  category: null //Room title e.g. 'Sports'
+  category: null, //Room title e.g. 'Sports'
+  noVotes: 0, //current category vote count
+  yesVotes: 0
 }
 
 // a single 'handlers' object that holds all the actions of your entire app

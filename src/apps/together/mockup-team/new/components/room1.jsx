@@ -5,6 +5,8 @@ class Room extends React.Component {
 	var titleRoom = {category: 'None'};
 	var user = [];
 	var tempUser = '';
+	var votes = {no: 0, yes: 0};
+	
 	//Initialize the user array
 	user.push(tempUser);
 	
@@ -49,7 +51,7 @@ class Room extends React.Component {
 	  //After pushing clear the old array
 	  user = [];
     });
-
+	
     return (
 	    null
     );
