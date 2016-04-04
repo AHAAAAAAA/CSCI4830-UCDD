@@ -4,7 +4,9 @@ var data = {
   room: null, // room number user is in
   category: null, //Room title e.g. 'Sports'
   noVotes: 0, //current category vote count
-  yesVotes: 0
+  yesVotes: 0,
+  username: null, //set user credentials
+  status: null
 }
 
 // a single 'handlers' object that holds all the actions of your entire app
@@ -22,13 +24,7 @@ function render(){
   ReactDOM.render(<MyComponents.NavBar data={data} actions={actions}/>,
     $('#nav-bar-container').get(0));
   
-  // ReactDOM.render(
-  //   <MyComponents.Votes
-  //       data={data}
-  //       actions={actions}/>,
-  //   $('#app-container').get(0)
-
-  // )
+  console.log("logged in user is: ", data.username, " in room ", data.room)
 }
 
 //
@@ -64,11 +60,12 @@ actions.addVote = function(){
 //Set user room
 actions.setUserRoom = function(){
   //if user logged in, set their room number
-  if (data.user){
-    firebaseRef
+  if (data.status){
+    var userRef = firebaseRef
       .child('users')
-      .child(data.user.room)
-      .set(data.room)
+      .child(data.username)
+	  
+	  userRef.child('room').set(data.room)
   }
 }
 
@@ -101,7 +98,14 @@ actions.login = function(){
         data.user = snapshot.val()
         render()
       })
-      
+	  
+	  //Save a more persistent copy of login credentials
+	  // Store
+	  localStorage.setItem("status", user.status);
+	  localStorage.setItem("username", user.username);
+	  // Retrieve
+	  console.log( "User creds: ",localStorage.getItem("status"), " ", localStorage.getItem("username"));
+	  
       // set the user data
       userRef.set(user)
     }
@@ -125,14 +129,48 @@ actions.logout = function(){
     userRef.off()
 
     // set the user's status to offline
-    userRef.child('status').set('offline')
-	
+    userRef.child('status').set('offline')	
 	userRef2.child('room').set('None')
 
     data.user = null
-
+    
+	//Remove user creds from localstorage
+	localStorage.removeItem("status");
+	localStorage.removeItem("username");
+	data.username = null;
+	data.status = null;
+	
     render()
+  }
+  
+  //If old user creds were not carried over then call this logout stuff
+  if (!data.user && data.status){
+    console.log("Logout");
+	
+    firebaseRef.unauth()
 
+    var userRef = firebaseRef
+      .child('users')
+      .child(data.username)
+    var userRef2 = firebaseRef
+      .child('users')
+      .child(data.username)
+
+    // unsubscribe to the user data
+    userRef.off()
+
+    // set the user's status to offline
+    userRef.child('status').set('offline')
+	
+	userRef2.child('room').set('None')
+    
+	//Remove user creds from localstorage
+	localStorage.removeItem("status");
+	localStorage.removeItem("username");
+	data.username = null;
+	data.status = null;
+	
+    render()
   }
 }
 
