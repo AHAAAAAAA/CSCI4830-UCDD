@@ -98,7 +98,7 @@ actions.setUserVoteYes = function(){
     // data === "hello"
      });
 
-  console.log("THIS IS MY last VOTE " + currVote)
+  // console.log("THIS IS MY last VOTE " + currVote)
   var roomRef = firebaseRef.child('rooms').child(data.room);
   roomRef.once("value", function(snapshot) {
       console.log(snapshot.val());
@@ -113,7 +113,7 @@ actions.setUserVoteYes = function(){
     else if(currVote==-1){
       roomRef.child('yes').set(parseInt(data.yesVotes)+1)
     }
-	  
+	  Materialize.toast('Your vote hes been updated to Yes', 4000, 'round')
 	  userRef.child('vote').set(data.vote)
 	  
 	  //update the vote data
@@ -149,7 +149,7 @@ actions.setUserVoteNo = function(){
    }else if(currVote==-1){
       roomRef.child('no').set(parseInt(data.noVotes)+1)
     }
-    
+    Materialize.toast('Your vote hes been updated to Yes', 4000, 'round')
 	  userRef.child('vote').set(data.vote)
 	  
 	  //update the vote data s.t. it renders again
