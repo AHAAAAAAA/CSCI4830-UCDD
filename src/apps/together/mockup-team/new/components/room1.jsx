@@ -21,7 +21,9 @@ class Room extends React.Component {
 	//Set data.category to current room category
 	roomtitle.once('value', function(data) {
 	var roomData = data.val();
-	  titleRoom.category = roomData.name;		
+	  titleRoom.category = roomData.name;
+      //clear old category title	  
+      document.getElementById("categoryTitle").innerHTML = "";	  
 	  $('#categoryTitle').append('<h1 class="black-text center">'+titleRoom.category+'</h1>');
     });
 	
