@@ -35,7 +35,7 @@ class Votes extends React.Component {
     };
 	var options = {
     //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-    scaleBeginAtZero : false,
+    scaleBeginAtZero : true,
     // Array - Array of string names to attach tooltip events
     tooltipEvents: ["mousemove", "touchstart", "touchmove"],
 
@@ -90,7 +90,7 @@ class Votes extends React.Component {
 	}
 	var options2 = {
     //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-    scaleBeginAtZero : false,
+    scaleBeginAtZero : true,
     animation:false,
     //Boolean - Whether grid lines are shown across the chart
     scaleShowGridLines : false,

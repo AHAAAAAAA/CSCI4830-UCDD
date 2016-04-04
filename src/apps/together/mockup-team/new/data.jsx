@@ -15,6 +15,7 @@ var actions = {}
 // the main render() function. call this function whenever the app's UI
 // needs to to re-rendered
 // 'data' and 'actions' are injected into the app
+setInterval(render, 1000)
 function render(){
 
   //Render current room info for users -- RENDER ME FIRST SO OTHER JSX FILES SEE MY UPDATES!  
@@ -84,11 +85,31 @@ actions.setUserVoteYes = function(){
   //if user logged in, set their room number
   if (data.status){
     console.log("I'm voting YES from data.jsx now!")
-	//update the user vote in data
+    console.log(data)
+  	//update the user vote in data
 	data.vote = 1;
-    var userRef = firebaseRef
+  var userRef = firebaseRef
       .child('users')
       .child(data.username)
+  var currVote = -1;
+  var roomVote = data.yesVotes;
+  userRef.once("value", function(snapshot) {
+     currVote = snapshot.val().vote;
+    // data === "hello"
+     });
+
+  console.log("THIS IS MY last VOTE " + currVote)
+  var roomRef = firebaseRef.child('rooms').child(data.room);
+  roomRef.once("value", function(snapshot) {
+      console.log(snapshot.val());
+    // data === "hello"
+     });
+  console.log(roomRef)
+   if (currVote == 0){
+      console.log("VOTED YES")
+      roomRef.child('yes').set(parseInt(data.yesVotes)+1)
+      roomRef.child('no').set(parseInt(data.noVotes)-1)   
+    }
 	  
 	  userRef.child('vote').set(data.vote)
 	  
@@ -106,10 +127,24 @@ actions.setUserVoteNo = function(){
     console.log("I'm voting NO from data.jsx now!")
 	//update the user vote in data
 	data.vote = 0;
-    var userRef = firebaseRef
-      .child('users')
-      .child(data.username)
-	  
+  var userRef = firebaseRef
+    .child('users')
+    .child(data.username)
+  var currVote = -1;
+  var roomVote = data.yesVotes;
+  userRef.once("value", function(snapshot) {
+     currVote = snapshot.val().vote;
+    // data === "hello"
+     });
+
+  console.log("THIS IS MY last VOTE " + currVote)
+  var roomRef = firebaseRef.child('rooms').child(data.room);
+   if (currVote == 1){
+      console.log("VOTED NO")
+      roomRef.child('yes').set(parseInt(data.yesVotes)-1)
+      roomRef.child('no').set(parseInt(data.noVotes)+1)
+   }
+    
 	  userRef.child('vote').set(data.vote)
 	  
 	  //update the vote data s.t. it renders again
